@@ -9,7 +9,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
 
 <BaseLayout
   title="Technology — TerraChain"
-  description="Deep dive into TerraChain's architecture: Solana blockchain, Rust smart contracts, PostGIS geospatial engine, and more."
+  description="Deep dive into TerraChain's architecture: Blockchain blockchain, Rust smart contracts, PostGIS geospatial engine, and more."
 >
   <div class="pt-24 pb-8">
     <BentoGrid>
@@ -34,7 +34,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
           </p>
 
           <div class="flex flex-wrap gap-3">
-            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary">Solana Powered</span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary">Blockchain Powered</span>
             <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary">Rust Smart Contracts</span>
             <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary">PostGIS Spatial</span>
           </div>
@@ -190,7 +190,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
               <span class="text-xs font-mono text-accent">L5</span>
             </div>
             <div class="flex flex-wrap gap-2">
-              {['Solana Mainnet', 'Anchor Programs', 'Merkle Trees', 'Chainlink Oracles', 'Multi-Sig Wallets', 'SPL Tokens'].map((item, i) => (
+              {['Blockchain Mainnet', 'Anchor Programs', 'Merkle Trees', 'Chainlink Oracles', 'Multi-Sig Wallets', 'SPL Tokens'].map((item, i) => (
                 <span class="arch-tag px-2 py-1 text-xs font-mono bg-accent/10 rounded text-accent border border-accent/30 hover:bg-accent/20 transition-all" style={`--delay: ${i * 0.1}s`}>{item}</span>
               ))}
             </div>
@@ -218,7 +218,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
             <div class="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-accent"></div>
             <div class="flex-1">
               <div class="flex items-baseline gap-2 mb-1">
-                <p class="text-sm text-text-primary font-mono">Solana</p>
+                <p class="text-sm text-text-primary font-mono">Blockchain</p>
                 <span class="text-xs text-text-muted px-2 py-0.5 bg-surface rounded">Blockchain</span>
               </div>
               <p class="text-sm text-text-secondary">Sub-second finality, $0.00025 per transaction, 65k TPS capacity. Proof of History enables timestamp verification.</p>
@@ -288,7 +288,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
           </div>
           <div>
             <h3 class="heading-mono text-lg text-text-primary">Smart Contract Preview</h3>
-            <p class="text-xs text-text-muted">Anchor framework on Solana</p>
+            <p class="text-xs text-text-muted">Anchor framework on Blockchain</p>
           </div>
         </div>
 
@@ -344,7 +344,7 @@ import { Github, FileCode, Zap, Shield, Database, GitBranch, Cpu, Globe, Lock, S
               { step: '01', label: 'Survey', desc: 'Mobile app captures GPS coordinates, photos, and witness signatures', icon: 'globe' },
               { step: '02', label: 'Validate', desc: 'PostGIS validates boundaries and detects overlapping claims', icon: 'check' },
               { step: '03', label: 'Hash', desc: 'SHA-256 fingerprint generated for all registration data', icon: 'fingerprint' },
-              { step: '04', label: 'Anchor', desc: 'Merkle root committed to Solana blockchain permanently', icon: 'box' },
+              { step: '04', label: 'Anchor', desc: 'Merkle root committed to Blockchain blockchain permanently', icon: 'box' },
               { step: '05', label: 'Archive', desc: 'Documents stored on Arweave for 200+ years', icon: 'harddrive' },
             ].map((item, i) => (
               <div class="flow-step text-center group" style={`--delay: ${i * 0.15}s`}>

@@ -1,6 +1,6 @@
 # TerraChain
 
-Immutable land title registry built on Solana.
+Immutable land title registry built on Blockchain.
 
 ## Tech Stack
 

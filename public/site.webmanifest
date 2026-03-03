@@ -1,7 +1,7 @@
 {
   "name": "TerraChain",
   "short_name": "TerraChain",
-  "description": "Immutable Land Title Registry on Solana",
+  "description": "Immutable Land Title Registry on Blockchain",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#141414",
