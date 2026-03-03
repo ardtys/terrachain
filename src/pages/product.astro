@@ -33,25 +33,26 @@ import {
   <div class="pt-24 pb-8">
     <BentoGrid>
       <!-- Hero Card -->
-      <Card colSpan={2} class="min-h-[240px] overflow-hidden" stagger={1} glow accent>
-        <div class="absolute -top-20 -right-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+      <Card colSpan={2} class="min-h-[240px] overflow-hidden product-hero" stagger={1} glow accent>
+        <div class="absolute -top-20 -right-20 w-72 h-72 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-gradient-to-tr from-pink-500/15 to-orange-500/15 rounded-full blur-3xl"></div>
         <div class="relative z-10">
           <div class="flex items-center gap-2 mb-4">
-            <div class="w-2 h-2 rounded-full bg-green animate-pulse"></div>
-            <span class="text-xs text-green font-mono uppercase tracking-wider">Production Ready</span>
+            <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+            <span class="text-xs text-emerald-400 font-mono uppercase tracking-wider">Production Ready</span>
           </div>
-          <h1 class="text-3xl md:text-4xl mb-4">The Complete Land Registry Stack</h1>
+          <h1 class="text-3xl md:text-4xl mb-4 text-gradient-animated">The Complete Land Registry Stack</h1>
           <p class="text-text-secondary leading-relaxed max-w-2xl mb-6">
             An end-to-end solution for governments and institutions to digitize land records,
             enable secure transfers, and provide universal verification — all backed by
             cryptographic proof on Blockchain.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="/technology" class="btn btn-primary group">
+            <a href="/technology" class="btn btn-gradient group card-shine">
               View Architecture
               <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="mailto:hello@terrachain.xyz" class="btn btn-secondary">
+            <a href="mailto:hello@terrachain.xyz" class="btn btn-secondary hover-glow-purple">
               Request Demo
             </a>
           </div>
@@ -85,6 +86,7 @@ import {
         icon={Lock}
         title="Immutable Registration"
         description="Every land parcel is registered with a unique cryptographic hash. Once recorded, the data cannot be altered, deleted, or corrupted — even by system administrators."
+        color="cyan"
         stagger={4}
       />
 
@@ -93,6 +95,7 @@ import {
         icon={QrCode}
         title="Universal Verification"
         description="Verify any land title instantly via QR code scan, SMS query, or API call. No specialized software required — works on any device with internet access."
+        color="purple"
         stagger={5}
       />
 
@@ -169,6 +172,7 @@ import {
         icon={Scale}
         title="Dispute Resolution"
         description="Built-in workflow for handling boundary disputes and ownership claims. All evidence is timestamped and immutable, creating a clear audit trail for arbitration."
+        color="pink"
         stagger={7}
       />
 
@@ -296,6 +300,7 @@ import {
         title="Admin Dashboard"
         description="Web-based portal for government officials to review registrations, approve transfers, and monitor system health with real-time analytics."
         colSpan={1}
+        color="emerald"
         stagger={10}
       />
 

@@ -8,18 +8,91 @@ interface Props {
   icon?: any;
   colSpan?: 1 | 2;
   stagger?: number;
+  color?: 'cyan' | 'purple' | 'pink' | 'emerald' | 'orange' | 'gold';
 }
 
-const { title, description, icon: Icon, colSpan = 1, stagger = 1 } = Astro.props;
+const { title, description, icon: Icon, colSpan = 1, stagger = 1, color = 'cyan' } = Astro.props;
+
+const colorMap = {
+  cyan: {
+    bg: 'from-cyan-500/10 to-cyan-500/5',
+    border: 'border-cyan-500/30',
+    text: 'text-cyan-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]',
+    iconBg: 'bg-cyan-500/10',
+  },
+  purple: {
+    bg: 'from-purple-500/10 to-purple-500/5',
+    border: 'border-purple-500/30',
+    text: 'text-purple-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]',
+    iconBg: 'bg-purple-500/10',
+  },
+  pink: {
+    bg: 'from-pink-500/10 to-pink-500/5',
+    border: 'border-pink-500/30',
+    text: 'text-pink-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]',
+    iconBg: 'bg-pink-500/10',
+  },
+  emerald: {
+    bg: 'from-emerald-500/10 to-emerald-500/5',
+    border: 'border-emerald-500/30',
+    text: 'text-emerald-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]',
+    iconBg: 'bg-emerald-500/10',
+  },
+  orange: {
+    bg: 'from-orange-500/10 to-orange-500/5',
+    border: 'border-orange-500/30',
+    text: 'text-orange-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]',
+    iconBg: 'bg-orange-500/10',
+  },
+  gold: {
+    bg: 'from-yellow-500/10 to-yellow-500/5',
+    border: 'border-yellow-500/30',
+    text: 'text-yellow-400',
+    glow: 'group-hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]',
+    iconBg: 'bg-yellow-500/10',
+  },
+};
+
+const colors = colorMap[color];
 ---
 
-<Card colSpan={colSpan} class="min-h-[180px]" stagger={stagger}>
-  {Icon && (
-    <div class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-accent mb-4">
-      <Icon class="w-5 h-5" />
-    </div>
-  )}
+<Card colSpan={colSpan} class={`min-h-[180px] group feature-card overflow-hidden transition-all duration-300 ${colors.glow}`} stagger={stagger}>
+  <!-- Gradient background on hover -->
+  <div class={`absolute inset-0 bg-gradient-to-br ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
-  <h3 class="heading-mono text-base text-text-primary mb-2">{title}</h3>
-  <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
+  <!-- Animated corner accent -->
+  <div class={`absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+    <div class={`absolute top-4 right-4 w-8 h-0.5 bg-gradient-to-l ${colors.bg.replace('from-', 'to-').replace('to-', 'from-')}`}></div>
+    <div class={`absolute top-4 right-4 w-0.5 h-8 bg-gradient-to-t ${colors.bg.replace('from-', 'to-').replace('to-', 'from-')}`}></div>
+  </div>
+
+  <div class="relative z-10">
+    {Icon && (
+      <div class={`w-12 h-12 rounded-xl ${colors.iconBg} border ${colors.border} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+        <Icon class={`w-6 h-6 ${colors.text} transition-all duration-300`} />
+      </div>
+    )}
+
+    <h3 class="heading-mono text-base text-text-primary mb-2 group-hover:text-gradient-animated transition-all duration-300">{title}</h3>
+    <p class="text-sm text-text-secondary leading-relaxed group-hover:text-text-primary/80 transition-colors duration-300">{description}</p>
+  </div>
+
+  <!-- Bottom line animation -->
+  <div class="absolute bottom-0 left-0 right-0 h-0.5 overflow-hidden">
+    <div class={`h-full w-full bg-gradient-to-r ${colors.bg.replace('/10', '').replace('/5', '')} translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500`}></div>
+  </div>
 </Card>
+
+<style>
+  .feature-card {
+    background: linear-gradient(135deg,
+      rgba(28, 28, 28, 0.95) 0%,
+      rgba(20, 20, 20, 0.98) 100%
+    );
+  }
+</style>
