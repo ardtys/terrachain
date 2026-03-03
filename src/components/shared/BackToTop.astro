@@ -1,0 +1,122 @@
+---
+// BackToTop - A button that appears when scrolling down and smoothly scrolls back to top
+---
+
+<button
+  id="back-to-top"
+  class="back-to-top"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M18 15l-6-6-6 6" />
+  </svg>
+</button>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(196, 184, 154, 0.1);
+  }
+
+  .back-to-top:active {
+    transform: translateY(0);
+  }
+
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .back-to-top svg {
+    transition: transform 0.2s ease;
+  }
+
+  .back-to-top:hover svg {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 640px) {
+    .back-to-top {
+      bottom: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top {
+      transition: none;
+    }
+    .back-to-top svg {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const backToTopButton = document.getElementById('back-to-top');
+  const scrollThreshold = 400;
+
+  const handleScroll = () => {
+    if (window.scrollY > scrollThreshold) {
+      backToTopButton?.classList.add('visible');
+    } else {
+      backToTopButton?.classList.remove('visible');
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  backToTopButton?.addEventListener('click', scrollToTop);
+
+  // Initial check
+  handleScroll();
+</script>

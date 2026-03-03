@@ -1,0 +1,314 @@
+---
+import { Menu, X } from 'lucide-astro';
+import Logo from '@components/shared/Logo.astro';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/product', label: 'Product' },
+  { href: '/technology', label: 'Technology' },
+  { href: '/demo', label: 'Demo' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/about', label: 'About' },
+];
+
+const resourceLinks = [
+  { href: '/whitepaper', label: 'Whitepaper' },
+  { href: '/case-studies', label: 'Case Studies' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="navbar">
+  <nav class="max-w-[1200px] mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center no-underline" aria-label="TerraChain Home">
+      <Logo size="md" showText={true} animated={true} />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-1">
+      {navLinks.map((link, index) => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "relative font-mono text-sm px-4 py-2 rounded-lg transition-all duration-300 no-underline",
+              currentPath === link.href
+                ? "text-accent bg-accent/10"
+                : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
+            ]}
+            style={`--index: ${index}`}
+          >
+            {link.label}
+            {currentPath === link.href && (
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"></span>
+            )}
+          </a>
+        </li>
+      ))}
+      <!-- Resources Dropdown -->
+      <li class="relative group">
+        <button class="font-mono text-sm px-4 py-2 rounded-lg transition-all duration-300 text-text-secondary hover:text-text-primary hover:bg-surface-hover flex items-center gap-1">
+          <span>Resources</span>
+          <svg class="w-3 h-3 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="absolute top-full right-0 mt-1 py-2 bg-surface border border-border rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[160px]">
+          {resourceLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                "block font-mono text-sm px-4 py-2 transition-colors no-underline",
+                currentPath === link.href
+                  ? "text-accent bg-accent/10"
+                  : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden p-2 text-text-secondary hover:text-text-primary hover:bg-surface-hover rounded-lg transition-all duration-300"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <Menu class="w-5 h-5 menu-icon transition-transform duration-300" />
+      <X class="w-5 h-5 close-icon hidden transition-transform duration-300" />
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-surface/95 backdrop-blur-xl border-b border-border">
+    <ul class="px-4 py-4 space-y-2">
+      {navLinks.map((link, index) => (
+        <li class="mobile-menu-item" style={`--index: ${index}`}>
+          <a
+            href={link.href}
+            class:list={[
+              "block font-mono text-sm py-3 px-4 rounded-lg transition-all duration-300 no-underline",
+              currentPath === link.href
+                ? "text-accent bg-accent/10"
+                : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2 border-t border-border">
+        <span class="block text-xs text-text-muted px-4 py-2 font-mono uppercase tracking-wider">Resources</span>
+      </li>
+      {resourceLinks.map((link, index) => (
+        <li class="mobile-menu-item" style={`--index: ${navLinks.length + index + 1}`}>
+          <a
+            href={link.href}
+            class:list={[
+              "block font-mono text-sm py-3 px-4 rounded-lg transition-all duration-300 no-underline",
+              currentPath === link.href
+                ? "text-accent bg-accent/10"
+                : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  header {
+    background: transparent;
+  }
+
+  header.scrolled {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Nav link hover underline effect */
+  nav a[href]:not(.group)::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  nav a[href]:not(.group):hover::after {
+    width: 80%;
+  }
+
+  /* Mobile menu animations */
+  .mobile-menu-item {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  #mobile-menu:not(.hidden) .mobile-menu-item {
+    animation: slideIn 0.3s ease-out forwards;
+    animation-delay: calc(var(--index) * 50ms);
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Menu icon animation */
+  .menu-icon, .close-icon {
+    transform-origin: center;
+  }
+
+  #mobile-menu-toggle[aria-expanded="true"] .menu-icon {
+    transform: rotate(90deg) scale(0);
+  }
+
+  #mobile-menu-toggle[aria-expanded="true"] .close-icon {
+    transform: rotate(0deg) scale(1);
+  }
+
+  #mobile-menu-toggle[aria-expanded="false"] .close-icon {
+    transform: rotate(-90deg) scale(0);
+  }
+</style>
+
+<script>
+  // Scroll effect for navbar
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 20) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = toggle?.querySelector('.menu-icon');
+  const closeIcon = toggle?.querySelector('.close-icon');
+
+  const openMobileMenu = () => {
+    mobileMenu?.classList.remove('hidden');
+    menuIcon?.classList.add('hidden');
+    closeIcon?.classList.remove('hidden');
+    toggle?.setAttribute('aria-expanded', 'true');
+    // Focus first menu item
+    const firstLink = mobileMenu?.querySelector('a');
+    firstLink?.focus();
+  };
+
+  const closeMobileMenu = () => {
+    mobileMenu?.classList.add('hidden');
+    menuIcon?.classList.remove('hidden');
+    closeIcon?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('hidden');
+    if (isOpen) {
+      openMobileMenu();
+    } else {
+      closeMobileMenu();
+    }
+  });
+
+  // Keyboard navigation for mobile menu
+  document.addEventListener('keydown', (e) => {
+    const isMenuOpen = !mobileMenu?.classList.contains('hidden');
+
+    // Close menu on Escape
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMobileMenu();
+      toggle?.focus();
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isMenuOpen = !mobileMenu?.classList.contains('hidden');
+    const target = e.target as Node;
+
+    if (isMenuOpen && !mobileMenu?.contains(target) && !toggle?.contains(target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // Keyboard navigation for desktop dropdown
+  const resourcesDropdown = document.querySelector('.group');
+  const dropdownButton = resourcesDropdown?.querySelector('button');
+  const dropdownMenu = resourcesDropdown?.querySelector('div');
+
+  dropdownButton?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const firstLink = dropdownMenu?.querySelector('a');
+      firstLink?.focus();
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const firstLink = dropdownMenu?.querySelector('a');
+      firstLink?.focus();
+    }
+  });
+
+  // Arrow key navigation within dropdown
+  dropdownMenu?.addEventListener('keydown', (e) => {
+    const links = dropdownMenu.querySelectorAll('a');
+    const currentIndex = Array.from(links).indexOf(document.activeElement);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % links.length;
+      links[nextIndex]?.focus();
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = currentIndex === 0 ? links.length - 1 : currentIndex - 1;
+      links[prevIndex]?.focus();
+    }
+
+    if (e.key === 'Escape') {
+      dropdownButton?.focus();
+    }
+  });
+
+  // Close mobile menu on window resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && !mobileMenu?.classList.contains('hidden')) {
+      closeMobileMenu();
+    }
+  });
+</script>

@@ -1,0 +1,58 @@
+---
+import Card from '@components/shared/Card.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+
+interface Props {
+  stagger?: number;
+}
+
+const { stagger = 1 } = Astro.props;
+---
+
+<Card colSpan={2} class="min-h-[360px] flex flex-col overflow-hidden" stagger={stagger} glow accent>
+  <!-- Background gradient orbs -->
+  <div class="absolute -top-20 -right-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse-glow"></div>
+  <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-green/5 rounded-full blur-3xl"></div>
+
+  <div class="flex-1 flex flex-col md:flex-row gap-8 items-center relative z-10">
+    <div class="flex-shrink-0 animate-float">
+      <Mascot size="xl" pose="default" />
+    </div>
+
+    <div class="flex-1 space-y-4">
+      <h1 class="text-2xl md:text-3xl font-serif leading-tight">
+        Immutable Land Registry
+        <span class="block text-gradient">Built on Solana</span>
+      </h1>
+
+      <p class="text-text-secondary leading-relaxed">
+        TerraChain replaces fragile paper records with cryptographic proof that no one can alter, lose, or corrupt.
+      </p>
+
+      <p class="text-text-muted leading-relaxed">
+        We're solving a <span class="text-accent font-semibold">$9.3 trillion</span> problem affecting
+        over <span class="text-accent font-semibold">1 billion</span> people.
+      </p>
+
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="/whitepaper" class="btn btn-primary group">
+          Read Whitepaper
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="/technology" class="btn btn-secondary">
+          Explore Architecture
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated corner decoration -->
+  <div class="absolute bottom-0 right-0 w-32 h-32 overflow-hidden">
+    <svg viewBox="0 0 100 100" class="w-full h-full opacity-20">
+      <path d="M100 0 L100 100 L0 100" fill="none" stroke="currentColor" stroke-width="1" class="text-accent draw-line" />
+      <circle cx="90" cy="90" r="3" fill="currentColor" class="text-accent animate-pulse" />
+    </svg>
+  </div>
+</Card>

@@ -1,0 +1,226 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'default' | 'dense' | 'sparse';
+  animated?: boolean;
+}
+
+const { class: className = '', variant = 'default', animated = true } = Astro.props;
+---
+
+<div class:list={["topography-pattern absolute inset-0 overflow-hidden pointer-events-none", className]}>
+  <svg
+    viewBox="0 0 400 400"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class:list={["w-full h-full", animated && "animate-topo"]}
+    preserveAspectRatio="xMidYMid slice"
+  >
+    <defs>
+      <!-- Gradient for glowing lines -->
+      <linearGradient id="topoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(196, 184, 154, 0.08)" />
+        <stop offset="50%" stop-color="rgba(196, 184, 154, 0.12)" />
+        <stop offset="100%" stop-color="rgba(196, 184, 154, 0.04)" />
+      </linearGradient>
+
+      <linearGradient id="topoGlow2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(124, 154, 110, 0.06)" />
+        <stop offset="100%" stop-color="rgba(196, 184, 154, 0.02)" />
+      </linearGradient>
+    </defs>
+
+    <!-- Outer contour lines -->
+    <path
+      d="M50 350 Q100 300 150 320 Q200 340 250 300 Q300 260 350 280"
+      stroke="url(#topoGlow)"
+      stroke-width="1.5"
+      fill="none"
+      class="topo-line"
+      style="--delay: 0s"
+    />
+    <path
+      d="M30 320 Q80 270 140 290 Q200 310 260 260 Q320 210 380 240"
+      stroke="rgba(232, 224, 208, 0.06)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 0.5s"
+    />
+    <path
+      d="M20 280 Q70 220 140 250 Q210 280 280 220 Q350 160 400 190"
+      stroke="url(#topoGlow2)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 1s"
+    />
+
+    <!-- Mid contour lines -->
+    <path
+      d="M0 240 Q60 180 130 200 Q200 220 270 160 Q340 100 400 140"
+      stroke="url(#topoGlow)"
+      stroke-width="1.5"
+      fill="none"
+      class="topo-line"
+      style="--delay: 1.5s"
+    />
+    <path
+      d="M10 200 Q70 140 150 170 Q230 200 300 130 Q370 60 400 100"
+      stroke="rgba(232, 224, 208, 0.07)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 2s"
+    />
+    <path
+      d="M0 160 Q80 100 160 130 Q240 160 320 90 Q380 30 400 60"
+      stroke="rgba(196, 184, 154, 0.05)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 2.5s"
+    />
+
+    <!-- Inner contour lines (peak area) -->
+    <path
+      d="M80 120 Q140 70 200 100 Q260 130 320 70"
+      stroke="url(#topoGlow)"
+      stroke-width="1.5"
+      fill="none"
+      class="topo-line"
+      style="--delay: 3s"
+    />
+    <path
+      d="M120 90 Q170 50 220 70 Q270 90 320 50"
+      stroke="rgba(232, 224, 208, 0.08)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 3.5s"
+    />
+    <path
+      d="M150 60 Q190 30 230 50 Q270 70 300 40"
+      stroke="url(#topoGlow)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 4s"
+    />
+
+    <!-- Peak point indicator -->
+    <circle cx="200" cy="45" r="3" fill="rgba(196, 184, 154, 0.15)" class="peak-dot"/>
+    <circle cx="200" cy="45" r="6" fill="none" stroke="rgba(196, 184, 154, 0.1)" stroke-width="1" class="peak-ring"/>
+
+    <!-- Additional organic curves -->
+    <path
+      d="M0 380 Q50 350 100 370 Q150 390 200 360 Q250 330 300 350 Q350 370 400 340"
+      stroke="rgba(232, 224, 208, 0.04)"
+      stroke-width="1"
+      fill="none"
+      class="topo-line"
+      style="--delay: 4.5s"
+    />
+
+    {variant === 'dense' && (
+      <>
+        <path
+          d="M40 260 Q100 200 160 230 Q220 260 280 200 Q340 140 400 170"
+          stroke="rgba(232, 224, 208, 0.05)"
+          stroke-width="1"
+          fill="none"
+          class="topo-line"
+          style="--delay: 5s"
+        />
+        <path
+          d="M60 220 Q120 160 180 190 Q240 220 300 160 Q360 100 400 130"
+          stroke="url(#topoGlow2)"
+          stroke-width="1"
+          fill="none"
+          class="topo-line"
+          style="--delay: 5.5s"
+        />
+        <path
+          d="M100 180 Q160 120 220 150 Q280 180 340 120"
+          stroke="rgba(232, 224, 208, 0.06)"
+          stroke-width="1"
+          fill="none"
+          class="topo-line"
+          style="--delay: 6s"
+        />
+
+        <!-- Scattered elevation markers -->
+        <circle cx="90" cy="200" r="2" fill="rgba(196, 184, 154, 0.1)"/>
+        <circle cx="310" cy="150" r="2" fill="rgba(196, 184, 154, 0.1)"/>
+        <circle cx="180" cy="280" r="2" fill="rgba(196, 184, 154, 0.08)"/>
+      </>
+    )}
+  </svg>
+
+  <!-- Subtle noise overlay -->
+  <div class="absolute inset-0 opacity-[0.015] pointer-events-none noise-texture"></div>
+</div>
+
+<style>
+  .topography-pattern {
+    opacity: 0.9;
+  }
+
+  .topo-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawTopo 3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes drawTopo {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .peak-dot {
+    animation: pulsePeak 3s ease-in-out infinite;
+  }
+
+  .peak-ring {
+    animation: expandRing 3s ease-in-out infinite;
+  }
+
+  @keyframes pulsePeak {
+    0%, 100% {
+      opacity: 0.15;
+      r: 3;
+    }
+    50% {
+      opacity: 0.3;
+      r: 4;
+    }
+  }
+
+  @keyframes expandRing {
+    0%, 100% {
+      r: 6;
+      opacity: 0.1;
+    }
+    50% {
+      r: 10;
+      opacity: 0.05;
+    }
+  }
+
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .topo-line {
+      stroke-dasharray: none;
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    .peak-dot, .peak-ring {
+      animation: none;
+    }
+  }
+</style>

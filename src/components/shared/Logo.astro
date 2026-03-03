@@ -1,0 +1,141 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  showText?: boolean;
+  showTagline?: boolean;
+  animated?: boolean;
+  useImage?: boolean;
+}
+
+const {
+  size = 'md',
+  showText = true,
+  showTagline = false,
+  animated = true,
+  useImage = false
+} = Astro.props;
+
+const sizes: Record<string, { icon: number; text: string; tagline: string; gap: string }> = {
+  sm: { icon: 24, text: 'text-xs', tagline: 'text-[8px]', gap: 'gap-1.5' },
+  md: { icon: 32, text: 'text-sm', tagline: 'text-[9px]', gap: 'gap-2' },
+  lg: { icon: 40, text: 'text-base', tagline: 'text-[10px]', gap: 'gap-2.5' },
+  xl: { icon: 52, text: 'text-xl', tagline: 'text-xs', gap: 'gap-3' },
+  full: { icon: 64, text: 'text-2xl', tagline: 'text-sm', gap: 'gap-4' }
+};
+
+const iconSize = sizes[size].icon;
+const textSize = sizes[size].text;
+const taglineSize = sizes[size].tagline;
+const gapClass = sizes[size].gap;
+---
+
+<div class:list={["logo-wrapper flex items-center group", gapClass]}>
+  {useImage ? (
+    <img
+      src="/logo.png"
+      alt="TerraChain Logo"
+      width={iconSize * 4}
+      height={iconSize * 2}
+      class:list={[
+        "object-contain transition-all duration-300",
+        animated && "group-hover:scale-105"
+      ]}
+      loading="eager"
+    />
+  ) : (
+    <>
+      <div class="logo-icon relative">
+        <svg
+          width={iconSize}
+          height={iconSize}
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class:list={[
+            "transition-all duration-300",
+            animated && "group-hover:scale-110"
+          ]}
+          aria-hidden="true"
+        >
+          <rect x="4" y="6" width="28" height="28" rx="3" stroke="#c4b89a" stroke-width="1.5" fill="none" />
+          <line x1="4" y1="17" x2="32" y2="17" stroke="#c4b89a" stroke-width="0.75" opacity="0.5" />
+          <line x1="4" y1="23" x2="32" y2="23" stroke="#c4b89a" stroke-width="0.75" opacity="0.5" />
+          <line x1="18" y1="6" x2="18" y2="34" stroke="#c4b89a" stroke-width="0.75" opacity="0.5" />
+          <circle cx="7" cy="9" r="1.5" fill="#e8e0d0" />
+          <circle cx="29" cy="9" r="1.5" fill="#e8e0d0" />
+          <circle cx="7" cy="31" r="1.5" fill="#e8e0d0" />
+          <circle cx="18" cy="17" r="1.5" fill="#e8e0d0" />
+          <circle cx="18" cy="23" r="1.5" fill="#e8e0d0" />
+          <circle cx="11" cy="17" r="1" fill="#e8e0d0" opacity="0.6" />
+          <circle cx="25" cy="17" r="1" fill="#e8e0d0" opacity="0.6" />
+          <circle cx="11" cy="23" r="1" fill="#e8e0d0" opacity="0.6" />
+          <circle cx="25" cy="23" r="1" fill="#e8e0d0" opacity="0.6" />
+          <g class="pin-marker">
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#c4b89a" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="7" cy="1.5" r="2" fill="none" stroke="#c4b89a" stroke-width="1" class:list={[animated && "animate-pulse"]} />
+          </g>
+          <g class="chain-links">
+            <rect x="30" y="28" width="6" height="4" rx="2" stroke="#c4b89a" stroke-width="1" fill="none" />
+            <rect x="34" y="32" width="6" height="4" rx="2" stroke="#c4b89a" stroke-width="1" fill="none" />
+          </g>
+        </svg>
+        {animated && (
+          <div class="absolute inset-0 bg-accent/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        )}
+      </div>
+
+      {showText && (
+        <div class="flex flex-col">
+          <span class:list={["font-mono font-medium tracking-tight leading-none", textSize]}>
+            <span class="text-text-primary transition-colors">Terra</span><span class="text-text-muted transition-colors group-hover:text-text-primary">Chain</span>
+          </span>
+          {showTagline && (
+            <span class:list={["font-mono uppercase tracking-[0.2em] mt-1 text-text-muted", taglineSize]}>
+              Immutable Land Registry
+            </span>
+          )}
+        </div>
+      )}
+    </>
+  )}
+</div>
+
+<style>
+  .logo-wrapper {
+    user-select: none;
+  }
+
+  .pin-marker {
+    transform-origin: 7px 4px;
+    transition: transform 0.3s ease;
+  }
+
+  .group:hover .pin-marker {
+    animation: pinBounce 0.6s ease;
+  }
+
+  .chain-links {
+    transition: transform 0.3s ease;
+  }
+
+  .group:hover .chain-links {
+    animation: chainPulse 0.8s ease;
+  }
+
+  @keyframes pinBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  @keyframes chainPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pin-marker,
+    .chain-links {
+      animation: none !important;
+    }
+  }
+</style>

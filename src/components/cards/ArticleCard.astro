@@ -1,0 +1,55 @@
+---
+import Card from '@components/shared/Card.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  href?: string;
+  stagger?: number;
+}
+
+const { title, subtitle, href = '#', stagger = 1 } = Astro.props;
+---
+
+<Card colSpan={2} href={href} external={href.startsWith('http')} class="min-h-[220px]" stagger={stagger}>
+  <!-- Decorative header illustration -->
+  <div class="h-24 -mx-6 -mt-6 mb-4 bg-surface-hover relative overflow-hidden">
+    <svg viewBox="0 0 400 100" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <!-- Stylized landscape with geometric land parcels -->
+      <rect x="0" y="70" width="400" height="30" fill="rgba(42, 42, 42, 0.5)"/>
+
+      <!-- Distant hills -->
+      <path d="M0 80 Q50 60 100 75 Q150 65 200 70 Q250 55 300 65 Q350 50 400 60 L400 100 L0 100 Z" fill="rgba(42, 42, 42, 0.8)"/>
+
+      <!-- Land parcels as geometric shapes -->
+      <rect x="30" y="55" width="40" height="25" stroke="rgba(196, 184, 154, 0.3)" stroke-width="1" fill="none" rx="2"/>
+      <rect x="90" y="50" width="50" height="30" stroke="rgba(196, 184, 154, 0.3)" stroke-width="1" fill="none" rx="2"/>
+      <rect x="160" y="45" width="35" height="35" stroke="rgba(196, 184, 154, 0.4)" stroke-width="1" fill="none" rx="2"/>
+      <rect x="220" y="48" width="45" height="32" stroke="rgba(196, 184, 154, 0.3)" stroke-width="1" fill="none" rx="2"/>
+      <rect x="290" y="42" width="55" height="38" stroke="rgba(196, 184, 154, 0.35)" stroke-width="1" fill="none" rx="2"/>
+      <rect x="360" y="50" width="30" height="30" stroke="rgba(196, 184, 154, 0.3)" stroke-width="1" fill="none" rx="2"/>
+
+      <!-- Small map pins -->
+      <circle cx="50" cy="50" r="3" fill="rgba(196, 184, 154, 0.5)"/>
+      <line x1="50" y1="53" x2="50" y2="55" stroke="rgba(196, 184, 154, 0.5)" stroke-width="1"/>
+
+      <circle cx="177" cy="40" r="3" fill="rgba(196, 184, 154, 0.6)"/>
+      <line x1="177" y1="43" x2="177" y2="45" stroke="rgba(196, 184, 154, 0.6)" stroke-width="1"/>
+
+      <circle cx="315" cy="37" r="3" fill="rgba(196, 184, 154, 0.5)"/>
+      <line x1="315" y1="40" x2="315" y2="42" stroke="rgba(196, 184, 154, 0.5)" stroke-width="1"/>
+    </svg>
+
+    <!-- TerraChain logo badge -->
+    <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface border border-border flex items-center justify-center">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="6" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none" class="text-accent"/>
+        <path d="M12 2L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-accent"/>
+        <circle cx="12" cy="2" r="1" fill="currentColor" class="text-accent"/>
+      </svg>
+    </div>
+  </div>
+
+  <h3 class="heading-mono text-lg text-text-primary mb-2">{title}</h3>
+  <p class="text-text-muted text-sm">{subtitle}</p>
+</Card>

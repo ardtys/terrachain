@@ -1,0 +1,224 @@
+---
+import { Github, Twitter, Mail, BookOpen, Linkedin, Send, MapPin, ArrowUpRight, Heart } from 'lucide-astro';
+import Logo from '@components/shared/Logo.astro';
+
+const productLinks = [
+  { href: '/product', label: 'Features' },
+  { href: '/technology', label: 'Technology' },
+  { href: '/docs', label: 'Documentation' },
+  { href: '/whitepaper', label: 'Whitepaper' },
+];
+
+const companyLinks = [
+  { href: '/about', label: 'About Us' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/press', label: 'Press Kit' },
+];
+
+const resourceLinks = [
+  { href: '/docs/api', label: 'API Reference' },
+  { href: '/docs/sdk', label: 'SDK Guide' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/changelog', label: 'Changelog' },
+];
+
+const legalLinks = [
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms of Service' },
+  { href: '/security', label: 'Security' },
+];
+
+const socialLinks = [
+  { href: 'https://github.com/terrachain', label: 'GitHub', icon: Github },
+  { href: 'https://twitter.com/terrachain', label: 'Twitter', icon: Twitter },
+  { href: 'https://linkedin.com/company/terrachain', label: 'LinkedIn', icon: Linkedin },
+  { href: 'mailto:hello@terrachain.xyz', label: 'Email', icon: Mail },
+];
+---
+
+<footer class="border-t border-border mt-16" role="contentinfo">
+  <div class="max-w-[1200px] mx-auto px-4">
+    <!-- Main Footer Content -->
+    <div class="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
+      <!-- Brand Column -->
+      <div class="lg:col-span-2">
+        <a href="/" class="inline-block no-underline mb-4" aria-label="TerraChain Home">
+          <Logo size="md" showText={true} animated={true} />
+        </a>
+        <p class="text-sm text-text-secondary leading-relaxed mb-6 max-w-xs">
+          Securing land rights for over 1 billion people worldwide through immutable blockchain technology.
+        </p>
+
+        <!-- Newsletter Form -->
+        <div class="newsletter-form">
+          <p class="text-xs text-text-muted font-mono uppercase tracking-wider mb-3">Stay Updated</p>
+          <form class="flex gap-2" id="newsletter-form">
+            <div class="flex-1 relative">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                class="input text-sm py-2.5 pr-4 pl-3 w-full"
+                id="newsletter-email"
+                required
+                aria-label="Email address for newsletter"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary py-2.5 px-4"
+              aria-label="Subscribe to newsletter"
+            >
+              <Send class="w-4 h-4" />
+            </button>
+          </form>
+          <p class="text-xs text-text-muted mt-2" id="newsletter-status"></p>
+        </div>
+      </div>
+
+      <!-- Product Links -->
+      <div>
+        <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Product</h3>
+        <ul class="space-y-3">
+          {productLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-text-secondary hover:text-text-primary transition-colors no-underline flex items-center gap-1 group">
+                {link.label}
+                <ArrowUpRight class="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div>
+        <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Company</h3>
+        <ul class="space-y-3">
+          {companyLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-text-secondary hover:text-text-primary transition-colors no-underline flex items-center gap-1 group">
+                {link.label}
+                <ArrowUpRight class="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Resources Links -->
+      <div>
+        <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Resources</h3>
+        <ul class="space-y-3">
+          {resourceLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-text-secondary hover:text-text-primary transition-colors no-underline flex items-center gap-1 group">
+                {link.label}
+                <ArrowUpRight class="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div>
+        <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Connect</h3>
+        <div class="space-y-4">
+          <a href="mailto:hello@terrachain.xyz" class="text-sm text-text-secondary hover:text-accent transition-colors no-underline block">
+            hello@terrachain.xyz
+          </a>
+          <div class="flex items-center gap-2">
+            {socialLinks.map(link => (
+              <a
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                class="w-9 h-9 rounded-lg bg-surface border border-border flex items-center justify-center text-text-secondary hover:text-accent hover:border-accent/30 transition-all no-underline"
+                aria-label={link.label}
+              >
+                <link.icon class="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+    <!-- Bottom Bar -->
+    <div class="py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4 text-xs text-text-muted">
+        <p class="font-mono">&copy; {new Date().getFullYear()} TerraChain</p>
+        <span class="hidden md:inline">|</span>
+        <p class="flex items-center gap-1">
+          Built with <Heart class="w-3 h-3 text-red inline-block" /> for land rights
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        {legalLinks.map(link => (
+          <a
+            href={link.href}
+            class="text-xs text-text-muted hover:text-text-secondary transition-colors no-underline"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Status Indicator -->
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full bg-green animate-pulse"></div>
+        <span class="text-xs text-text-muted font-mono">All systems operational</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const emailInput = document.getElementById('newsletter-email');
+  const statusEl = document.getElementById('newsletter-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = emailInput?.value;
+    if (!email) return;
+
+    // Show loading state
+    if (statusEl) {
+      statusEl.textContent = 'Subscribing...';
+      statusEl.className = 'text-xs text-text-muted mt-2';
+    }
+
+    // Simulate API call (replace with actual endpoint)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Show success
+    if (statusEl) {
+      statusEl.textContent = 'Thanks for subscribing!';
+      statusEl.className = 'text-xs text-green mt-2';
+    }
+
+    if (emailInput) {
+      emailInput.value = '';
+    }
+
+    // Reset after 3 seconds
+    setTimeout(() => {
+      if (statusEl) {
+        statusEl.textContent = '';
+      }
+    }, 3000);
+  });
+</script>
+
+<style>
+  .newsletter-form input:focus + button {
+    border-color: var(--color-accent);
+  }
+</style>

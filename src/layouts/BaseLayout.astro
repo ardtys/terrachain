@@ -1,0 +1,142 @@
+---
+import Navbar from '@components/layout/Navbar.astro';
+import Footer from '@components/layout/Footer.astro';
+import BackToTop from '@components/shared/BackToTop.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  keywords?: string;
+  author?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "TerraChain is an immutable land title registry built on Solana. Replace fragile paper records with cryptographic proof.",
+  ogImage = "/og-image.png",
+  keywords = "land registry, blockchain, Solana, property rights, land title, immutable records, cadastral system, land ownership",
+  author = "TerraChain",
+  noindex = false
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://terrachain.xyz');
+const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site ?? 'https://terrachain.xyz').toString();
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#141414" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="msapplication-TileColor" content="#141414" />
+
+    <!-- Preload fonts with display swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="TerraChain" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@terrachain" />
+    <meta name="twitter:creator" content="@terrachain" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <title>{title}</title>
+
+    <!-- Structured data for homepage -->
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TerraChain",
+        "description": description,
+        "url": "https://terrachain.xyz",
+        "logo": "https://terrachain.xyz/logo.svg",
+        "sameAs": [
+          "https://twitter.com/terrachain",
+          "https://github.com/terrachain",
+          "https://linkedin.com/company/terrachain"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@terrachain.xyz",
+          "contactType": "customer service"
+        }
+      })} />
+    )}
+
+    <!-- Preload critical assets -->
+    <link rel="preload" as="image" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-bg text-text-primary antialiased">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">
+      Skip to main content
+    </a>
+
+    <Navbar />
+    <main id="main-content" role="main">
+      <slot />
+    </main>
+    <Footer />
+    <BackToTop />
+
+    <!-- Scroll reveal animation script -->
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

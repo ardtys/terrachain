@@ -1,0 +1,25 @@
+---
+import Card from '@components/shared/Card.astro';
+import type { LucideIcon } from 'lucide-astro';
+
+interface Props {
+  title: string;
+  description: string;
+  icon?: any;
+  colSpan?: 1 | 2;
+  stagger?: number;
+}
+
+const { title, description, icon: Icon, colSpan = 1, stagger = 1 } = Astro.props;
+---
+
+<Card colSpan={colSpan} class="min-h-[180px]" stagger={stagger}>
+  {Icon && (
+    <div class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-accent mb-4">
+      <Icon class="w-5 h-5" />
+    </div>
+  )}
+
+  <h3 class="heading-mono text-base text-text-primary mb-2">{title}</h3>
+  <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
+</Card>

@@ -1,0 +1,68 @@
+---
+import Card from '@components/shared/Card.astro';
+
+interface Props {
+  stagger?: number;
+}
+
+const { stagger = 1 } = Astro.props;
+
+const techStack = [
+  { name: 'Solana', category: 'Blockchain', percentage: 100, color: '#c4b89a' },
+  { name: 'Rust/Anchor', category: 'Smart Contracts', percentage: 85, color: '#b8a888' },
+  { name: 'PostGIS', category: 'Geospatial', percentage: 70, color: '#7c9a6e' },
+  { name: 'Arweave', category: 'Storage', percentage: 55, color: '#a09882' },
+  { name: 'React Native', category: 'Mobile', percentage: 45, color: '#8b7a5a' },
+  { name: 'SvelteKit', category: 'Admin Portal', percentage: 35, color: '#9a8a6a' },
+  { name: 'Kafka', category: 'Event Stream', percentage: 30, color: '#6b6358' },
+];
+---
+
+<Card colSpan={2} class="min-h-[280px]" stagger={stagger} glow>
+  <h3 class="heading-mono text-lg text-text-primary mb-6">Technology Stack</h3>
+
+  <div class="space-y-4">
+    {techStack.map((tech, index) => (
+      <div class="group flex items-center gap-3" style={`--delay: ${index * 100}ms`}>
+        <span class="w-24 text-xs text-text-secondary font-mono truncate group-hover:text-text-primary transition-colors">
+          {tech.name}
+        </span>
+        <div class="flex-1 h-5 bg-surface-hover rounded-full overflow-hidden relative">
+          <!-- Animated progress bar -->
+          <div
+            class="h-full rounded-full progress-bar relative overflow-hidden"
+            style={`width: ${tech.percentage}%; background: linear-gradient(90deg, ${tech.color} 0%, ${tech.color}88 100%); animation-delay: var(--delay);`}
+          >
+            <!-- Shimmer effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          </div>
+          <!-- Glow effect on hover -->
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            style={`box-shadow: inset 0 0 20px ${tech.color}33;`}
+          ></div>
+        </div>
+        <span class="w-24 text-xs text-text-muted font-mono text-right group-hover:text-text-secondary transition-colors">
+          {tech.category}
+        </span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Bottom decoration -->
+  <div class="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+</Card>
+
+<style>
+  .progress-bar {
+    animation: progressFill 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0ms);
+    width: 0;
+  }
+
+  @keyframes progressFill {
+    from {
+      width: 0;
+    }
+  }
+</style>

@@ -1,0 +1,267 @@
+---
+interface Props {
+  class?: string;
+  pose?: 'default' | 'waving' | 'pointing' | 'peeking';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  speechBubble?: string;
+  animated?: boolean;
+}
+
+const { class: className = '', pose = 'default', size = 'md', speechBubble, animated = true } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-12 h-14',
+  md: 'w-20 h-24',
+  lg: 'w-32 h-38',
+  xl: 'w-48 h-56'
+};
+---
+
+<div class:list={["mascot-container relative inline-flex flex-col items-center group", className]}>
+  {speechBubble && (
+    <div class="speech-bubble mb-2 px-3 py-2 bg-surface border border-border rounded-lg text-xs font-mono text-text-secondary relative opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1">
+      {speechBubble}
+      <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface border-r border-b border-border rotate-45"></div>
+    </div>
+  )}
+
+  <svg
+    viewBox="0 0 48 60"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class:list={["mascot", sizeClasses[size], animated && "mascot-animated"]}
+  >
+    <defs>
+      <!-- Gradient for body glow -->
+      <linearGradient id="bodyGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#e8e0d0" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="#c4b89a" stop-opacity="0.05"/>
+      </linearGradient>
+
+      <!-- Filter for soft glow -->
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Body shadow/glow -->
+    <rect
+      x="8"
+      y="16"
+      width="32"
+      height="36"
+      rx="5"
+      fill="url(#bodyGlow)"
+      class="mascot-glow"
+    />
+
+    <!-- Body (land parcel shape) -->
+    <rect
+      x="6"
+      y="14"
+      width="36"
+      height="40"
+      rx="6"
+      fill="none"
+      stroke="#e8e0d0"
+      stroke-width="2"
+      class="mascot-body"
+    />
+
+    <!-- Map pin / flag pole -->
+    <line
+      x1="24"
+      y1="2"
+      x2="24"
+      y2="14"
+      stroke="#c4b89a"
+      stroke-width="2"
+      stroke-linecap="round"
+      class="mascot-pin"
+    />
+
+    <!-- Flag / pin head with glow -->
+    <circle cx="24" cy="4" r="4" fill="#c4b89a" filter="url(#softGlow)" class="mascot-flag"/>
+    <circle cx="24" cy="4" r="2" fill="#e8e0d0" class="mascot-flag-inner"/>
+
+    <!-- Eyes -->
+    {pose === 'default' && (
+      <>
+        <circle cx="17" cy="30" r="3" fill="#e8e0d0" class="mascot-eye mascot-eye-left"/>
+        <circle cx="31" cy="30" r="3" fill="#e8e0d0" class="mascot-eye mascot-eye-right"/>
+        <!-- Eye shine -->
+        <circle cx="18" cy="29" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="32" cy="29" r="1" fill="#fff" opacity="0.5"/>
+      </>
+    )}
+
+    {pose === 'waving' && (
+      <>
+        <circle cx="17" cy="30" r="3" fill="#e8e0d0"/>
+        <circle cx="31" cy="30" r="3" fill="#e8e0d0"/>
+        <circle cx="18" cy="29" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="32" cy="29" r="1" fill="#fff" opacity="0.5"/>
+        <!-- Waving arm -->
+        <g class="mascot-arm">
+          <path
+            d="M42 24 Q50 16 46 8"
+            stroke="#e8e0d0"
+            stroke-width="3"
+            stroke-linecap="round"
+            fill="none"
+          />
+          <!-- Hand -->
+          <circle cx="46" cy="8" r="3" fill="#e8e0d0"/>
+        </g>
+      </>
+    )}
+
+    {pose === 'pointing' && (
+      <>
+        <circle cx="17" cy="30" r="3" fill="#e8e0d0"/>
+        <circle cx="31" cy="30" r="3" fill="#e8e0d0"/>
+        <circle cx="18" cy="29" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="32" cy="29" r="1" fill="#fff" opacity="0.5"/>
+        <!-- Pointing arm -->
+        <g class="mascot-point">
+          <path
+            d="M42 28 L54 24"
+            stroke="#e8e0d0"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <!-- Pointing finger -->
+          <circle cx="54" cy="24" r="2" fill="#c4b89a"/>
+        </g>
+      </>
+    )}
+
+    {pose === 'peeking' && (
+      <>
+        <circle cx="20" cy="32" r="3" fill="#e8e0d0"/>
+        <circle cx="34" cy="32" r="3" fill="#e8e0d0"/>
+        <circle cx="21" cy="31" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="35" cy="31" r="1" fill="#fff" opacity="0.5"/>
+      </>
+    )}
+
+    <!-- Small smile -->
+    <path
+      d="M20 42 Q24 46 28 42"
+      stroke="#e8e0d0"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      fill="none"
+      class="mascot-smile"
+    />
+
+    <!-- Blush marks -->
+    <ellipse cx="12" cy="36" rx="3" ry="2" fill="#c4b89a" opacity="0.2"/>
+    <ellipse cx="36" cy="36" rx="3" ry="2" fill="#c4b89a" opacity="0.2"/>
+  </svg>
+</div>
+
+<style>
+  .mascot-animated {
+    transition: transform 0.3s ease;
+  }
+
+  .mascot-container:hover .mascot-animated {
+    transform: translateY(-4px);
+  }
+
+  .mascot-body {
+    transition: all 0.3s ease;
+  }
+
+  .mascot-container:hover .mascot-body {
+    stroke: #c4b89a;
+  }
+
+  .mascot-glow {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mascot-container:hover .mascot-glow {
+    opacity: 1;
+  }
+
+  .mascot-eye {
+    transition: transform 0.2s ease;
+  }
+
+  .mascot-container:hover .mascot-eye-left {
+    transform: translateX(1px);
+  }
+
+  .mascot-container:hover .mascot-eye-right {
+    transform: translateX(1px);
+  }
+
+  .mascot-flag {
+    animation: flagPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes flagPulse {
+    0%, 100% {
+      filter: url(#softGlow);
+      opacity: 1;
+    }
+    50% {
+      filter: url(#softGlow) drop-shadow(0 0 4px rgba(196, 184, 154, 0.5));
+      opacity: 0.9;
+    }
+  }
+
+  .mascot-arm {
+    animation: wave 0.8s ease-in-out infinite;
+    transform-origin: 42px 24px;
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-15deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+  }
+
+  .mascot-point {
+    animation: point 1.5s ease-in-out infinite;
+  }
+
+  @keyframes point {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(3px);
+    }
+  }
+
+  .mascot-smile {
+    transition: d 0.3s ease;
+  }
+
+  .speech-bubble {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mascot-arm, .mascot-point, .mascot-flag {
+      animation: none;
+    }
+    .mascot-container:hover .mascot-animated {
+      transform: none;
+    }
+  }
+</style>

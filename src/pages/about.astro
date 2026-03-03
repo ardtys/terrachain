@@ -1,0 +1,597 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Mail, Twitter, Linkedin, Github, Heart, Target, Shield, Users, Globe, Award, Calendar, MapPin, Building, ArrowRight, Check, Briefcase, BookOpen, Rocket, Sparkles } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="About — TerraChain"
+  description="Our mission is to secure land rights for the 1 billion people worldwide who lack documented property ownership."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Mission Card -->
+      <Card colSpan={2} class="min-h-[320px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10 flex items-start gap-6">
+          <div class="hidden md:block flex-shrink-0">
+            <Mascot size="lg" pose="default" />
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <Heart class="w-5 h-5 text-accent animate-pulse" />
+              <span class="text-xs text-accent font-mono uppercase tracking-wider">Our Mission</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+              Securing <span class="text-gradient-accent">Land Rights</span><br/>
+              for Everyone
+            </h1>
+
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Property rights are the foundation of economic freedom. When you can prove you own your
+              land, you can use it as collateral for a loan, pass it to your children, or sell it at
+              fair market value.
+            </p>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              But for over <span class="text-gold font-mono">1 billion</span> people worldwide, there is no reliable way to prove ownership.
+              Paper records are lost, burned, or falsified. Corrupt officials extract bribes.
+            </p>
+            <p class="text-text-primary leading-relaxed font-medium">
+              We're building the infrastructure to change that — permanently.
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="ABOUT US" tall stagger={2} />
+
+      <!-- Our Values -->
+      <Card colSpan={3} class="min-h-[220px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Values</h2>
+            <p class="text-xs text-text-muted">The principles that guide everything we do</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="value-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0s">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Shield class="w-5 h-5 text-accent" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-2">Immutability</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Once recorded, land rights cannot be altered or erased by anyone</p>
+          </div>
+          <div class="value-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.1s">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Users class="w-5 h-5 text-gold" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-2">Accessibility</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Technology that works for everyone, including rural communities</p>
+          </div>
+          <div class="value-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.2s">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Globe class="w-5 h-5 text-green" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-2">Transparency</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Open-source protocols with publicly verifiable records</p>
+          </div>
+          <div class="value-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.3s">
+            <div class="w-10 h-10 rounded-lg bg-copper/10 border border-copper/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Heart class="w-5 h-5 text-copper" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-2">Impact First</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Measuring success by lives improved, not just metrics</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Team Section Header -->
+      <Card colSpan={3} class="min-h-[80px] flex items-center" stagger={4}>
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+              <Users class="w-5 h-5 text-gold" />
+            </div>
+            <div>
+              <h2 class="text-xl text-text-primary">Leadership Team</h2>
+              <p class="text-xs text-text-muted">The people building the future of land rights</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 text-xs font-mono bg-surface border border-border rounded-full text-text-muted">
+              Remote-first
+            </span>
+            <span class="px-3 py-1 text-xs font-mono bg-surface border border-border rounded-full text-text-muted">
+              12 countries
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Team Members -->
+      <Card colSpan={1} class="min-h-[280px] group" stagger={5}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border-2 border-accent/30 flex items-center justify-center text-2xl font-mono text-accent group-hover:scale-110 transition-transform">
+            AC
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">Alex Chen</h3>
+          <p class="text-sm text-accent mb-3">CEO & Co-founder</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Former World Bank land administration specialist. 15 years implementing cadastral systems across Southeast Asia and Africa.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all">
+              <Twitter class="w-3.5 h-3.5" />
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all">
+              <Linkedin class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <Card colSpan={1} class="min-h-[280px] group" stagger={6}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border-2 border-gold/30 flex items-center justify-center text-2xl font-mono text-gold group-hover:scale-110 transition-transform">
+            MS
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">Maria Santos</h3>
+          <p class="text-sm text-gold mb-3">CTO & Co-founder</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Ex-Solana core developer. Built distributed systems at scale for fintech applications. PhD in Distributed Systems from MIT.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-gold hover:border-gold/30 transition-all">
+              <Twitter class="w-3.5 h-3.5" />
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-gold hover:border-gold/30 transition-all">
+              <Github class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <Card colSpan={1} class="min-h-[280px] group" stagger={7}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-green/20 to-green/5 border-2 border-green/30 flex items-center justify-center text-2xl font-mono text-green group-hover:scale-110 transition-transform">
+            DO
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">David Okonkwo</h3>
+          <p class="text-sm text-green mb-3">Head of Partnerships</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Former UN-Habitat advisor. Deep relationships with governments and development organizations across 30+ countries.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-green hover:border-green/30 transition-all">
+              <Twitter class="w-3.5 h-3.5" />
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-green hover:border-green/30 transition-all">
+              <Linkedin class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <Card colSpan={1} class="min-h-[280px] group" stagger={8}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-copper/20 to-copper/5 border-2 border-copper/30 flex items-center justify-center text-2xl font-mono text-copper group-hover:scale-110 transition-transform">
+            SK
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">Sarah Kim</h3>
+          <p class="text-sm text-copper mb-3">Lead Engineer</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Blockchain architect with experience at Consensys and Chainlink. Expert in smart contract security and formal verification.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-copper hover:border-copper/30 transition-all">
+              <Github class="w-3.5 h-3.5" />
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-copper hover:border-copper/30 transition-all">
+              <Linkedin class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <Card colSpan={1} class="min-h-[280px] group" stagger={9}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border-2 border-accent/30 flex items-center justify-center text-2xl font-mono text-accent group-hover:scale-110 transition-transform">
+            JR
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">James Rodriguez</h3>
+          <p class="text-sm text-accent mb-3">Head of Product</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Former product lead at Google Maps. Expert in geospatial UX and building products for emerging markets.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all">
+              <Twitter class="w-3.5 h-3.5" />
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all">
+              <Linkedin class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <Card colSpan={1} class="min-h-[280px] group" stagger={10}>
+        <div class="team-member text-center">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border-2 border-gold/30 flex items-center justify-center text-2xl font-mono text-gold group-hover:scale-110 transition-transform">
+            AN
+          </div>
+          <h3 class="text-lg text-text-primary font-mono mb-1">Aisha Nguyen</h3>
+          <p class="text-sm text-gold mb-3">Head of Operations</p>
+          <p class="text-xs text-text-secondary leading-relaxed mb-4">
+            Operations veteran from Stripe and Coinbase. Scaling companies from 10 to 500+ employees in fintech.
+          </p>
+          <div class="flex justify-center gap-2">
+            <a href="#" class="w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-muted hover:text-gold hover:border-gold/30 transition-all">
+              <Linkedin class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Problem Deep-Dive -->
+      <Card colSpan={2} class="min-h-[350px]" stagger={11}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Globe class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Global Land Crisis</h2>
+            <p class="text-xs text-text-muted">Why this problem matters</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-6">
+          Economist Hernando de Soto estimates that <span class="text-gold font-mono">$9.3 trillion</span> in assets are held as "dead capital"
+          — property that cannot be leveraged because ownership cannot be proven. This affects the
+          world's poorest communities most severely.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="stat-card p-4 bg-gradient-to-br from-surface-hover to-transparent rounded-lg border border-border hover:border-accent/30 transition-all">
+            <p class="text-3xl font-mono text-accent mb-2 stat-number">5B</p>
+            <p class="text-xs text-text-muted">people lack legally recognized land rights globally</p>
+          </div>
+          <div class="stat-card p-4 bg-gradient-to-br from-surface-hover to-transparent rounded-lg border border-border hover:border-gold/30 transition-all">
+            <p class="text-3xl font-mono text-gold mb-2 stat-number">40%</p>
+            <p class="text-xs text-text-muted">of armed conflicts are linked to land and resource disputes</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed">
+          Traditional land registries are expensive to maintain, vulnerable to corruption, and often
+          inaccessible to rural populations. Blockchain offers a different path: <span class="text-text-primary">immutable
+          records that no single authority can alter</span>, accessible from any mobile phone.
+        </p>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard stagger={12} />
+
+      <!-- Advisors -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={13}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Award class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Advisory Board</h3>
+            <p class="text-xs text-text-muted">World-class expertise guiding our mission</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="advisor-card text-center p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0s">
+            <div class="w-14 h-14 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center mx-auto mb-3 text-accent font-mono group-hover:scale-110 transition-transform">JO</div>
+            <p class="text-sm text-text-primary font-mono mb-1">Dr. James Ochieng</p>
+            <p class="text-xs text-text-muted">Former Land Commissioner, Kenya</p>
+          </div>
+          <div class="advisor-card text-center p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.1s">
+            <div class="w-14 h-14 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mx-auto mb-3 text-gold font-mono group-hover:scale-110 transition-transform">LC</div>
+            <p class="text-sm text-text-primary font-mono mb-1">Prof. Lisa Chang</p>
+            <p class="text-xs text-text-muted">MIT Media Lab</p>
+          </div>
+          <div class="advisor-card text-center p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.2s">
+            <div class="w-14 h-14 rounded-full bg-green/10 border border-green/30 flex items-center justify-center mx-auto mb-3 text-green font-mono group-hover:scale-110 transition-transform">RP</div>
+            <p class="text-sm text-text-primary font-mono mb-1">Raj Patel</p>
+            <p class="text-xs text-text-muted">Partner, a16z crypto</p>
+          </div>
+          <div class="advisor-card text-center p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.3s">
+            <div class="w-14 h-14 rounded-full bg-copper/10 border border-copper/30 flex items-center justify-center mx-auto mb-3 text-copper font-mono group-hover:scale-110 transition-transform">EV</div>
+            <p class="text-sm text-text-primary font-mono mb-1">Elena Volkov</p>
+            <p class="text-xs text-text-muted">Ex-CTO, Chainlink Labs</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Partners -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={14}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Building class="w-5 h-5 text-green" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Partners & Backers</h3>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            { name: 'Solana Foundation', type: 'Grant Partner' },
+            { name: 'World Bank IFC', type: 'Development Partner' },
+            { name: 'Omidyar Network', type: 'Investor' },
+            { name: 'UN-Habitat', type: 'Advisory Partner' },
+            { name: 'Mercy Corps', type: 'Implementation Partner' },
+          ].map((partner, i) => (
+            <div class="partner-item flex items-center gap-3 p-2 rounded-lg hover:bg-surface transition-all" style={`--delay: ${i * 0.1}s`}>
+              <div class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-text-secondary text-xs font-mono">
+                {partner.name.charAt(0)}
+              </div>
+              <div>
+                <span class="text-sm text-text-primary block">{partner.name}</span>
+                <span class="text-xs text-text-muted">{partner.type}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Journey Timeline -->
+      <Card colSpan={2} class="min-h-[250px]" stagger={15}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-copper/20 to-transparent border border-copper/30 flex items-center justify-center">
+            <Calendar class="w-5 h-5 text-copper" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Our Journey</h3>
+            <p class="text-xs text-text-muted">Key milestones in building TerraChain</p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-gold to-green"></div>
+
+          <div class="space-y-4">
+            <div class="timeline-item flex items-start gap-4 pl-8 relative" style="--delay: 0s">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-accent border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-accent">2022</span>
+                  <span class="text-sm text-text-primary font-medium">Founded</span>
+                </div>
+                <p class="text-xs text-text-muted">TerraChain founded with seed funding from Solana Ventures</p>
+              </div>
+            </div>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative" style="--delay: 0.15s">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-gold border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-gold">2023</span>
+                  <span class="text-sm text-text-primary font-medium">Pilot Launch</span>
+                </div>
+                <p class="text-xs text-text-muted">First pilot program in Rwanda with 10,000 parcels registered</p>
+              </div>
+            </div>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative" style="--delay: 0.3s">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-green border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-green">2024</span>
+                  <span class="text-sm text-text-primary font-medium">Series A</span>
+                </div>
+                <p class="text-xs text-text-muted">$15M raised to expand to 5 new countries</p>
+              </div>
+            </div>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative" style="--delay: 0.45s">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-copper border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-copper">2025</span>
+                  <span class="text-sm text-text-primary font-medium">Scale</span>
+                </div>
+                <p class="text-xs text-text-muted">1M+ parcels secured, partnerships with 12 governments</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Contact -->
+      <Card colSpan={1} class="min-h-[250px]" stagger={16}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Mail class="w-5 h-5 text-accent" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Get in Touch</h3>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <a href="mailto:hello@terrachain.xyz" class="contact-link flex items-center gap-3 p-2 rounded-lg text-text-secondary hover:text-accent hover:bg-surface-hover transition-all no-underline">
+            <Mail class="w-4 h-4" />
+            <span class="text-sm font-mono">hello@terrachain.xyz</span>
+          </a>
+          <a href="mailto:press@terrachain.xyz" class="contact-link flex items-center gap-3 p-2 rounded-lg text-text-secondary hover:text-gold hover:bg-surface-hover transition-all no-underline">
+            <BookOpen class="w-4 h-4" />
+            <span class="text-sm font-mono">press@terrachain.xyz</span>
+          </a>
+          <a href="mailto:careers@terrachain.xyz" class="contact-link flex items-center gap-3 p-2 rounded-lg text-text-secondary hover:text-green hover:bg-surface-hover transition-all no-underline">
+            <Briefcase class="w-4 h-4" />
+            <span class="text-sm font-mono">careers@terrachain.xyz</span>
+          </a>
+        </div>
+
+        <div class="flex gap-2">
+          <a href="https://twitter.com/terrachain" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary hover:text-accent hover:border-accent/30 transition-all no-underline">
+            <Twitter class="w-4 h-4" />
+          </a>
+          <a href="https://linkedin.com/company/terrachain" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold/30 transition-all no-underline">
+            <Linkedin class="w-4 h-4" />
+          </a>
+          <a href="https://github.com/terrachain" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary hover:text-green hover:border-green/30 transition-all no-underline">
+            <Github class="w-4 h-4" />
+          </a>
+        </div>
+      </Card>
+
+      <!-- Join Us CTA -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={17} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <Rocket class="w-5 h-5 text-accent" />
+              <span class="text-xs text-accent font-mono uppercase tracking-wider">We're Hiring</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Join Our Mission</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              We're looking for passionate engineers, designers, and operators who want to build technology that matters.
+            </p>
+            <a href="/careers" class="btn btn-primary inline-flex items-center gap-2 no-underline group/btn">
+              <span>View Open Positions</span>
+              <ArrowRight class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="lg" pose="waving" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Mascot Card -->
+      <Card colSpan={1} class="min-h-[180px] flex items-center justify-center" stagger={18}>
+        <div class="text-center">
+          <Mascot size="md" pose="peeking" speechBubble="Let's chat!" />
+          <p class="mt-4 text-xs text-text-muted font-mono">Our DMs are open</p>
+        </div>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .bg-copper {
+    background-color: var(--color-copper);
+  }
+
+  .value-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .advisor-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .partner-item {
+    animation: slideInLeft 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .timeline-item {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .stat-number {
+    animation: countUp 1s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .team-member {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .contact-link {
+    animation: slideInLeft 0.3s ease-out forwards;
+    opacity: 0;
+  }
+
+  .contact-link:nth-child(1) { animation-delay: 0.1s; }
+  .contact-link:nth-child(2) { animation-delay: 0.2s; }
+  .contact-link:nth-child(3) { animation-delay: 0.3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .value-card,
+    .advisor-card,
+    .partner-item,
+    .timeline-item,
+    .stat-number,
+    .team-member,
+    .contact-link {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

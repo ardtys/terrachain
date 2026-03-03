@@ -1,0 +1,64 @@
+---
+import Card from '@components/shared/Card.astro';
+import { Smartphone, CheckCircle, Clock, Shield, Link, FileCheck } from 'lucide-astro';
+
+interface Props {
+  stagger?: number;
+}
+
+const { stagger = 1 } = Astro.props;
+
+const steps = [
+  {
+    icon: Smartphone,
+    title: 'Field Survey',
+    description: 'GPS + photo capture via mobile'
+  },
+  {
+    icon: CheckCircle,
+    title: 'Validation',
+    description: 'Automated boundary + identity check'
+  },
+  {
+    icon: Clock,
+    title: 'Witness Period',
+    description: '30-day community review'
+  },
+  {
+    icon: Shield,
+    title: 'Government Approval',
+    description: 'Digital signature by authority'
+  },
+  {
+    icon: Link,
+    title: 'On-Chain Settlement',
+    description: 'Hash committed to Solana'
+  },
+  {
+    icon: FileCheck,
+    title: 'Certificate Issued',
+    description: 'QR-verified digital title'
+  }
+];
+---
+
+<Card colSpan={2} class="min-h-[280px]" stagger={stagger}>
+  <h3 class="heading-mono text-lg text-text-primary mb-6">From Field Survey to Permanent Record</h3>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    {steps.map((step, index) => (
+      <div class="flex items-start gap-3 group">
+        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary group-hover:text-accent group-hover:border-border-hover transition-all">
+          <step.icon class="w-4 h-4" />
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] text-text-muted font-mono">{(index + 1).toString().padStart(2, '0')}</span>
+            <h4 class="text-sm text-text-primary font-mono truncate">{step.title}</h4>
+          </div>
+          <p class="text-xs text-text-muted leading-snug">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</Card>

@@ -1,0 +1,29 @@
+---
+import Card from '@components/shared/Card.astro';
+import TopographyPattern from '@components/decorative/TopographyPattern.astro';
+import SectionLabel from '@components/shared/SectionLabel.astro';
+
+interface Props {
+  label?: string;
+  tall?: boolean;
+  stagger?: number;
+}
+
+const { label, tall = false, stagger = 1 } = Astro.props;
+---
+
+<Card colSpan={1} class:list={["relative overflow-hidden", tall && "min-h-[400px]"]} stagger={stagger}>
+  <TopographyPattern variant="dense" />
+
+  {label && (
+    <div class="absolute bottom-6 left-6 right-6">
+      <SectionLabel>{label}</SectionLabel>
+    </div>
+  )}
+</Card>
+
+<style>
+  :global(.card:has(.topography-pattern)) {
+    background: linear-gradient(to bottom, var(--color-surface), rgba(28, 28, 28, 0.8));
+  }
+</style>

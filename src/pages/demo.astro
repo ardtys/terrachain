@@ -1,0 +1,789 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Live Demo - TerraChain"
+  description="Experience TerraChain's land registry platform."
+>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <div class="pt-24 pb-8 max-w-6xl mx-auto px-4">
+    <div class="mb-8">
+      <span class="text-xs text-green font-mono uppercase tracking-wider">Interactive Demo</span>
+      <h1 class="text-3xl md:text-4xl text-text-primary mb-4 mt-2">
+        Experience TerraChain in Action
+      </h1>
+      <p class="text-text-secondary max-w-lg">
+        Explore our interactive demos to see how TerraChain revolutionizes land ownership.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Stats -->
+      <div class="card p-6">
+        <p class="text-2xl font-mono text-accent" id="demo-parcels">0</p>
+        <p class="text-xs text-text-muted">Parcels Registered</p>
+      </div>
+      <div class="card p-6">
+        <p class="text-2xl font-mono text-green" id="demo-verifications">0</p>
+        <p class="text-xs text-text-muted">Verifications</p>
+      </div>
+      <div class="card p-6">
+        <p class="text-2xl font-mono text-gold" id="demo-transfers">0</p>
+        <p class="text-xs text-text-muted">Transfers</p>
+      </div>
+    </div>
+
+    <!-- Registration Demo -->
+    <div class="card p-6 mt-6" id="register-demo">
+      <h2 class="text-xl text-text-primary mb-4">Register Land Parcel</h2>
+      <p class="text-sm text-text-secondary mb-4">Click on the map to select a location for your land parcel</p>
+
+      <!-- Real Interactive Map -->
+      <div class="relative mb-6">
+        <div id="map" class="w-full h-96 rounded-lg border border-border z-0"></div>
+        <div class="absolute top-3 left-3 z-[1000] bg-surface/90 backdrop-blur-sm px-3 py-2 rounded-lg border border-border">
+          <p class="text-xs text-text-muted font-mono">Click to set parcel location</p>
+        </div>
+        <div class="absolute bottom-3 right-3 z-[1000] bg-surface/90 backdrop-blur-sm px-3 py-2 rounded-lg border border-border">
+          <p class="text-xs font-mono text-text-secondary" id="coordinates">Lat: --, Lng: --</p>
+        </div>
+      </div>
+
+      <!-- Selected Location Info -->
+      <div id="location-info" class="hidden mb-4 p-4 rounded-lg bg-accent/5 border border-accent/30">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-3 h-3 rounded-full bg-accent animate-pulse"></div>
+          <span class="text-sm font-mono text-accent">Location Selected</span>
+        </div>
+        <p class="text-xs text-text-secondary" id="location-address">Loading address...</p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="register-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-text-secondary mb-1">Owner Name</label>
+            <input type="text" class="input w-full" placeholder="John Doe" id="owner-name" required />
+          </div>
+          <div>
+            <label class="block text-sm text-text-secondary mb-1">Parcel ID</label>
+            <input type="text" class="input w-full" placeholder="Auto-generated" id="parcel-id" readonly />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-text-secondary mb-1">Latitude</label>
+            <input type="text" class="input w-full" placeholder="Select on map" id="input-lat" readonly />
+          </div>
+          <div>
+            <label class="block text-sm text-text-secondary mb-1">Longitude</label>
+            <input type="text" class="input w-full" placeholder="Select on map" id="input-lng" readonly />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-text-secondary mb-1">Description</label>
+          <input type="text" class="input w-full" placeholder="Residential plot, 500 sqm" id="parcel-desc" />
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-xs text-text-muted">Est. fee: <span class="text-gold font-mono">$0.02</span></p>
+          <button type="submit" class="btn btn-primary" id="register-btn" disabled>
+            Select Location First
+          </button>
+        </div>
+      </form>
+
+      <div id="register-result" class="hidden mt-4 p-4 rounded-lg border"></div>
+    </div>
+
+    <!-- Registered Parcels on Map -->
+    <div class="card p-6 mt-6">
+      <h2 class="text-xl text-text-primary mb-4">Registered Parcels</h2>
+      <p class="text-sm text-text-secondary mb-4">View all registered land parcels on the map</p>
+      <div id="parcels-map" class="w-full h-80 rounded-lg border border-border z-0"></div>
+      <div id="parcels-list" class="mt-4 space-y-2">
+        <p class="text-xs text-text-muted text-center">No parcels registered yet</p>
+      </div>
+    </div>
+
+    <!-- Verification Demo -->
+    <div class="card p-6 mt-6">
+      <h2 class="text-xl text-text-primary mb-4">Verify Ownership</h2>
+
+      <form id="verify-form" class="space-y-4">
+        <div>
+          <label class="block text-sm text-text-secondary mb-1">Parcel ID</label>
+          <input type="text" class="input w-full" placeholder="TC-XXXX-XXXX" id="verify-parcel-id" />
+        </div>
+        <button type="submit" class="btn btn-primary w-full">
+          Verify Ownership
+        </button>
+      </form>
+
+      <div id="verify-result" class="mt-4">
+        <div class="p-4 rounded-lg bg-surface-hover border border-border text-center">
+          <p class="text-sm text-text-secondary">Enter a Parcel ID to verify ownership</p>
+          <p class="text-xs text-text-muted mt-2">Try: TC-2024-0001</p>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2">
+        <p class="text-xs text-text-muted font-mono uppercase">Sample Parcels</p>
+        <button class="sample-parcel w-full p-3 rounded-lg bg-surface-hover border border-border hover:border-accent/30 transition-all text-left" data-id="TC-2024-0001">
+          <span class="text-sm font-mono text-accent">TC-2024-0001</span>
+          <p class="text-xs text-text-muted">Jakarta, Indonesia - Registered: Jan 15, 2024</p>
+        </button>
+        <button class="sample-parcel w-full p-3 rounded-lg bg-surface-hover border border-border hover:border-accent/30 transition-all text-left" data-id="TC-2024-0002">
+          <span class="text-sm font-mono text-accent">TC-2024-0002</span>
+          <p class="text-xs text-text-muted">Bandung, Indonesia - Registered: Jan 18, 2024</p>
+        </button>
+      </div>
+    </div>
+
+    <!-- Transfer Demo -->
+    <div class="card p-6 mt-6">
+      <h2 class="text-xl text-text-primary mb-4">Simulate Transfer</h2>
+
+      <div class="flex items-center justify-between mb-6">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-xl bg-surface-hover border border-border flex items-center justify-center mb-2" id="transfer-seller">
+            <span class="text-2xl">S</span>
+          </div>
+          <p class="text-sm font-mono">Seller</p>
+          <p class="text-xs text-text-muted" id="seller-status">Pending</p>
+        </div>
+        <div class="flex-1 mx-4 h-px bg-border relative">
+          <div class="absolute inset-y-0 left-0 w-0 bg-accent transition-all duration-500" id="transfer-progress-1"></div>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-xl bg-surface-hover border border-border flex items-center justify-center mb-2" id="transfer-escrow">
+            <span class="text-2xl">E</span>
+          </div>
+          <p class="text-sm font-mono">Escrow</p>
+          <p class="text-xs text-text-muted" id="escrow-status">Waiting</p>
+        </div>
+        <div class="flex-1 mx-4 h-px bg-border relative">
+          <div class="absolute inset-y-0 left-0 w-0 bg-green transition-all duration-500" id="transfer-progress-2"></div>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-xl bg-surface-hover border border-border flex items-center justify-center mb-2" id="transfer-buyer">
+            <span class="text-2xl">B</span>
+          </div>
+          <p class="text-sm font-mono">Buyer</p>
+          <p class="text-xs text-text-muted" id="buyer-status">Pending</p>
+        </div>
+      </div>
+
+      <form id="transfer-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm text-text-secondary mb-1">Parcel ID</label>
+          <input type="text" class="input w-full" placeholder="TC-XXXX-XXXX" id="transfer-parcel-id" />
+        </div>
+        <div>
+          <label class="block text-sm text-text-secondary mb-1">Buyer Wallet</label>
+          <input type="text" class="input w-full" placeholder="0x..." id="buyer-wallet" />
+        </div>
+        <div class="md:col-span-2 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4" id="seller-sign" />
+              <span class="text-sm text-text-secondary">Seller Signature</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4" id="buyer-sign" />
+              <span class="text-sm text-text-secondary">Buyer Signature</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" id="transfer-btn">
+            Execute Transfer
+          </button>
+        </div>
+      </form>
+
+      <div id="transfer-result" class="hidden mt-4 p-4 rounded-lg border"></div>
+    </div>
+
+    <!-- Transaction Log -->
+    <div class="card p-6 mt-6">
+      <h3 class="text-lg text-text-primary mb-4">Transaction Log</h3>
+      <div id="tx-log" class="space-y-2 max-h-64 overflow-y-auto">
+        <div class="p-3 rounded-lg bg-surface-hover border border-border text-center">
+          <p class="text-xs text-text-muted">No transactions yet</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card p-6 mt-6">
+      <h3 class="text-lg text-text-primary mb-4">Quick Actions</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <button class="quick-action p-3 rounded-lg bg-surface-hover border border-border hover:border-accent/30 transition-all" data-action="random-location">
+          <p class="text-sm text-text-primary">Random Location</p>
+          <p class="text-xs text-text-muted">Pick random point</p>
+        </button>
+        <button class="quick-action p-3 rounded-lg bg-surface-hover border border-border hover:border-green/30 transition-all" data-action="verify-all">
+          <p class="text-sm text-text-primary">Verify All</p>
+          <p class="text-xs text-text-muted">Bulk check</p>
+        </button>
+        <button class="quick-action p-3 rounded-lg bg-surface-hover border border-border hover:border-gold/30 transition-all" data-action="simulate-transfer">
+          <p class="text-sm text-text-primary">Auto Transfer</p>
+          <p class="text-xs text-text-muted">Full simulation</p>
+        </button>
+        <button class="quick-action p-3 rounded-lg bg-surface-hover border border-border hover:border-red/30 transition-all" data-action="reset">
+          <p class="text-sm text-text-primary">Reset Demo</p>
+          <p class="text-xs text-text-muted">Clear data</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</BaseLayout>
+
+<style>
+  #map, #parcels-map {
+    z-index: 1;
+  }
+
+  .leaflet-container {
+    background: #1a1a1a;
+    font-family: inherit;
+  }
+
+  .custom-marker {
+    background: var(--color-accent);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+  }
+
+  .parcel-popup {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .parcel-popup .leaflet-popup-content-wrapper {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  .parcel-popup .leaflet-popup-tip {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+</style>
+
+<script>
+  // Wait for Leaflet to load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if Leaflet is loaded
+    if (typeof L === 'undefined') {
+      console.error('Leaflet not loaded');
+      return;
+    }
+
+    // State
+    var state = {
+      parcels: [],
+      selectedLocation: null,
+      verifications: 0,
+      transfers: 0,
+      marker: null
+    };
+
+    // Sample data with real coordinates
+    var sampleParcels = [
+      { id: 'TC-2024-0001', owner: 'Alice Johnson', lat: -6.2088, lng: 106.8456, desc: 'Residential Plot - Jakarta', registered: '2024-01-15' },
+      { id: 'TC-2024-0002', owner: 'Bob Smith', lat: -6.9175, lng: 107.6191, desc: 'Commercial Zone - Bandung', registered: '2024-01-18' }
+    ];
+
+    // DOM Elements
+    var demoParcels = document.getElementById('demo-parcels');
+    var demoVerifications = document.getElementById('demo-verifications');
+    var demoTransfers = document.getElementById('demo-transfers');
+    var coordinatesEl = document.getElementById('coordinates');
+    var parcelIdEl = document.getElementById('parcel-id');
+    var inputLat = document.getElementById('input-lat');
+    var inputLng = document.getElementById('input-lng');
+    var locationInfo = document.getElementById('location-info');
+    var locationAddress = document.getElementById('location-address');
+    var registerBtn = document.getElementById('register-btn');
+    var txLog = document.getElementById('tx-log');
+    var parcelsList = document.getElementById('parcels-list');
+
+    // Initialize main map (Jakarta, Indonesia)
+    var map = L.map('map').setView([-6.2088, 106.8456], 12);
+
+    // Add OpenStreetMap tiles with dark theme
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Initialize parcels map
+    var parcelsMap = L.map('parcels-map').setView([-6.2088, 106.8456], 10);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(parcelsMap);
+
+    // Add sample parcels to parcels map
+    var parcelsLayer = L.layerGroup().addTo(parcelsMap);
+
+    function updateParcelsMap() {
+      parcelsLayer.clearLayers();
+      var allParcels = sampleParcels.concat(state.parcels);
+
+      allParcels.forEach(function(parcel) {
+        var marker = L.marker([parcel.lat, parcel.lng], {
+          icon: L.divIcon({
+            className: 'custom-div-icon',
+            html: '<div style="background: #c4b89a; width: 20px; height: 20px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+          })
+        }).addTo(parcelsLayer);
+
+        marker.bindPopup(
+          '<div class="text-sm">' +
+          '<p class="font-mono text-accent font-bold">' + parcel.id + '</p>' +
+          '<p class="text-text-secondary mt-1">Owner: ' + parcel.owner + '</p>' +
+          '<p class="text-text-muted text-xs mt-1">' + parcel.desc + '</p>' +
+          '<p class="text-text-muted text-xs">Registered: ' + parcel.registered + '</p>' +
+          '</div>'
+        );
+      });
+
+      // Update parcels list
+      if (allParcels.length > 0) {
+        parcelsList.innerHTML = allParcels.map(function(p) {
+          return '<div class="p-3 rounded-lg bg-surface-hover border border-border">' +
+            '<div class="flex justify-between items-start">' +
+            '<div>' +
+            '<p class="font-mono text-accent text-sm">' + p.id + '</p>' +
+            '<p class="text-xs text-text-muted">' + p.owner + '</p>' +
+            '</div>' +
+            '<p class="text-xs text-text-muted">' + p.lat.toFixed(4) + ', ' + p.lng.toFixed(4) + '</p>' +
+            '</div>' +
+            '</div>';
+        }).join('');
+      }
+    }
+
+    // Initialize with sample parcels
+    updateParcelsMap();
+
+    // Custom marker icon
+    var selectedIcon = L.divIcon({
+      className: 'custom-div-icon',
+      html: '<div style="background: #22c55e; width: 24px; height: 24px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(34, 197, 94, 0.5); animation: pulse 2s infinite;"></div>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
+    });
+
+    // Map click handler
+    map.on('click', function(e) {
+      var lat = e.latlng.lat;
+      var lng = e.latlng.lng;
+
+      state.selectedLocation = { lat: lat, lng: lng };
+
+      // Update or create marker
+      if (state.marker) {
+        state.marker.setLatLng(e.latlng);
+      } else {
+        state.marker = L.marker(e.latlng, { icon: selectedIcon }).addTo(map);
+      }
+
+      // Update UI
+      coordinatesEl.textContent = 'Lat: ' + lat.toFixed(6) + ', Lng: ' + lng.toFixed(6);
+      inputLat.value = lat.toFixed(6);
+      inputLng.value = lng.toFixed(6);
+      parcelIdEl.value = generateParcelId();
+
+      // Show location info
+      locationInfo.classList.remove('hidden');
+      locationAddress.textContent = 'Coordinates: ' + lat.toFixed(6) + ', ' + lng.toFixed(6);
+
+      // Enable register button
+      registerBtn.disabled = false;
+      registerBtn.textContent = 'Register Parcel';
+
+      // Try to get address (reverse geocoding)
+      fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng)
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          if (data.display_name) {
+            locationAddress.textContent = data.display_name;
+          }
+        })
+        .catch(function() {
+          locationAddress.textContent = 'Location: ' + lat.toFixed(6) + ', ' + lng.toFixed(6);
+        });
+
+      addTxLog('LOCATION', 'Selected coordinates: ' + lat.toFixed(4) + ', ' + lng.toFixed(4), 'pending');
+    });
+
+    function generateParcelId() {
+      var year = new Date().getFullYear();
+      var rand = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+      return 'TC-' + year + '-' + rand;
+    }
+
+    function updateStats() {
+      if (demoParcels) demoParcels.textContent = state.parcels.length.toString();
+      if (demoVerifications) demoVerifications.textContent = state.verifications.toString();
+      if (demoTransfers) demoTransfers.textContent = state.transfers.toString();
+    }
+
+    function addTxLog(type, message, status) {
+      if (!txLog) return;
+      var colors = {
+        success: 'border-green/30 bg-green/5 text-green',
+        pending: 'border-gold/30 bg-gold/5 text-gold',
+        error: 'border-red/30 bg-red/5 text-red'
+      };
+      if (txLog.querySelector('.text-center')) {
+        txLog.innerHTML = '';
+      }
+      var entry = document.createElement('div');
+      entry.className = 'p-3 rounded-lg border ' + colors[status];
+      entry.innerHTML = '<div class="flex justify-between text-xs mb-1"><span class="font-mono uppercase">' + type + '</span><span class="opacity-60">' + new Date().toLocaleTimeString() + '</span></div><p class="text-xs opacity-80">' + message + '</p>';
+      txLog.insertBefore(entry, txLog.firstChild);
+    }
+
+    // Registration form
+    var registerForm = document.getElementById('register-form');
+    if (registerForm) {
+      registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!state.selectedLocation) {
+          alert('Please select a location on the map first');
+          return;
+        }
+
+        var ownerNameEl = document.getElementById('owner-name');
+        var ownerName = ownerNameEl ? ownerNameEl.value : '';
+        var parcelIdValue = parcelIdEl ? parcelIdEl.value : '';
+        var descEl = document.getElementById('parcel-desc');
+        var desc = descEl ? descEl.value : '';
+
+        registerBtn.textContent = 'Processing...';
+        registerBtn.disabled = true;
+
+        addTxLog('REGISTER', 'Registering parcel ' + parcelIdValue + '...', 'pending');
+
+        setTimeout(function() {
+          var newParcel = {
+            id: parcelIdValue,
+            owner: ownerName,
+            lat: state.selectedLocation.lat,
+            lng: state.selectedLocation.lng,
+            desc: desc || 'Land Parcel',
+            registered: new Date().toISOString().split('T')[0]
+          };
+
+          state.parcels.push(newParcel);
+          updateStats();
+          updateParcelsMap();
+
+          addTxLog('REGISTER', 'Parcel ' + parcelIdValue + ' registered successfully at ' + newParcel.lat.toFixed(4) + ', ' + newParcel.lng.toFixed(4), 'success');
+
+          var result = document.getElementById('register-result');
+          if (result) {
+            result.classList.remove('hidden');
+            result.className = 'mt-4 p-4 rounded-lg border border-green/30 bg-green/5';
+            result.innerHTML = '<p class="text-green text-sm font-mono">Registration Successful</p><p class="text-xs text-text-secondary mt-1">Parcel ' + parcelIdValue + ' registered to ' + ownerName + '</p><p class="text-xs text-text-muted mt-1">Location: ' + newParcel.lat.toFixed(6) + ', ' + newParcel.lng.toFixed(6) + '</p>';
+          }
+
+          // Reset form
+          if (ownerNameEl) ownerNameEl.value = '';
+          if (descEl) descEl.value = '';
+          parcelIdEl.value = '';
+          inputLat.value = '';
+          inputLng.value = '';
+          coordinatesEl.textContent = 'Lat: --, Lng: --';
+          locationInfo.classList.add('hidden');
+
+          if (state.marker) {
+            map.removeLayer(state.marker);
+            state.marker = null;
+          }
+          state.selectedLocation = null;
+
+          registerBtn.textContent = 'Select Location First';
+          registerBtn.disabled = true;
+        }, 1500);
+      });
+    }
+
+    // Verification form
+    var verifyForm = document.getElementById('verify-form');
+    if (verifyForm) {
+      verifyForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var verifyIdEl = document.getElementById('verify-parcel-id');
+        var verifyId = verifyIdEl ? verifyIdEl.value : '';
+        var result = document.getElementById('verify-result');
+        if (!result) return;
+
+        result.innerHTML = '<div class="p-4 rounded-lg bg-surface-hover border border-border text-center"><p class="text-sm text-text-secondary">Verifying...</p></div>';
+        addTxLog('VERIFY', 'Checking parcel ' + verifyId + '...', 'pending');
+
+        setTimeout(function() {
+          var allParcels = sampleParcels.concat(state.parcels);
+          var parcel = null;
+          for (var i = 0; i < allParcels.length; i++) {
+            if (allParcels[i].id === verifyId) {
+              parcel = allParcels[i];
+              break;
+            }
+          }
+
+          state.verifications++;
+          updateStats();
+
+          if (parcel) {
+            addTxLog('VERIFY', 'Parcel ' + verifyId + ' verified - Owner: ' + parcel.owner, 'success');
+            result.innerHTML = '<div class="p-4 rounded-lg bg-green/5 border border-green/30"><p class="text-green text-sm font-mono mb-2">Verified</p><div class="text-xs space-y-1"><p>ID: ' + parcel.id + '</p><p>Owner: ' + parcel.owner + '</p><p>Location: ' + parcel.lat.toFixed(4) + ', ' + parcel.lng.toFixed(4) + '</p><p>Description: ' + parcel.desc + '</p><p>Registered: ' + parcel.registered + '</p></div></div>';
+
+            // Pan to parcel on map
+            parcelsMap.setView([parcel.lat, parcel.lng], 14);
+          } else {
+            addTxLog('VERIFY', 'Parcel ' + verifyId + ' not found', 'error');
+            result.innerHTML = '<div class="p-4 rounded-lg bg-red/5 border border-red/30"><p class="text-red text-sm font-mono">Not Found</p><p class="text-xs text-text-secondary mt-1">No parcel with ID: ' + verifyId + '</p></div>';
+          }
+        }, 1000);
+      });
+    }
+
+    // Sample parcel buttons
+    document.querySelectorAll('.sample-parcel').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.getAttribute('data-id');
+        var input = document.getElementById('verify-parcel-id');
+        if (input && id) {
+          input.value = id;
+          var form = document.getElementById('verify-form');
+          if (form) form.dispatchEvent(new Event('submit'));
+        }
+      });
+    });
+
+    // Transfer form
+    var transferForm = document.getElementById('transfer-form');
+    if (transferForm) {
+      transferForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var sellerSignEl = document.getElementById('seller-sign');
+        var buyerSignEl = document.getElementById('buyer-sign');
+        var sellerSign = sellerSignEl ? sellerSignEl.checked : false;
+        var buyerSign = buyerSignEl ? buyerSignEl.checked : false;
+
+        if (!sellerSign || !buyerSign) {
+          alert('Both parties must sign');
+          return;
+        }
+
+        var transferParcelIdEl = document.getElementById('transfer-parcel-id');
+        var transferParcelId = transferParcelIdEl ? transferParcelIdEl.value : '';
+
+        addTxLog('TRANSFER', 'Initiating transfer of ' + transferParcelId + '...', 'pending');
+
+        var sellerEl = document.getElementById('transfer-seller');
+        var escrowEl = document.getElementById('transfer-escrow');
+        var buyerEl = document.getElementById('transfer-buyer');
+        var progress1 = document.getElementById('transfer-progress-1');
+        var progress2 = document.getElementById('transfer-progress-2');
+        var sellerStatus = document.getElementById('seller-status');
+        var escrowStatus = document.getElementById('escrow-status');
+        var buyerStatus = document.getElementById('buyer-status');
+
+        if (sellerEl) sellerEl.classList.add('border-accent', 'bg-accent/10');
+        if (sellerStatus) sellerStatus.textContent = 'Signed';
+        if (progress1) progress1.style.width = '100%';
+
+        setTimeout(function() {
+          if (escrowEl) escrowEl.classList.add('border-gold', 'bg-gold/10');
+          if (escrowStatus) escrowStatus.textContent = 'Processing';
+          addTxLog('ESCROW', 'Funds secured in escrow', 'pending');
+
+          setTimeout(function() {
+            if (progress2) progress2.style.width = '100%';
+            if (buyerEl) buyerEl.classList.add('border-green', 'bg-green/10');
+            if (buyerStatus) buyerStatus.textContent = 'Complete';
+            if (escrowStatus) escrowStatus.textContent = 'Released';
+
+            state.transfers++;
+            updateStats();
+            addTxLog('TRANSFER', 'Transfer of ' + transferParcelId + ' completed!', 'success');
+
+            var result = document.getElementById('transfer-result');
+            if (result) {
+              result.classList.remove('hidden');
+              result.className = 'mt-4 p-4 rounded-lg border border-green/30 bg-green/5';
+              result.innerHTML = '<p class="text-green text-sm font-mono">Transfer Complete</p>';
+            }
+          }, 800);
+        }, 800);
+      });
+    }
+
+    // Quick actions
+    document.querySelectorAll('.quick-action').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var action = btn.getAttribute('data-action');
+
+        if (action === 'random-location') {
+          // Generate random location in Indonesia
+          var lat = -6.2 + (Math.random() - 0.5) * 0.5;
+          var lng = 106.8 + (Math.random() - 0.5) * 0.5;
+
+          state.selectedLocation = { lat: lat, lng: lng };
+
+          if (state.marker) {
+            state.marker.setLatLng([lat, lng]);
+          } else {
+            state.marker = L.marker([lat, lng], { icon: selectedIcon }).addTo(map);
+          }
+
+          map.setView([lat, lng], 14);
+
+          coordinatesEl.textContent = 'Lat: ' + lat.toFixed(6) + ', Lng: ' + lng.toFixed(6);
+          inputLat.value = lat.toFixed(6);
+          inputLng.value = lng.toFixed(6);
+          parcelIdEl.value = generateParcelId();
+          locationInfo.classList.remove('hidden');
+          locationAddress.textContent = 'Random location: ' + lat.toFixed(6) + ', ' + lng.toFixed(6);
+
+          registerBtn.disabled = false;
+          registerBtn.textContent = 'Register Parcel';
+
+          var names = ['John Doe', 'Jane Smith', 'Alex Johnson'];
+          var ownerInput = document.getElementById('owner-name');
+          if (ownerInput) ownerInput.value = names[Math.floor(Math.random() * names.length)];
+
+          var descInput = document.getElementById('parcel-desc');
+          if (descInput) descInput.value = 'Auto-generated land parcel';
+
+          addTxLog('LOCATION', 'Random location selected: ' + lat.toFixed(4) + ', ' + lng.toFixed(4), 'pending');
+        }
+
+        if (action === 'verify-all') {
+          var allParcels = sampleParcels.concat(state.parcels);
+          var idx = 0;
+          function verifyNext() {
+            if (idx >= allParcels.length) return;
+            var input = document.getElementById('verify-parcel-id');
+            if (input) input.value = allParcels[idx].id;
+            var form = document.getElementById('verify-form');
+            if (form) form.dispatchEvent(new Event('submit'));
+            idx++;
+            setTimeout(verifyNext, 1500);
+          }
+          verifyNext();
+        }
+
+        if (action === 'simulate-transfer') {
+          var tInput = document.getElementById('transfer-parcel-id');
+          var wInput = document.getElementById('buyer-wallet');
+          var sCheck = document.getElementById('seller-sign');
+          var bCheck = document.getElementById('buyer-sign');
+          if (tInput) tInput.value = 'TC-2024-0001';
+          if (wInput) wInput.value = '0x742d35Cc6634C0532925a3b844Bc9e7595f2bD38';
+          if (sCheck) sCheck.checked = true;
+          if (bCheck) bCheck.checked = true;
+          var form = document.getElementById('transfer-form');
+          if (form) form.dispatchEvent(new Event('submit'));
+        }
+
+        if (action === 'reset') {
+          state = { parcels: [], selectedLocation: null, verifications: 0, transfers: 0, marker: null };
+          updateStats();
+
+          if (state.marker) {
+            map.removeLayer(state.marker);
+          }
+
+          parcelsLayer.clearLayers();
+          sampleParcels.forEach(function(parcel) {
+            L.marker([parcel.lat, parcel.lng], {
+              icon: L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="background: #c4b89a; width: 20px; height: 20px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+              })
+            }).addTo(parcelsLayer);
+          });
+
+          coordinatesEl.textContent = 'Lat: --, Lng: --';
+          inputLat.value = '';
+          inputLng.value = '';
+          parcelIdEl.value = '';
+          locationInfo.classList.add('hidden');
+          registerBtn.disabled = true;
+          registerBtn.textContent = 'Select Location First';
+
+          ['owner-name', 'parcel-desc', 'verify-parcel-id', 'transfer-parcel-id', 'buyer-wallet'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.value = '';
+          });
+
+          ['seller-sign', 'buyer-sign'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.checked = false;
+          });
+
+          ['register-result', 'transfer-result'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+          });
+
+          var verifyResult = document.getElementById('verify-result');
+          if (verifyResult) {
+            verifyResult.innerHTML = '<div class="p-4 rounded-lg bg-surface-hover border border-border text-center"><p class="text-sm text-text-secondary">Enter a Parcel ID to verify</p></div>';
+          }
+
+          if (txLog) {
+            txLog.innerHTML = '<div class="p-3 rounded-lg bg-surface-hover border border-border text-center"><p class="text-xs text-text-muted">No transactions yet</p></div>';
+          }
+
+          parcelsList.innerHTML = '<p class="text-xs text-text-muted text-center">No parcels registered yet</p>';
+
+          ['transfer-seller', 'transfer-escrow', 'transfer-buyer'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.className = 'w-16 h-16 mx-auto rounded-xl bg-surface-hover border border-border flex items-center justify-center mb-2';
+          });
+
+          ['transfer-progress-1', 'transfer-progress-2'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.style.width = '0';
+          });
+
+          var sStatus = document.getElementById('seller-status');
+          var eStatus = document.getElementById('escrow-status');
+          var bStatus = document.getElementById('buyer-status');
+          if (sStatus) sStatus.textContent = 'Pending';
+          if (eStatus) eStatus.textContent = 'Waiting';
+          if (bStatus) bStatus.textContent = 'Pending';
+
+          addTxLog('RESET', 'Demo data cleared', 'success');
+        }
+      });
+    });
+
+    // Add pulse animation
+    var style = document.createElement('style');
+    style.textContent = '@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } }';
+    document.head.appendChild(style);
+  });
+</script>

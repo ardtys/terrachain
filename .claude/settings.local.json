@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm create:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm build)",
+      "Bash(pnpm dev)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(pnpm build:*)",
+      "Bash(npm run build:*)",
+      "Bash(del \"C:\\\\Users\\\\Daffa\\\\OneDrive\\\\Desktop\\\\TERRACHAIN\\\\src\\\\pages\\\\technology.astro.full\")",
+      "Bash(pnpm run build:*)",
+      "Bash(pnpm run dev)",
+      "Bash(timeout:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(copy \"C:\\\\Users\\\\Daffa\\\\OneDrive\\\\Desktop\\\\TERRACHAIN\\\\src\\\\images\\\\logo.png\" \"C:\\\\Users\\\\Daffa\\\\OneDrive\\\\Desktop\\\\TERRACHAIN\\\\public\\\\logo.png\")",
+      "WebFetch(domain:localhost)",
+      "Bash(npm install:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npx astro add:*)"
+    ]
+  }
+}

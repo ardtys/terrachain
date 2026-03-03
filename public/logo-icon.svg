@@ -1,0 +1,30 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main land parcel square -->
+  <rect x="4" y="6" width="28" height="28" rx="3" stroke="#c4b89a" stroke-width="1.5" fill="none"/>
+
+  <!-- Grid lines (land divisions) -->
+  <line x1="4" y1="17" x2="32" y2="17" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+  <line x1="4" y1="23" x2="32" y2="23" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+  <line x1="18" y1="6" x2="18" y2="34" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- Corner dots (survey points) -->
+  <circle cx="7" cy="9" r="1.5" fill="#e8e0d0"/>
+  <circle cx="29" cy="9" r="1.5" fill="#e8e0d0"/>
+  <circle cx="7" cy="31" r="1.5" fill="#e8e0d0"/>
+
+  <!-- Grid intersection dots -->
+  <circle cx="18" cy="17" r="1.5" fill="#e8e0d0"/>
+  <circle cx="18" cy="23" r="1.5" fill="#e8e0d0"/>
+  <circle cx="11" cy="17" r="1" fill="#e8e0d0" opacity="0.6"/>
+  <circle cx="25" cy="17" r="1" fill="#e8e0d0" opacity="0.6"/>
+  <circle cx="11" cy="23" r="1" fill="#e8e0d0" opacity="0.6"/>
+  <circle cx="25" cy="23" r="1" fill="#e8e0d0" opacity="0.6"/>
+
+  <!-- Pin/marker at top-left -->
+  <line x1="7" y1="2" x2="7" y2="6" stroke="#c4b89a" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="7" cy="1.5" r="2" fill="none" stroke="#c4b89a" stroke-width="1"/>
+
+  <!-- Chain links at bottom-right -->
+  <rect x="30" y="28" width="6" height="4" rx="2" stroke="#c4b89a" stroke-width="1" fill="none"/>
+  <rect x="34" y="32" width="6" height="4" rx="2" stroke="#c4b89a" stroke-width="1" fill="none"/>
+</svg>

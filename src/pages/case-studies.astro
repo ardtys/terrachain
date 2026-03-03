@@ -1,0 +1,490 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, Check, Globe, Building, Smartphone, Shield, FileText, Quote, ChevronRight, Award, Target } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Case Studies — TerraChain"
+  description="Real-world implementations of TerraChain in Rwanda, Philippines, and beyond. See how blockchain land registry transforms communities."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[280px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Globe class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Case Studies</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Real <span class="text-gradient-accent">Impact</span>,<br/>
+            Real <span class="text-gradient-gold">Communities</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            From rural Rwanda to urban Philippines, see how TerraChain is transforming land ownership for communities that need it most.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-accent">50K+</span>
+              <span class="text-xs text-text-muted block">Parcels Registered</span>
+            </div>
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-gold">5</span>
+              <span class="text-xs text-text-muted block">Countries</span>
+            </div>
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-green">0</span>
+              <span class="text-xs text-text-muted block">Fraud Cases</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Impact Summary -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Aggregate Impact</h3>
+
+        <div class="space-y-4">
+          <div class="impact-stat">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">$127M</span>
+            </div>
+            <p class="text-xs text-text-muted">Dead capital unlocked</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-[85%]"></div>
+            </div>
+          </div>
+
+          <div class="impact-stat">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">89%</span>
+            </div>
+            <p class="text-xs text-text-muted">Reduction in registration time</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[89%]"></div>
+            </div>
+          </div>
+
+          <div class="impact-stat">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">73%</span>
+            </div>
+            <p class="text-xs text-text-muted">Cost savings vs. traditional</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[73%]"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Rwanda Case Study -->
+      <Card colSpan={2} class="min-h-[400px] relative overflow-hidden group" stagger={3}>
+        <div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M10 50 L50 10 L90 50 L50 90 Z" fill="currentColor" class="text-accent"/>
+          </svg>
+        </div>
+
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <MapPin class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <span class="text-xs text-accent font-mono">FEATURED</span>
+            <h2 class="text-xl text-text-primary">Rwanda Rural Land Initiative</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              In partnership with the Rwanda Land Management Authority, TerraChain deployed a mobile-first land registration system across the Eastern Province, targeting smallholder farmers.
+            </p>
+
+            <div class="space-y-3 mb-4">
+              {[
+                'GPS-based parcel mapping via smartphone',
+                'Witness signatures captured biometrically',
+                'Integration with national ID system',
+                'SMS notifications for all transactions',
+              ].map((item, i) => (
+                <div class="flex items-start gap-2" style={`--delay: ${i * 0.1}s`}>
+                  <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+                  <span class="text-sm text-text-secondary">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href="/case-studies/rwanda" class="inline-flex items-center gap-2 text-accent text-sm hover:gap-3 transition-all no-underline">
+              <span>Read Full Case Study</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-accent">18K</span>
+                <span class="text-xs text-text-muted block">Parcels Registered</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-gold">15 min</span>
+                <span class="text-xs text-text-muted block">Avg. Registration</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-green">$0.85</span>
+                <span class="text-xs text-text-muted block">Cost per Parcel</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-accent">99.8%</span>
+                <span class="text-xs text-text-muted block">Success Rate</span>
+              </div>
+            </div>
+
+            <div class="p-4 bg-surface rounded-lg border border-border">
+              <Quote class="w-5 h-5 text-accent mb-2" />
+              <p class="text-sm text-text-secondary italic mb-2">
+                "For the first time, our farmers have proof of ownership they can use to access bank loans."
+              </p>
+              <p class="text-xs text-text-muted">— Jean-Pierre Habimana, RLMA Director</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="IMPACT" stagger={4} />
+
+      <!-- Philippines Case Study -->
+      <Card colSpan={2} class="min-h-[380px] relative overflow-hidden group" stagger={5}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Building class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <span class="text-xs text-gold font-mono">URBAN PILOT</span>
+            <h2 class="text-xl text-text-primary">Metro Manila Informal Settlements</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Working with the Department of Human Settlements, TerraChain piloted a community-led titling program in Quezon City's informal settlements, providing secure tenure for 3,200 families.
+            </p>
+
+            <div class="space-y-3 mb-4">
+              {[
+                'Community-validated boundary mapping',
+                'Multi-sig approval with barangay officials',
+                'Dispute resolution via smart contracts',
+                'WhatsApp bot for status updates',
+              ].map((item, i) => (
+                <div class="flex items-start gap-2" style={`--delay: ${i * 0.1}s`}>
+                  <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+                  <span class="text-sm text-text-secondary">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href="/case-studies/philippines" class="inline-flex items-center gap-2 text-gold text-sm hover:gap-3 transition-all no-underline">
+              <span>Read Full Case Study</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-gold">3.2K</span>
+                <span class="text-xs text-text-muted block">Families Secured</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-accent">47</span>
+                <span class="text-xs text-text-muted block">Disputes Resolved</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-green">$12M</span>
+                <span class="text-xs text-text-muted block">Equity Unlocked</span>
+              </div>
+              <div class="metric-box p-3 bg-surface-hover rounded-lg border border-border">
+                <span class="text-2xl font-mono text-gold">6 mo</span>
+                <span class="text-xs text-text-muted block">Pilot Duration</span>
+              </div>
+            </div>
+
+            <div class="p-4 bg-surface rounded-lg border border-border">
+              <Quote class="w-5 h-5 text-gold mb-2" />
+              <p class="text-sm text-text-secondary italic mb-2">
+                "We finally have something to pass on to our children. Our home is truly ours now."
+              </p>
+              <p class="text-xs text-text-muted">— Maria Santos, Community Leader</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- More Case Studies Grid -->
+      <Card colSpan={1} class="min-h-[380px]" stagger={6}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">More Case Studies</h3>
+
+        <div class="space-y-3">
+          <a href="/case-studies/kenya" class="case-link flex items-center justify-between p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style="--delay: 0s">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center">
+                <MapPin class="w-4 h-4 text-green" />
+              </div>
+              <div>
+                <p class="text-sm text-text-primary">Kenya</p>
+                <p class="text-xs text-text-muted">Coastal Region Pilot</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-mono text-text-secondary">8.5K</span>
+              <span class="text-xs block text-green">Active</span>
+            </div>
+          </a>
+          <a href="/case-studies/indonesia" class="case-link flex items-center justify-between p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style="--delay: 0.1s">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center">
+                <MapPin class="w-4 h-4 text-accent" />
+              </div>
+              <div>
+                <p class="text-sm text-text-primary">Indonesia</p>
+                <p class="text-xs text-text-muted">Java Agricultural Lands</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-mono text-text-secondary">12K</span>
+              <span class="text-xs block text-green">Active</span>
+            </div>
+          </a>
+          <a href="/case-studies/ghana" class="case-link flex items-center justify-between p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style="--delay: 0.2s">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center">
+                <MapPin class="w-4 h-4 text-gold" />
+              </div>
+              <div>
+                <p class="text-sm text-text-primary">Ghana</p>
+                <p class="text-xs text-text-muted">Accra Urban Titling</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-mono text-text-secondary">5.2K</span>
+              <span class="text-xs block text-green">Active</span>
+            </div>
+          </a>
+          <a href="/case-studies/colombia" class="case-link flex items-center justify-between p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style="--delay: 0.3s">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-copper/10 border border-copper/30 flex items-center justify-center">
+                <MapPin class="w-4 h-4 text-copper" />
+              </div>
+              <div>
+                <p class="text-sm text-text-primary">Colombia</p>
+                <p class="text-xs text-text-muted">Post-Conflict Zones</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-mono text-text-secondary">3.1K</span>
+              <span class="text-xs block text-gold">Launching</span>
+            </div>
+          </a>
+          <a href="/case-studies/india" class="case-link flex items-center justify-between p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style="--delay: 0.4s">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center">
+                <MapPin class="w-4 h-4 text-accent" />
+              </div>
+              <div>
+                <p class="text-sm text-text-primary">India</p>
+                <p class="text-xs text-text-muted">Rajasthan Pilot</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-mono text-text-secondary">—</span>
+              <span class="text-xs block text-text-muted">Planning</span>
+            </div>
+          </a>
+        </div>
+      </Card>
+
+      <!-- Key Learnings -->
+      <Card colSpan={3} class="min-h-[250px]" stagger={7}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Key Learnings</h3>
+            <p class="text-xs text-text-muted">What we've discovered across deployments</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="learning-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0s">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Users class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Community First</h4>
+            <p class="text-xs text-text-muted leading-relaxed">Local buy-in is more important than technology. Start with community education.</p>
+          </div>
+          <div class="learning-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.1s">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Smartphone class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Mobile is Essential</h4>
+            <p class="text-xs text-text-muted leading-relaxed">90% of users access TerraChain via mobile. SMS fallback is critical for rural areas.</p>
+          </div>
+          <div class="learning-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.2s">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Clock class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Trust Takes Time</h4>
+            <p class="text-xs text-text-muted leading-relaxed">Average 3-month adoption curve. Early adopter programs accelerate trust-building.</p>
+          </div>
+          <div class="learning-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all group" style="--delay: 0.3s">
+            <div class="w-10 h-10 rounded-lg bg-copper/10 border border-copper/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Building class="w-5 h-5 text-copper" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Government Partnership</h4>
+            <p class="text-xs text-text-muted leading-relaxed">Legal recognition requires deep engagement with land authorities from day one.</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Recognition -->
+      <Card colSpan={2} class="min-h-[200px]" stagger={8}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Award class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-lg text-text-primary">Recognition & Awards</h3>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          {[
+            { award: 'UN-Habitat Innovation Award', year: '2024', org: 'United Nations' },
+            { award: 'Solana Foundation Grant', year: '2023', org: 'Solana' },
+            { award: 'MIT Solve Challenge', year: '2023', org: 'MIT' },
+          ].map((item, i) => (
+            <div class="award-item p-3 bg-surface-hover rounded-lg border border-border text-center" style={`--delay: ${i * 0.1}s`}>
+              <p class="text-sm text-text-primary mb-1">{item.award}</p>
+              <p class="text-xs text-text-muted">{item.org} • {item.year}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Contact CTA -->
+      <Card colSpan={1} class="min-h-[200px] flex flex-col justify-center group" stagger={9} glow accent>
+        <div class="text-center">
+          <Mascot size="md" pose="waving" />
+          <h3 class="text-lg text-text-primary mt-4 mb-2">Bring TerraChain to Your Region</h3>
+          <p class="text-xs text-text-secondary mb-4">
+            Partner with us for a pilot program in your country
+          </p>
+          <a href="/contact" class="btn btn-primary inline-flex items-center gap-2 no-underline text-sm">
+            <span>Start a Conversation</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .case-link {
+    animation: slideInLeft 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .learning-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .award-item {
+    animation: fadeIn 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .metric-box {
+    animation: fadeInUp 0.3s ease-out forwards;
+    opacity: 0;
+  }
+
+  .metric-box:nth-child(1) { animation-delay: 0.1s; }
+  .metric-box:nth-child(2) { animation-delay: 0.15s; }
+  .metric-box:nth-child(3) { animation-delay: 0.2s; }
+  .metric-box:nth-child(4) { animation-delay: 0.25s; }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-link,
+    .learning-card,
+    .award-item,
+    .metric-box {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

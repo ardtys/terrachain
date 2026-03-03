@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import HeroCard from '@components/cards/HeroCard.astro';
+import StatCard from '@components/cards/StatCard.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import ArticleCard from '@components/cards/ArticleCard.astro';
+import HeatmapCard from '@components/cards/HeatmapCard.astro';
+import HowItWorksCard from '@components/cards/HowItWorksCard.astro';
+import TechStackCard from '@components/cards/TechStackCard.astro';
+import LogoCard from '@components/cards/LogoCard.astro';
+import PartnersCard from '@components/cards/PartnersCard.astro';
+import ArchitectureCard from '@components/cards/ArchitectureCard.astro';
+import CTACard from '@components/cards/CTACard.astro';
+import RoadmapCard from '@components/cards/RoadmapCard.astro';
+---
+
+<BaseLayout title="TerraChain — Immutable Land Title Registry on Solana">
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Row 1: Hero + Topography -->
+      <HeroCard stagger={1} />
+      <TopographyCard label="LAND TOPOLOGY" tall stagger={2} />
+
+      <!-- Row 2: Stats with different colors -->
+      <StatCard
+        value="$9.3T"
+        label="in dead capital trapped in undocumented land globally"
+        source="Hernando de Soto"
+        color="gold"
+        stagger={3}
+      />
+      <StatCard
+        value="70%"
+        label="of global land is poorly documented or completely unregistered"
+        color="accent"
+        stagger={4}
+      />
+      <StatCard
+        value="1B+"
+        label="people worldwide live without secure land rights"
+        color="green"
+        stagger={5}
+      />
+
+      <!-- Row 3: Article + Heatmap -->
+      <ArticleCard
+        title="Rural Land Registration in Southeast Asia"
+        subtitle="How TerraChain enables mobile-first land survey for farming communities"
+        href="/case-studies/southeast-asia"
+        stagger={6}
+      />
+      <HeatmapCard stagger={7} />
+
+      <!-- Row 4: Topography + How It Works -->
+      <TopographyCard stagger={8} />
+      <HowItWorksCard stagger={9} />
+
+      <!-- Row 5: Tech Stack + Solana Logo -->
+      <TechStackCard stagger={10} />
+      <LogoCard stagger={11} />
+
+      <!-- Row 6: Architecture + Partners -->
+      <ArchitectureCard stagger={12} />
+      <PartnersCard stagger={13} />
+
+      <!-- Row 7: Roadmap (full width) -->
+      <RoadmapCard stagger={14} />
+
+      <!-- Row 8: CTA -->
+      <CTACard stagger={15} />
+    </BentoGrid>
+  </div>
+</BaseLayout>

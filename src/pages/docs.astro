@@ -1,0 +1,524 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Book, Code, Terminal, FileCode, GitBranch, Database, Zap, Shield, Globe, ArrowRight, Search, Layers, Box, Cpu, MessageSquare, Rocket, Check, ExternalLink, Play } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Documentation — TerraChain"
+  description="TerraChain developer documentation: API reference, SDK guides, smart contract specs, and integration tutorials."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[280px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Book class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Documentation</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Build with<br/>
+            <span class="text-gradient-accent">TerraChain</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Everything you need to integrate TerraChain into your application. From quick start guides to deep-dive technical references.
+          </p>
+
+          <!-- Search Box -->
+          <div class="relative max-w-md">
+            <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+            <input
+              type="text"
+              placeholder="Search documentation..."
+              class="w-full pl-10 pr-4 py-2.5 bg-surface border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+            />
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-text-muted font-mono">⌘K</span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Quick Links -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Quick Links</h3>
+
+        <div class="space-y-2">
+          {[
+            { title: 'Getting Started', href: '/docs/getting-started', icon: 'rocket' },
+            { title: 'API Reference', href: '/docs/api', icon: 'code' },
+            { title: 'SDK Libraries', href: '/docs/sdk', icon: 'gitbranch' },
+            { title: 'Smart Contracts', href: '/docs/contracts', icon: 'box' },
+            { title: 'Security', href: '/docs/security', icon: 'shield' },
+            { title: 'Changelog', href: '/docs/changelog', icon: 'fileCode' },
+          ].map((link, i) => (
+            <a href={link.href} class="quick-link flex items-center gap-3 p-2 rounded-lg hover:bg-surface-hover transition-all no-underline group" style={`--delay: ${i * 0.05}s`}>
+              {link.icon === 'rocket' && <Rocket class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              {link.icon === 'code' && <Code class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              {link.icon === 'gitbranch' && <GitBranch class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              {link.icon === 'box' && <Box class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              {link.icon === 'shield' && <Shield class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              {link.icon === 'fileCode' && <FileCode class="w-4 h-4 text-text-muted group-hover:text-accent transition-colors" />}
+              <span class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{link.title}</span>
+              <ArrowRight class="w-3 h-3 ml-auto text-text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Getting Started Card -->
+      <Card colSpan={2} class="min-h-[320px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Rocket class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Getting Started</h2>
+            <p class="text-xs text-text-muted">Start building in under 5 minutes</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          {[
+            { step: '01', title: 'Install SDK', desc: 'Add the TerraChain SDK to your project', time: '1 min' },
+            { step: '02', title: 'Get API Key', desc: 'Create an account and get your keys', time: '2 min' },
+            { step: '03', title: 'Make First Call', desc: 'Query a land parcel from the registry', time: '2 min' },
+          ].map((step, i) => (
+            <div class="step-card p-4 bg-surface-hover rounded-lg border border-border group hover:border-accent/30 transition-all" style={`--delay: ${i * 0.1}s`}>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono text-accent">{step.step}</span>
+                <span class="text-xs text-text-muted">{step.time}</span>
+              </div>
+              <h4 class="text-sm text-text-primary font-mono mb-1">{step.title}</h4>
+              <p class="text-xs text-text-muted">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="code-block rounded-lg border border-border overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-2 bg-surface border-b border-border">
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+            </div>
+            <span class="text-xs text-text-muted font-mono ml-2">terminal</span>
+          </div>
+          <pre class="p-4 bg-[#0d0d0d] text-sm font-mono overflow-x-auto"><code class="text-text-secondary"><span class="text-text-muted"># Install TerraChain SDK</span>
+<span class="text-green">npm</span> install @terrachain/sdk
+
+<span class="text-text-muted"># Or using pnpm</span>
+<span class="text-green">pnpm</span> add @terrachain/sdk</code></pre>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="DOCS" stagger={4} />
+
+      <!-- Documentation Sections -->
+      <Card colSpan={3} class="min-h-[300px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Book class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Documentation Sections</h2>
+            <p class="text-xs text-text-muted">Explore by topic</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <a href="/docs/concepts" class="doc-section p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0s">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Layers class="w-5 h-5 text-accent" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-1">Concepts</h3>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">Understanding TerraChain architecture and terminology</p>
+            <span class="text-xs text-text-muted">12 articles</span>
+          </a>
+          <a href="/docs/api-reference" class="doc-section p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.1s">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Code class="w-5 h-5 text-gold" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-1">API Reference</h3>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">REST and GraphQL endpoints documentation</p>
+            <span class="text-xs text-text-muted">45 articles</span>
+          </a>
+          <a href="/docs/sdk-guides" class="doc-section p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.2s">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Terminal class="w-5 h-5 text-green" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-1">SDK Guides</h3>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">TypeScript, Python, Rust, and Go libraries</p>
+            <span class="text-xs text-text-muted">28 articles</span>
+          </a>
+          <a href="/docs/smart-contracts" class="doc-section p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.3s">
+            <div class="w-10 h-10 rounded-lg bg-copper/10 border border-copper/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Box class="w-5 h-5 text-copper" />
+            </div>
+            <h3 class="text-sm text-text-primary font-mono mb-1">Smart Contracts</h3>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">Anchor program specs and audit reports</p>
+            <span class="text-xs text-text-muted">15 articles</span>
+          </a>
+        </div>
+      </Card>
+
+      <!-- SDK Libraries -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <GitBranch class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">SDK Libraries</h3>
+            <p class="text-xs text-text-muted">Official client libraries</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <a href="/docs/sdk/typescript" class="sdk-card flex items-center gap-4 p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0s">
+            <div class="w-12 h-12 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0">
+              <Code class="w-6 h-6 text-accent" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-text-primary font-mono truncate">TypeScript/JavaScript</p>
+              <p class="text-xs text-text-muted truncate">@terrachain/sdk</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class="text-xs font-mono text-accent">v2.4.1</span>
+              <p class="text-xs text-text-muted">12.5k/week</p>
+            </div>
+          </a>
+          <a href="/docs/sdk/python" class="sdk-card flex items-center gap-4 p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.1s">
+            <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0">
+              <Code class="w-6 h-6 text-gold" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-text-primary font-mono truncate">Python</p>
+              <p class="text-xs text-text-muted truncate">terrachain-py</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class="text-xs font-mono text-accent">v1.8.0</span>
+              <p class="text-xs text-text-muted">8.2k/week</p>
+            </div>
+          </a>
+          <a href="/docs/sdk/rust" class="sdk-card flex items-center gap-4 p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.2s">
+            <div class="w-12 h-12 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center flex-shrink-0">
+              <Code class="w-6 h-6 text-green" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-text-primary font-mono truncate">Rust</p>
+              <p class="text-xs text-text-muted truncate">terrachain-rs</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class="text-xs font-mono text-accent">v0.9.2</span>
+              <p class="text-xs text-text-muted">3.1k/week</p>
+            </div>
+          </a>
+          <a href="/docs/sdk/go" class="sdk-card flex items-center gap-4 p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style="--delay: 0.3s">
+            <div class="w-12 h-12 rounded-lg bg-copper/10 border border-copper/30 flex items-center justify-center flex-shrink-0">
+              <Code class="w-6 h-6 text-copper" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-text-primary font-mono truncate">Go</p>
+              <p class="text-xs text-text-muted truncate">go-terrachain</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class="text-xs font-mono text-accent">v1.2.0</span>
+              <p class="text-xs text-text-muted">2.8k/week</p>
+            </div>
+          </a>
+        </div>
+      </Card>
+
+      <!-- API Status -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={7}>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="heading-mono text-sm text-text-primary">API Status</h3>
+          <span class="px-2 py-0.5 text-xs font-mono bg-green/10 text-green rounded">All Systems Operational</span>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            { service: 'REST API', status: 'operational', latency: '45ms' },
+            { service: 'GraphQL API', status: 'operational', latency: '52ms' },
+            { service: 'WebSocket', status: 'operational', latency: '12ms' },
+            { service: 'RPC Nodes', status: 'operational', latency: '38ms' },
+          ].map((api, i) => (
+            <div class="api-status flex items-center justify-between p-2 rounded-lg hover:bg-surface-hover transition-all" style={`--delay: ${i * 0.05}s`}>
+              <div class="flex items-center gap-2">
+                <div class={`w-2 h-2 rounded-full ${api.status === 'operational' ? 'bg-green' : 'bg-gold'}`}></div>
+                <span class="text-sm text-text-secondary">{api.service}</span>
+              </div>
+              <span class="text-xs font-mono text-text-muted">{api.latency}</span>
+            </div>
+          ))}
+        </div>
+
+        <a href="https://status.terrachain.xyz" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-sm text-accent no-underline hover:gap-3 transition-all">
+          <span>View Status Page</span>
+          <ExternalLink class="w-3 h-3" />
+        </a>
+      </Card>
+
+      <!-- Tutorials -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={8}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Play class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Popular Tutorials</h3>
+            <p class="text-xs text-text-muted">Step-by-step guides</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            { title: 'Register Your First Land Parcel', duration: '15 min', difficulty: 'Beginner', views: '2.4k' },
+            { title: 'Integrate TerraChain with React', duration: '25 min', difficulty: 'Intermediate', views: '1.8k' },
+            { title: 'Build a Transfer Flow with Multi-Sig', duration: '40 min', difficulty: 'Advanced', views: '1.2k' },
+            { title: 'Query Historical Ownership Records', duration: '20 min', difficulty: 'Intermediate', views: '956' },
+          ].map((tutorial, i) => (
+            <a href={`/docs/tutorials/${tutorial.title.toLowerCase().replace(/ /g, '-')}`} class="tutorial-item flex items-center gap-4 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style={`--delay: ${i * 0.1}s`}>
+              <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Play class="w-4 h-4 text-accent" />
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text-primary mb-1">{tutorial.title}</p>
+                <div class="flex items-center gap-3 text-xs text-text-muted">
+                  <span>{tutorial.duration}</span>
+                  <span class={`px-1.5 py-0.5 rounded ${tutorial.difficulty === 'Beginner' ? 'bg-green/10 text-green' : tutorial.difficulty === 'Intermediate' ? 'bg-gold/10 text-gold' : 'bg-accent/10 text-accent'}`}>
+                    {tutorial.difficulty}
+                  </span>
+                </div>
+              </div>
+              <span class="text-xs text-text-muted">{tutorial.views} views</span>
+            </a>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Community -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={9}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <MessageSquare class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Community</h3>
+        </div>
+
+        <div class="space-y-3">
+          <a href="https://discord.gg/terrachain" target="_blank" rel="noopener" class="community-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-[#5865F2]/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#5865F2]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">Discord</p>
+              <p class="text-xs text-text-muted">1.2k developers</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/terrachain" target="_blank" rel="noopener" class="community-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-text-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-text-primary" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">GitHub</p>
+              <p class="text-xs text-text-muted">850 stars</p>
+            </div>
+          </a>
+
+          <a href="https://forum.terrachain.xyz" target="_blank" rel="noopener" class="community-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+              <MessageSquare class="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">Forum</p>
+              <p class="text-xs text-text-muted">Discussion & support</p>
+            </div>
+          </a>
+        </div>
+      </Card>
+
+      <!-- Help CTA -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={10} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <MessageSquare class="w-5 h-5 text-accent" />
+              <span class="text-xs text-accent font-mono uppercase tracking-wider">Need Help?</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Can't find what you're looking for?</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Our developer relations team is here to help. Ask questions, report issues, or request new features.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://discord.gg/terrachain" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+                <MessageSquare class="w-4 h-4" />
+                <span>Join Discord</span>
+              </a>
+              <a href="mailto:developers@terrachain.xyz" class="btn btn-secondary inline-flex items-center gap-2 no-underline">
+                <span>Email Support</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="lg" pose="pointing" speechBubble="I can help!" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Latest Updates -->
+      <Card colSpan={1} class="min-h-[180px]" stagger={11}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Latest Updates</h3>
+
+        <div class="space-y-3">
+          {[
+            { version: 'v2.4.1', date: 'Jan 12', type: 'patch', desc: 'Bug fixes and performance improvements' },
+            { version: 'v2.4.0', date: 'Jan 5', type: 'minor', desc: 'Added GraphQL subscriptions' },
+            { version: 'v2.3.0', date: 'Dec 20', type: 'minor', desc: 'New transfer verification endpoints' },
+          ].map((update, i) => (
+            <div class="update-item p-2 rounded-lg hover:bg-surface-hover transition-all" style={`--delay: ${i * 0.05}s`}>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm font-mono text-accent">{update.version}</span>
+                <span class="text-xs text-text-muted">{update.date}</span>
+              </div>
+              <p class="text-xs text-text-secondary">{update.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <a href="/docs/changelog" class="mt-4 inline-flex items-center gap-2 text-sm text-accent no-underline hover:gap-3 transition-all">
+          <span>View Changelog</span>
+          <ArrowRight class="w-3 h-3" />
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .quick-link {
+    animation: slideInLeft 0.3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .step-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .doc-section {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .sdk-card {
+    animation: fadeIn 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .api-status {
+    animation: slideInLeft 0.3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .tutorial-item {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .update-item {
+    animation: slideInLeft 0.3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .community-link {
+    animation: fadeIn 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .community-link:nth-child(1) { animation-delay: 0.1s; }
+  .community-link:nth-child(2) { animation-delay: 0.2s; }
+  .community-link:nth-child(3) { animation-delay: 0.3s; }
+
+  .code-block {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quick-link,
+    .step-card,
+    .doc-section,
+    .sdk-card,
+    .api-status,
+    .tutorial-item,
+    .update-item,
+    .community-link {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

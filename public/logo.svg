@@ -1,0 +1,43 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon -->
+  <g transform="translate(8, 8)">
+    <!-- Main land parcel square -->
+    <rect x="2" y="4" width="36" height="36" rx="3" stroke="#c4b89a" stroke-width="1.5" fill="none"/>
+
+    <!-- Grid lines (land divisions) -->
+    <line x1="2" y1="17" x2="38" y2="17" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+    <line x1="2" y1="27" x2="38" y2="27" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+    <line x1="20" y1="4" x2="20" y2="40" stroke="#c4b89a" stroke-width="0.75" opacity="0.4"/>
+
+    <!-- Corner dots (survey points) -->
+    <circle cx="6" cy="8" r="2" fill="#e8e0d0"/>
+    <circle cx="34" cy="8" r="2" fill="#e8e0d0"/>
+    <circle cx="6" cy="36" r="2" fill="#e8e0d0"/>
+
+    <!-- Grid intersection dots -->
+    <circle cx="20" cy="17" r="2" fill="#e8e0d0"/>
+    <circle cx="20" cy="27" r="2" fill="#e8e0d0"/>
+    <circle cx="11" cy="17" r="1.5" fill="#e8e0d0" opacity="0.6"/>
+    <circle cx="29" cy="17" r="1.5" fill="#e8e0d0" opacity="0.6"/>
+    <circle cx="11" cy="27" r="1.5" fill="#e8e0d0" opacity="0.6"/>
+    <circle cx="29" cy="27" r="1.5" fill="#e8e0d0" opacity="0.6"/>
+
+    <!-- Pin/marker at top-left -->
+    <line x1="6" y1="0" x2="6" y2="4" stroke="#c4b89a" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="6" cy="-1" r="2.5" fill="none" stroke="#c4b89a" stroke-width="1"/>
+
+    <!-- Chain links at bottom-right -->
+    <rect x="36" y="34" width="8" height="5" rx="2.5" stroke="#c4b89a" stroke-width="1" fill="none"/>
+    <rect x="41" y="38" width="8" height="5" rx="2.5" stroke="#c4b89a" stroke-width="1" fill="none"/>
+  </g>
+
+  <!-- Text: TerraChain -->
+  <text x="64" y="32" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="22" font-weight="500">
+    <tspan fill="#e8e0d0">Terra</tspan><tspan fill="#6b6358">Chain</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="64" y="48" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="9" fill="#6b6358" letter-spacing="0.15em">
+    IMMUTABLE LAND REGISTRY
+  </text>
+</svg>

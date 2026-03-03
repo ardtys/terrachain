@@ -1,0 +1,137 @@
+---
+import Card from '@components/shared/Card.astro';
+
+interface Props {
+  value: string;
+  label: string;
+  source?: string;
+  stagger?: number;
+  color?: 'accent' | 'green' | 'gold';
+  animate?: boolean;
+}
+
+const { value, label, source, stagger = 1, color = 'accent', animate = true } = Astro.props;
+
+const colorClasses = {
+  accent: 'from-accent to-gold',
+  green: 'from-green to-accent',
+  gold: 'from-gold to-copper'
+};
+
+// Parse numeric value for animation
+const numericMatch = value.match(/^([<>]?)(\$?)([\d.]+)([A-Za-z%+]*)?$/);
+const prefix = numericMatch ? (numericMatch[1] + numericMatch[2]) : '';
+const numericValue = numericMatch ? parseFloat(numericMatch[3]) : 0;
+const suffix = numericMatch ? (numericMatch[4] || '') : '';
+const hasDecimals = numericMatch ? numericMatch[3].includes('.') : false;
+---
+
+<Card colSpan={1} class="flex flex-col justify-center min-h-[180px] group" stagger={stagger} glow>
+  <!-- Animated background glow -->
+  <div class:list={[
+    "absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+    color === 'accent' && "bg-accent/10",
+    color === 'green' && "bg-green/10",
+    color === 'gold' && "bg-gold/10"
+  ]}></div>
+
+  <div class="relative z-10">
+    <span
+      class:list={[
+        "stat-number mb-3 block transition-transform duration-300 group-hover:scale-105",
+        `bg-gradient-to-r ${colorClasses[color]} bg-clip-text`
+      ]}
+      data-value={value}
+      data-animate-counter={animate && numericValue > 0 ? '' : undefined}
+      data-counter-prefix={prefix}
+      data-counter-value={numericValue}
+      data-counter-suffix={suffix}
+      data-counter-decimals={hasDecimals ? '1' : '0'}
+    >
+      {value}
+    </span>
+    <p class="text-text-secondary text-sm leading-snug">{label}</p>
+    {source && (
+      <p class="text-text-muted text-xs mt-3 italic opacity-60 group-hover:opacity-100 transition-opacity">&mdash; {source}</p>
+    )}
+  </div>
+
+  <!-- Corner accent -->
+  <div class="absolute bottom-4 right-4 w-8 h-8 opacity-20 group-hover:opacity-40 transition-opacity">
+    <svg viewBox="0 0 32 32" class="w-full h-full">
+      <rect x="0" y="0" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" class="text-accent" rx="4"/>
+      <circle cx="16" cy="16" r="4" fill="currentColor" class="text-accent/50"/>
+    </svg>
+  </div>
+</Card>
+
+<style>
+  .stat-number {
+    background-size: 200% auto;
+    animation: shimmerText 3s ease-in-out infinite;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @keyframes shimmerText {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+</style>
+
+<script>
+  // Animated counter with Intersection Observer
+  const counters = document.querySelectorAll('[data-animate-counter]');
+
+  const animateCounter = (element: HTMLElement) => {
+    const prefix = element.dataset.counterPrefix || '';
+    const targetValue = parseFloat(element.dataset.counterValue || '0');
+    const suffix = element.dataset.counterSuffix || '';
+    const decimals = parseInt(element.dataset.counterDecimals || '0');
+
+    const duration = 2000; // 2 seconds
+    const startTime = performance.now();
+    const startValue = 0;
+
+    const easeOutQuart = function(t) { return 1 - Math.pow(1 - t, 4); };
+
+    const updateCounter = function(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuart(progress);
+
+      const currentValue = startValue + (targetValue - startValue) * easedProgress;
+      const displayValue = decimals > 0 ? currentValue.toFixed(decimals) : Math.round(currentValue);
+
+      element.textContent = `${prefix}${displayValue}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+
+    requestAnimationFrame(updateCounter);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          // Only animate once
+          if (!element.dataset.animated) {
+            element.dataset.animated = 'true';
+            animateCounter(element);
+          }
+          observer.unobserve(element);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+</script>

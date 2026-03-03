@@ -1,0 +1,107 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Home, ArrowLeft, Search, Map } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Page Not Found — TerraChain"
+  description="The page you're looking for doesn't exist or has been moved."
+  noindex={true}
+>
+  <div class="min-h-[80vh] flex items-center justify-center px-4">
+    <div class="max-w-lg text-center">
+      <!-- Animated 404 Number -->
+      <div class="relative mb-8">
+        <h1 class="text-8xl md:text-9xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent via-gold to-accent animate-gradient">
+          404
+        </h1>
+        <div class="absolute inset-0 blur-3xl bg-gradient-to-r from-accent/20 via-gold/20 to-accent/20 -z-10"></div>
+      </div>
+
+      <!-- Mascot -->
+      <div class="mb-8 flex justify-center">
+        <Mascot size="lg" pose="peeking" speechBubble="Oops! Lost parcel?" />
+      </div>
+
+      <!-- Message -->
+      <h2 class="text-2xl md:text-3xl font-serif text-text-primary mb-4">
+        Page Not Found
+      </h2>
+      <p class="text-text-secondary leading-relaxed mb-8">
+        The land parcel you're looking for doesn't exist in our registry,
+        or it may have been moved to a different location.
+      </p>
+
+      <!-- Search Box -->
+      <div class="mb-8">
+        <form action="/docs" method="get" class="flex gap-2 max-w-sm mx-auto">
+          <div class="flex-1 relative">
+            <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+            <input
+              type="search"
+              name="q"
+              placeholder="Search documentation..."
+              class="input pl-10 py-3"
+              aria-label="Search documentation"
+            />
+          </div>
+          <button type="submit" class="btn btn-secondary">
+            Search
+          </button>
+        </form>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <a href="/" class="btn btn-primary group">
+          <Home class="w-4 h-4" />
+          Go Home
+        </a>
+        <button onclick="history.back()" class="btn btn-secondary group">
+          <ArrowLeft class="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          Go Back
+        </button>
+      </div>
+
+      <!-- Helpful Links -->
+      <div class="border-t border-border pt-8">
+        <p class="text-xs text-text-muted font-mono uppercase tracking-wider mb-4">
+          Popular Pages
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {[
+            { href: '/product', label: 'Product' },
+            { href: '/technology', label: 'Technology' },
+            { href: '/docs', label: 'Documentation' },
+            { href: '/about', label: 'About Us' },
+            { href: '/whitepaper', label: 'Whitepaper' },
+          ].map(link => (
+            <a
+              href={link.href}
+              class="px-4 py-2 text-sm text-text-secondary bg-surface border border-border rounded-lg hover:border-accent hover:text-accent transition-all no-underline"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 4s ease infinite;
+  }
+</style>

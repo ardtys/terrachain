@@ -1,0 +1,104 @@
+---
+import Card from '@components/shared/Card.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { ArrowRight, Sparkles } from 'lucide-astro';
+
+interface Props {
+  stagger?: number;
+}
+
+const { stagger = 1 } = Astro.props;
+---
+
+<Card colSpan={1} class="min-h-[220px] flex flex-col justify-between overflow-hidden group" stagger={stagger} glow accent>
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+  <!-- Floating particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+  </div>
+
+  <div class="relative z-10">
+    <div class="flex items-center gap-2 mb-3">
+      <Sparkles class="w-4 h-4 text-accent animate-pulse" />
+      <span class="text-xs text-accent font-mono uppercase tracking-wider">Get Started</span>
+    </div>
+
+    <p class="text-text-secondary text-sm leading-relaxed mb-5">
+      Interested in bringing TerraChain to your jurisdiction?
+    </p>
+
+    <a
+      href="mailto:hello@terrachain.xyz"
+      class="btn btn-primary inline-flex items-center gap-2 no-underline group/btn"
+    >
+      <span>Request a Demo</span>
+      <ArrowRight class="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+    </a>
+
+    <p class="mt-3 text-xs text-text-muted">
+      Or email us at <a href="mailto:hello@terrachain.xyz" class="link-animated text-text-secondary">hello@terrachain.xyz</a>
+    </p>
+  </div>
+
+  <div class="flex justify-end -mr-2 -mb-2 relative z-10">
+    <Mascot size="sm" pose="waving" />
+  </div>
+</Card>
+
+<style>
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    opacity: 0;
+  }
+
+  .group:hover .particle {
+    animation: floatUp 3s ease-in-out infinite;
+  }
+
+  .particle-1 {
+    left: 20%;
+    bottom: 20%;
+    animation-delay: 0s;
+  }
+
+  .particle-2 {
+    left: 50%;
+    bottom: 10%;
+    animation-delay: 1s;
+  }
+
+  .particle-3 {
+    left: 80%;
+    bottom: 30%;
+    animation-delay: 2s;
+  }
+
+  @keyframes floatUp {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0);
+    }
+    20% {
+      opacity: 0.6;
+      transform: translateY(-20px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-80px) scale(0.5);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .particle {
+      animation: none !important;
+    }
+  }
+</style>
