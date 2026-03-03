@@ -24,21 +24,20 @@
   --color-bronze: #cd7f32;
   --color-warm-white: #faf6f0;
 
-  /* Vibrant colors for accents */
-  --color-cyan: #22d3ee;
-  --color-cyan-dark: #06b6d4;
-  --color-purple: #a855f7;
-  --color-purple-dark: #9333ea;
-  --color-pink: #ec4899;
-  --color-pink-dark: #db2777;
-  --color-blue: #3b82f6;
-  --color-blue-dark: #2563eb;
-  --color-emerald: #10b981;
-  --color-emerald-dark: #059669;
-  --color-orange: #f97316;
-  --color-orange-dark: #ea580c;
-  --color-yellow: #eab308;
-  --color-lime: #84cc16;
+  /* Earth tone colors for accents - matching logo/theme */
+  --color-terra: #c4b89a;
+  --color-terra-light: #d4c8aa;
+  --color-terra-dark: #a09882;
+  --color-sand: #e8e0d0;
+  --color-sand-dark: #c9c1b1;
+  --color-clay: #b87333;
+  --color-clay-light: #c88343;
+  --color-earth: #8b7355;
+  --color-earth-dark: #6b5335;
+  --color-forest: #7c9a6e;
+  --color-forest-dark: #5c7a4e;
+  --color-sage: #9caa8c;
+  --color-moss: #6b7c5c;
 
   /* Typography */
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -871,51 +870,47 @@ a:hover {
 }
 
 /* ===================== */
-/* VIBRANT ANIMATIONS    */
+/* EARTH TONE ANIMATIONS */
 /* ===================== */
 
-/* Rainbow gradient animation */
-@keyframes rainbow {
+/* Earth gradient animation */
+@keyframes earthGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.animate-rainbow {
+.animate-earth-gradient {
   background: linear-gradient(
     90deg,
-    var(--color-cyan),
-    var(--color-purple),
-    var(--color-pink),
-    var(--color-orange),
-    var(--color-yellow),
-    var(--color-emerald),
-    var(--color-cyan)
+    var(--color-terra),
+    var(--color-gold),
+    var(--color-copper),
+    var(--color-forest),
+    var(--color-terra)
   );
   background-size: 300% 100%;
-  animation: rainbow 6s ease infinite;
+  animation: earthGradient 6s ease infinite;
 }
 
-.text-rainbow {
+.text-earth-gradient {
   background: linear-gradient(
     90deg,
-    var(--color-cyan),
-    var(--color-purple),
-    var(--color-pink),
-    var(--color-orange),
-    var(--color-yellow),
-    var(--color-emerald),
-    var(--color-cyan)
+    var(--color-terra),
+    var(--color-gold),
+    var(--color-copper),
+    var(--color-forest),
+    var(--color-terra)
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: rainbow 6s ease infinite;
+  animation: earthGradient 6s ease infinite;
 }
 
-/* Glow pulse animation */
-@keyframes glowPulse {
+/* Warm glow pulse animation */
+@keyframes warmGlowPulse {
   0%, 100% {
     box-shadow: 0 0 5px var(--glow-color, var(--color-accent)),
                 0 0 20px var(--glow-color, var(--color-accent)),
@@ -929,14 +924,14 @@ a:hover {
 }
 
 .animate-glow {
-  animation: glowPulse 2s ease-in-out infinite;
+  animation: warmGlowPulse 2s ease-in-out infinite;
 }
 
-.glow-cyan { --glow-color: var(--color-cyan); }
-.glow-purple { --glow-color: var(--color-purple); }
-.glow-pink { --glow-color: var(--color-pink); }
-.glow-emerald { --glow-color: var(--color-emerald); }
+.glow-terra { --glow-color: var(--color-terra); }
 .glow-gold { --glow-color: var(--color-gold); }
+.glow-copper { --glow-color: var(--color-copper); }
+.glow-forest { --glow-color: var(--color-forest); }
+.glow-accent { --glow-color: var(--color-accent); }
 
 /* Gradient border animation */
 @keyframes gradientRotate {
@@ -963,12 +958,11 @@ a:hover {
   border-radius: inherit;
   background: conic-gradient(
     from var(--angle),
-    var(--color-cyan),
-    var(--color-purple),
-    var(--color-pink),
-    var(--color-orange),
-    var(--color-emerald),
-    var(--color-cyan)
+    var(--color-terra),
+    var(--color-gold),
+    var(--color-copper),
+    var(--color-forest),
+    var(--color-terra)
   );
   z-index: -1;
   animation: gradientRotate 4s linear infinite;
@@ -1071,8 +1065,8 @@ a:hover {
     90deg,
     var(--color-accent),
     var(--color-gold),
-    var(--color-emerald),
-    var(--color-cyan),
+    var(--color-forest),
+    var(--color-copper),
     var(--color-accent)
   );
   background-size: 200% auto;
@@ -1082,14 +1076,14 @@ a:hover {
   animation: gradientShift 4s ease infinite;
 }
 
-/* Neon flicker */
-@keyframes neonFlicker {
+/* Warm glow flicker */
+@keyframes warmFlicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
     text-shadow:
-      0 0 4px var(--color-cyan),
-      0 0 11px var(--color-cyan),
-      0 0 19px var(--color-cyan),
-      0 0 40px var(--color-cyan);
+      0 0 4px var(--color-gold),
+      0 0 11px var(--color-gold),
+      0 0 19px var(--color-accent),
+      0 0 40px var(--color-accent);
     opacity: 1;
   }
   20%, 24%, 55% {
@@ -1098,9 +1092,9 @@ a:hover {
   }
 }
 
-.text-neon {
-  color: var(--color-cyan);
-  animation: neonFlicker 1.5s infinite alternate;
+.text-warm-glow {
+  color: var(--color-gold);
+  animation: warmFlicker 1.5s infinite alternate;
 }
 
 /* Orbit animation */
@@ -1186,7 +1180,7 @@ a:hover {
 .gradient-orbs::before {
   width: 300px;
   height: 300px;
-  background: var(--color-purple);
+  background: var(--color-gold);
   top: -100px;
   left: -100px;
 }
@@ -1194,7 +1188,7 @@ a:hover {
 .gradient-orbs::after {
   width: 400px;
   height: 400px;
-  background: var(--color-cyan);
+  background: var(--color-terra);
   bottom: -150px;
   right: -150px;
   animation-delay: -7s;
@@ -1255,13 +1249,13 @@ a:hover {
 }
 
 .glitch:hover::before {
-  color: var(--color-cyan);
+  color: var(--color-gold);
   animation: glitch 0.3s infinite linear alternate-reverse;
   left: 2px;
 }
 
 .glitch:hover::after {
-  color: var(--color-pink);
+  color: var(--color-copper);
   animation: glitch 0.3s infinite linear alternate;
   left: -2px;
 }
@@ -1301,75 +1295,75 @@ a:hover {
   animation: shine 0.8s ease;
 }
 
-/* Gradient button */
+/* Gradient button - Earth tones */
 .btn-gradient {
   background: linear-gradient(
     135deg,
-    var(--color-cyan),
-    var(--color-purple),
-    var(--color-pink)
+    var(--color-terra),
+    var(--color-gold),
+    var(--color-copper)
   );
   background-size: 200% 200%;
   border: none;
-  color: white;
+  color: var(--color-bg);
   animation: gradientShift 3s ease infinite;
 }
 
 .btn-gradient:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 10px 40px rgba(196, 184, 154, 0.4);
 }
 
-/* Colorful badge variants */
-.badge-cyan {
-  background: rgba(34, 211, 238, 0.15);
-  color: var(--color-cyan);
-  border: 1px solid rgba(34, 211, 238, 0.3);
+/* Earth tone badge variants */
+.badge-terra {
+  background: rgba(196, 184, 154, 0.15);
+  color: var(--color-terra);
+  border: 1px solid rgba(196, 184, 154, 0.3);
 }
 
-.badge-purple {
-  background: rgba(168, 85, 247, 0.15);
-  color: var(--color-purple);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+.badge-gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--color-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.badge-pink {
-  background: rgba(236, 72, 153, 0.15);
-  color: var(--color-pink);
-  border: 1px solid rgba(236, 72, 153, 0.3);
+.badge-copper {
+  background: rgba(184, 115, 51, 0.15);
+  color: var(--color-copper);
+  border: 1px solid rgba(184, 115, 51, 0.3);
 }
 
-.badge-orange {
-  background: rgba(249, 115, 22, 0.15);
-  color: var(--color-orange);
-  border: 1px solid rgba(249, 115, 22, 0.3);
+.badge-forest {
+  background: rgba(124, 154, 110, 0.15);
+  color: var(--color-forest);
+  border: 1px solid rgba(124, 154, 110, 0.3);
 }
 
-/* Icon color utilities */
-.icon-cyan { color: var(--color-cyan); }
-.icon-purple { color: var(--color-purple); }
-.icon-pink { color: var(--color-pink); }
-.icon-emerald { color: var(--color-emerald); }
-.icon-orange { color: var(--color-orange); }
+/* Icon color utilities - Earth tones */
+.icon-terra { color: var(--color-terra); }
+.icon-gold { color: var(--color-gold); }
+.icon-copper { color: var(--color-copper); }
+.icon-forest { color: var(--color-forest); }
+.icon-accent { color: var(--color-accent); }
 
-/* Background gradient utilities */
-.bg-gradient-cyan-purple {
-  background: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
+/* Background gradient utilities - Earth tones */
+.bg-gradient-terra-gold {
+  background: linear-gradient(135deg, var(--color-terra), var(--color-gold));
 }
 
-.bg-gradient-pink-orange {
-  background: linear-gradient(135deg, var(--color-pink), var(--color-orange));
+.bg-gradient-gold-copper {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-copper));
 }
 
-.bg-gradient-emerald-cyan {
-  background: linear-gradient(135deg, var(--color-emerald), var(--color-cyan));
+.bg-gradient-forest-terra {
+  background: linear-gradient(135deg, var(--color-forest), var(--color-terra));
 }
 
-.bg-gradient-purple-pink {
-  background: linear-gradient(135deg, var(--color-purple), var(--color-pink));
+.bg-gradient-copper-gold {
+  background: linear-gradient(135deg, var(--color-copper), var(--color-gold));
 }
 
-/* Animated underline with color */
+/* Animated underline with earth tone colors */
 .link-gradient {
   position: relative;
   text-decoration: none;
@@ -1382,7 +1376,7 @@ a:hover {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-cyan), var(--color-purple), var(--color-pink));
+  background: linear-gradient(90deg, var(--color-terra), var(--color-gold), var(--color-copper));
   transition: width 0.3s ease;
 }
 
@@ -1390,21 +1384,21 @@ a:hover {
   width: 100%;
 }
 
-/* Hover scale with color */
-.hover-glow-cyan:hover {
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+/* Hover glow with earth tone colors */
+.hover-glow-terra:hover {
+  box-shadow: 0 0 30px rgba(196, 184, 154, 0.4);
 }
 
-.hover-glow-purple:hover {
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+.hover-glow-gold:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
 }
 
-.hover-glow-pink:hover {
-  box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+.hover-glow-copper:hover {
+  box-shadow: 0 0 30px rgba(184, 115, 51, 0.4);
 }
 
-.hover-glow-emerald:hover {
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+.hover-glow-forest:hover {
+  box-shadow: 0 0 30px rgba(124, 154, 110, 0.4);
 }
 
 /* ===================== */
