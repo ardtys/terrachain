@@ -10,16 +10,16 @@ interface Props {
 const { stagger = 1 } = Astro.props;
 ---
 
-<Card colSpan={1} class="min-h-[220px] flex flex-col justify-between overflow-hidden group cta-card" stagger={stagger} glow accent>
+<Card colSpan={1} class="min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex flex-col justify-between overflow-hidden group cta-card" stagger={stagger} glow accent>
   <!-- Animated gradient background -->
   <div class="absolute inset-0 bg-gradient-animated opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
   <!-- Glowing orbs - Earth tones -->
-  <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-gold/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-  <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-gradient-to-tr from-green/15 to-copper/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+  <div class="absolute -top-10 -right-10 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-accent/20 to-gold/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+  <div class="absolute -bottom-10 -left-10 w-20 sm:w-28 h-20 sm:h-28 bg-gradient-to-tr from-green/15 to-copper/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 delay-100"></div>
 
-  <!-- Floating particles -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <!-- Floating particles - hidden on mobile -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
     <div class="particle particle-1"></div>
     <div class="particle particle-2"></div>
     <div class="particle particle-3"></div>
@@ -31,31 +31,31 @@ const { stagger = 1 } = Astro.props;
   <div class="absolute inset-0 rounded-[inherit] border-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
   <div class="relative z-10">
-    <div class="flex items-center gap-2 mb-3">
+    <div class="flex items-center gap-2 mb-2 sm:mb-3">
       <div class="sparkle-container">
-        <Sparkles class="w-5 h-5 text-gold sparkle-icon" />
+        <Sparkles class="w-4 h-4 sm:w-5 sm:h-5 text-gold sparkle-icon" />
       </div>
-      <span class="text-xs text-gradient-animated font-mono uppercase tracking-wider font-bold">Get Started</span>
+      <span class="text-[10px] sm:text-xs text-gradient-animated font-mono uppercase tracking-wider font-bold">Get Started</span>
     </div>
 
-    <p class="text-text-secondary text-sm leading-relaxed mb-5">
+    <p class="text-text-secondary text-xs sm:text-sm leading-relaxed mb-3 sm:mb-5">
       Interested in bringing TerraChain to your jurisdiction?
     </p>
 
     <a
       href="mailto:hello@terrachain.xyz"
-      class="btn btn-primary inline-flex items-center gap-2 no-underline group/btn card-shine ripple-effect"
+      class="btn btn-primary inline-flex items-center gap-2 no-underline group/btn card-shine ripple-effect text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-5"
     >
       <span>Request a Demo</span>
-      <ArrowRight class="w-4 h-4 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-125" />
+      <ArrowRight class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-125" />
     </a>
 
-    <p class="mt-3 text-xs text-text-muted">
+    <p class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">
       Or email us at <a href="mailto:hello@terrachain.xyz" class="text-accent hover:text-gold transition-colors">hello@terrachain.xyz</a>
     </p>
   </div>
 
-  <div class="flex justify-end -mr-2 -mb-2 relative z-10 mascot-wrapper">
+  <div class="flex justify-end -mr-2 -mb-2 relative z-10 mascot-wrapper scale-75 sm:scale-100">
     <Mascot size="sm" pose="waving" />
   </div>
 </Card>

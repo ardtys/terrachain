@@ -220,10 +220,22 @@ a:hover {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-card);
+  padding: 16px;
   transition: all var(--duration-normal) var(--ease-out);
   overflow: hidden;
   position: relative;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--spacing-card);
+  }
 }
 
 /* Card inner glow on hover */
@@ -419,6 +431,7 @@ a:hover {
 .stagger-13 { animation-delay: 650ms; }
 .stagger-14 { animation-delay: 700ms; }
 .stagger-15 { animation-delay: 750ms; }
+.stagger-16 { animation-delay: 800ms; }
 
 /* Floating animation */
 @keyframes float {

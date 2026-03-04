@@ -18,22 +18,22 @@ const techStack = [
 ];
 ---
 
-<Card colSpan={2} class="min-h-[280px] tech-stack-card" stagger={stagger} glow>
+<Card colSpan={2} class="min-h-[240px] sm:min-h-[260px] md:min-h-[280px] tech-stack-card" stagger={stagger} glow>
   <!-- Background gradient orbs -->
-  <div class="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-accent/10 to-gold/10 rounded-full blur-3xl"></div>
-  <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-green/10 to-accent/10 rounded-full blur-2xl"></div>
+  <div class="absolute -top-20 -right-20 w-28 sm:w-40 h-28 sm:h-40 bg-gradient-to-br from-accent/10 to-gold/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-10 -left-10 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-tr from-green/10 to-accent/10 rounded-full blur-2xl"></div>
 
-  <h3 class="heading-mono text-lg text-text-primary mb-6 relative z-10">
+  <h3 class="heading-mono text-base sm:text-lg text-text-primary mb-4 sm:mb-6 relative z-10">
     <span class="text-gradient-animated">Technology Stack</span>
   </h3>
 
-  <div class="space-y-4 relative z-10">
+  <div class="space-y-2.5 sm:space-y-3 md:space-y-4 relative z-10">
     {techStack.map((tech, index) => (
-      <div class="group flex items-center gap-3 tech-row" style={`--delay: ${index * 100}ms; --bar-color: ${tech.color}; --glow-color: ${tech.glowColor}`}>
-        <span class="w-24 text-xs font-mono truncate transition-all duration-300 group-hover:font-bold" style={`color: ${tech.color}`}>
+      <div class="group flex items-center gap-2 sm:gap-3 tech-row" style={`--delay: ${index * 100}ms; --bar-color: ${tech.color}; --glow-color: ${tech.glowColor}`}>
+        <span class="w-16 sm:w-20 md:w-24 text-[10px] sm:text-xs font-mono truncate transition-all duration-300 group-hover:font-bold" style={`color: ${tech.color}`}>
           {tech.name}
         </span>
-        <div class="flex-1 h-6 bg-surface-hover rounded-full overflow-hidden relative">
+        <div class="flex-1 h-4 sm:h-5 md:h-6 bg-surface-hover rounded-full overflow-hidden relative">
           <!-- Animated progress bar -->
           <div
             class="h-full rounded-full progress-bar relative overflow-hidden"
@@ -41,13 +41,13 @@ const techStack = [
           >
             <!-- Shimmer effect -->
             <div class="shimmer-effect"></div>
-            <!-- Pulse dot at end -->
-            <div class="absolute right-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white/50 animate-pulse"></div>
+            <!-- Pulse dot at end - hidden on mobile -->
+            <div class="absolute right-1 top-1/2 -translate-y-1/2 w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-white/50 animate-pulse hidden sm:block"></div>
           </div>
           <!-- Glow effect on hover -->
           <div class="bar-glow"></div>
         </div>
-        <span class="w-24 text-xs text-text-muted font-mono text-right group-hover:text-text-secondary transition-colors">
+        <span class="w-16 sm:w-20 md:w-24 text-[10px] sm:text-xs text-text-muted font-mono text-right group-hover:text-text-secondary transition-colors hidden sm:block">
           {tech.category}
         </span>
       </div>
@@ -55,7 +55,7 @@ const techStack = [
   </div>
 
   <!-- Bottom decoration with gradient -->
-  <div class="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-accent/20 via-gold/40 to-accent/20"></div>
+  <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 h-px bg-gradient-to-r from-accent/20 via-gold/40 to-accent/20"></div>
 </Card>
 
 <style>

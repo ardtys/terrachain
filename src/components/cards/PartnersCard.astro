@@ -15,18 +15,18 @@ const partners = [
 ];
 ---
 
-<Card colSpan={1} class="min-h-[200px]" stagger={stagger}>
-  <SectionLabel class="mb-4">Institutional Partners</SectionLabel>
+<Card colSpan={1} class="min-h-[160px] sm:min-h-[180px] md:min-h-[200px]" stagger={stagger}>
+  <SectionLabel class="mb-3 sm:mb-4">Institutional Partners</SectionLabel>
 
-  <div class="space-y-4">
+  <div class="space-y-3 sm:space-y-4">
     {partners.map((partner) => (
-      <div class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary group-hover:border-border-hover transition-colors">
-          <span class="text-xs font-mono font-semibold">{partner.name.charAt(0)}</span>
+      <div class="flex items-center gap-2 sm:gap-3 group">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-surface-hover border border-border flex items-center justify-center text-text-secondary group-hover:border-border-hover transition-colors flex-shrink-0">
+          <span class="text-[10px] sm:text-xs font-mono font-semibold">{partner.name.charAt(0)}</span>
         </div>
-        <div>
-          <p class="text-sm text-text-primary font-mono">{partner.name}</p>
-          <p class="text-xs text-text-muted">{partner.subtitle}</p>
+        <div class="min-w-0">
+          <p class="text-xs sm:text-sm text-text-primary font-mono truncate">{partner.name}</p>
+          <p class="text-[10px] sm:text-xs text-text-muted">{partner.subtitle}</p>
         </div>
       </div>
     ))}

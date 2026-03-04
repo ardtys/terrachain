@@ -9,14 +9,14 @@ interface Props {
 const { stagger = 1 } = Astro.props;
 ---
 
-<Card colSpan={2} class="min-h-[360px] flex flex-col overflow-hidden hero-card" stagger={stagger} glow accent>
+<Card colSpan={2} class="min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex flex-col overflow-hidden hero-card" stagger={stagger} glow accent>
   <!-- Animated gradient orbs background - Earth tones -->
-  <div class="absolute -top-20 -right-20 w-72 h-72 bg-gradient-to-br from-accent/15 to-gold/10 rounded-full blur-3xl animate-float-slow"></div>
-  <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-gradient-to-tr from-green/10 to-accent/10 rounded-full blur-3xl animate-float-delayed"></div>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-radial from-gold/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+  <div class="absolute -top-20 -right-20 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-br from-accent/15 to-gold/10 rounded-full blur-3xl animate-float-slow"></div>
+  <div class="absolute -bottom-10 -left-10 w-40 sm:w-56 h-40 sm:h-56 bg-gradient-to-tr from-green/10 to-accent/10 rounded-full blur-3xl animate-float-delayed"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-radial from-gold/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
 
-  <!-- Floating particles -->
-  <div class="particles">
+  <!-- Floating particles - hidden on mobile for performance -->
+  <div class="particles hidden sm:block">
     <div class="particle particle-1"></div>
     <div class="particle particle-2"></div>
     <div class="particle particle-3"></div>
@@ -24,42 +24,42 @@ const { stagger = 1 } = Astro.props;
     <div class="particle particle-5"></div>
   </div>
 
-  <div class="flex-1 flex flex-col md:flex-row gap-8 items-center relative z-10">
-    <div class="flex-shrink-0 animate-float mascot-glow">
+  <div class="flex-1 flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-center relative z-10">
+    <div class="flex-shrink-0 animate-float mascot-glow scale-75 sm:scale-90 md:scale-100">
       <Mascot size="xl" pose="default" />
     </div>
 
-    <div class="flex-1 space-y-4">
-      <h1 class="text-2xl md:text-3xl font-serif leading-tight">
+    <div class="flex-1 space-y-3 sm:space-y-4 text-center md:text-left">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-serif leading-tight">
         <span class="block text-text-primary">Immutable Land Registry</span>
-        <span class="block text-gradient-animated text-3xl md:text-4xl">Built on Blockchain</span>
+        <span class="block text-gradient-animated text-2xl sm:text-3xl md:text-4xl">Built on Blockchain</span>
       </h1>
 
-      <p class="text-text-secondary leading-relaxed">
+      <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
         TerraChain replaces fragile paper records with cryptographic proof that no one can alter, lose, or corrupt.
       </p>
 
-      <p class="text-text-muted leading-relaxed">
+      <p class="text-text-muted text-sm sm:text-base leading-relaxed">
         We're solving a <span class="text-gold font-bold">$9.3 trillion</span> problem affecting
         over <span class="text-accent font-bold">1 billion</span> people.
       </p>
 
-      <div class="flex flex-wrap gap-3 pt-2">
-        <a href="/whitepaper" class="btn btn-primary group card-shine">
+      <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 pt-2 justify-center md:justify-start">
+        <a href="/whitepaper" class="btn btn-primary group card-shine text-sm sm:text-base justify-center">
           Read Whitepaper
           <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-        <a href="/technology" class="btn btn-secondary hover-glow-terra">
+        <a href="/technology" class="btn btn-secondary hover-glow-terra text-sm sm:text-base justify-center">
           Explore Architecture
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Animated corner decoration -->
-  <div class="absolute bottom-0 right-0 w-40 h-40 overflow-hidden">
+  <!-- Animated corner decoration - hidden on mobile -->
+  <div class="absolute bottom-0 right-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 overflow-hidden hidden sm:block">
     <svg viewBox="0 0 100 100" class="w-full h-full">
       <defs>
         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -76,7 +76,7 @@ const { stagger = 1 } = Astro.props;
   </div>
 
   <!-- Corner accent lines -->
-  <div class="absolute top-4 left-4 w-12 h-12">
+  <div class="absolute top-3 left-3 sm:top-4 sm:left-4 w-8 sm:w-12 h-8 sm:h-12">
     <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent to-transparent"></div>
     <div class="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-accent to-transparent"></div>
   </div>
