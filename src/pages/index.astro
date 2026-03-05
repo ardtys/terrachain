@@ -13,6 +13,7 @@ import PartnersCard from '@components/cards/PartnersCard.astro';
 import ArchitectureCard from '@components/cards/ArchitectureCard.astro';
 import CTACard from '@components/cards/CTACard.astro';
 import RoadmapCard from '@components/cards/RoadmapCard.astro';
+import ContractAddressCard from '@components/cards/ContractAddressCard.astro';
 ---
 
 <BaseLayout title="TerraChain — Immutable Land Title Registry on Blockchain">
@@ -43,32 +44,35 @@ import RoadmapCard from '@components/cards/RoadmapCard.astro';
         stagger={5}
       />
 
+      <!-- Contract Address -->
+      <ContractAddressCard stagger={6} />
+
       <!-- Row 3: Article + Heatmap -->
       <ArticleCard
         title="Rural Land Registration in Southeast Asia"
         subtitle="How TerraChain enables mobile-first land survey for farming communities"
         href="/case-studies/southeast-asia"
-        stagger={6}
+        stagger={7}
       />
-      <HeatmapCard stagger={7} />
+      <HeatmapCard stagger={8} />
 
       <!-- Row 4: Topography + How It Works -->
-      <TopographyCard stagger={8} />
-      <HowItWorksCard stagger={9} />
+      <TopographyCard stagger={9} />
+      <HowItWorksCard stagger={10} />
 
       <!-- Row 5: Tech Stack + Blockchain Logo -->
-      <TechStackCard stagger={10} />
-      <LogoCard stagger={11} />
+      <TechStackCard stagger={11} />
+      <LogoCard stagger={12} />
 
       <!-- Row 6: Architecture + Partners -->
-      <ArchitectureCard stagger={12} />
-      <PartnersCard stagger={13} />
+      <ArchitectureCard stagger={13} />
+      <PartnersCard stagger={14} />
 
       <!-- Row 7: Roadmap (full width) -->
-      <RoadmapCard stagger={14} />
+      <RoadmapCard stagger={15} />
 
       <!-- Row 8: CTA -->
-      <CTACard stagger={15} />
+      <CTACard stagger={16} />
     </BentoGrid>
   </div>
 </BaseLayout>
