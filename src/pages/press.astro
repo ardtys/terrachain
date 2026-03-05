@@ -1,0 +1,326 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Newspaper, Download, Image, FileText, Mail, ExternalLink, Calendar, Quote, ArrowRight, Camera, Palette, BookOpen } from 'lucide-astro';
+
+const pressReleases = [
+  {
+    date: 'Jan 15, 2025',
+    title: 'TerraChain Reaches 50,000 Land Parcels Registered',
+    excerpt: 'Milestone achieved across five countries in Africa and Southeast Asia.',
+    link: '#'
+  },
+  {
+    date: 'Dec 10, 2024',
+    title: 'Series A: $15M to Expand Land Registry Platform',
+    excerpt: 'Funding led by Omidyar Network to scale operations to 12 new countries.',
+    link: '#'
+  },
+  {
+    date: 'Oct 5, 2024',
+    title: 'Partnership with Rwanda Land Management Authority',
+    excerpt: 'Government partnership to digitize rural land records nationwide.',
+    link: '#'
+  },
+  {
+    date: 'Aug 20, 2024',
+    title: 'UN-Habitat Innovation Award Winner',
+    excerpt: 'Recognized for blockchain innovation in land rights protection.',
+    link: '#'
+  },
+];
+
+const mediaFeatures = [
+  { outlet: 'TechCrunch', title: 'How Blockchain is Solving the Global Land Crisis', date: 'Jan 2025' },
+  { outlet: 'CoinDesk', title: 'TerraChain: The Quiet Revolution in Property Rights', date: 'Dec 2024' },
+  { outlet: 'The Guardian', title: 'Can Blockchain Save Billions in Dead Capital?', date: 'Nov 2024' },
+  { outlet: 'MIT Technology Review', title: 'The Tech Bringing Land Rights to the Unbanked', date: 'Oct 2024' },
+];
+---
+
+<BaseLayout
+  title="Press Kit — TerraChain"
+  description="TerraChain press resources: brand assets, press releases, media coverage, and contact information for journalists."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[280px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-gold/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Newspaper class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Press Kit</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Media <span class="text-gradient-gold">Resources</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Everything you need to cover TerraChain. Download brand assets, read press releases, and connect with our communications team.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <a href="#brand-assets" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <Download class="w-4 h-4" />
+              <span>Download Brand Kit</span>
+            </a>
+            <a href="mailto:press@terrachain.xyz" class="btn btn-secondary inline-flex items-center gap-2 no-underline">
+              <Mail class="w-4 h-4" />
+              <span>Media Inquiries</span>
+            </a>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="PRESS" stagger={2} />
+
+      <!-- Quick Facts -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={3}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Quick Facts</h3>
+
+        <div class="space-y-4">
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Founded</span>
+            <span class="text-sm text-text-primary font-mono">2022</span>
+          </div>
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Headquarters</span>
+            <span class="text-sm text-text-primary font-mono">Singapore</span>
+          </div>
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Total Funding</span>
+            <span class="text-sm text-text-primary font-mono">$18M</span>
+          </div>
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Parcels Registered</span>
+            <span class="text-sm text-text-primary font-mono">50,000+</span>
+          </div>
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Countries</span>
+            <span class="text-sm text-text-primary font-mono">5 Active, 7 Planned</span>
+          </div>
+          <div class="fact-item">
+            <span class="text-xs text-text-muted block mb-1">Team Size</span>
+            <span class="text-sm text-text-primary font-mono">25+ people</span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Press Releases -->
+      <Card colSpan={2} class="min-h-[350px]" stagger={4}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <FileText class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Press Releases</h3>
+            <p class="text-xs text-text-muted">Latest announcements</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          {pressReleases.map((release, i) => (
+            <a href={release.link} class="press-item flex items-start gap-4 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style={`--delay: ${i * 0.1}s`}>
+              <div class="flex-shrink-0 text-center">
+                <Calendar class="w-4 h-4 text-text-muted mx-auto mb-1" />
+                <span class="text-xs text-text-muted font-mono">{release.date}</span>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-text-primary group-hover:text-accent transition-colors mb-1">{release.title}</h4>
+                <p class="text-xs text-text-muted">{release.excerpt}</p>
+              </div>
+              <ArrowRight class="w-4 h-4 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+            </a>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Brand Assets -->
+      <Card colSpan={2} class="min-h-[300px]" stagger={5} id="brand-assets">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Palette class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Brand Assets</h3>
+            <p class="text-xs text-text-muted">Logos, colors, and guidelines</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="asset-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <div class="w-24 h-24 mx-auto mb-3 bg-surface rounded-lg border border-border flex items-center justify-center">
+              <Image class="w-10 h-10 text-accent" />
+            </div>
+            <p class="text-sm text-text-primary font-mono mb-1">Logo Package</p>
+            <p class="text-xs text-text-muted mb-3">SVG, PNG, dark & light versions</p>
+            <a href="/brand/terrachain-logos.zip" class="text-xs text-accent hover:underline inline-flex items-center gap-1">
+              <Download class="w-3 h-3" />
+              Download ZIP
+            </a>
+          </div>
+          <div class="asset-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <div class="w-24 h-24 mx-auto mb-3 bg-surface rounded-lg border border-border flex items-center justify-center">
+              <Camera class="w-10 h-10 text-gold" />
+            </div>
+            <p class="text-sm text-text-primary font-mono mb-1">Product Screenshots</p>
+            <p class="text-xs text-text-muted mb-3">Mobile app & dashboard images</p>
+            <a href="/brand/terrachain-screenshots.zip" class="text-xs text-accent hover:underline inline-flex items-center gap-1">
+              <Download class="w-3 h-3" />
+              Download ZIP
+            </a>
+          </div>
+        </div>
+
+        <div class="p-4 bg-surface rounded-lg border border-border">
+          <h4 class="text-sm text-text-primary font-mono mb-3">Brand Colors</h4>
+          <div class="flex gap-3">
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-lg bg-accent mb-2"></div>
+              <span class="text-xs text-text-muted font-mono">#c4b89a</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-lg bg-gold mb-2"></div>
+              <span class="text-xs text-text-muted font-mono">#b8a66e</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-lg bg-green mb-2"></div>
+              <span class="text-xs text-text-muted font-mono">#7c9a6e</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-lg bg-copper mb-2"></div>
+              <span class="text-xs text-text-muted font-mono">#b87333</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-lg bg-[#0f0f0f] border border-border mb-2"></div>
+              <span class="text-xs text-text-muted font-mono">#0f0f0f</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Media Coverage -->
+      <Card colSpan={1} class="min-h-[300px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <BookOpen class="w-5 h-5 text-green" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Media Coverage</h3>
+        </div>
+
+        <div class="space-y-3">
+          {mediaFeatures.map((feature, i) => (
+            <div class="media-item p-3 bg-surface-hover rounded-lg border border-border" style={`--delay: ${i * 0.1}s`}>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-mono text-accent">{feature.outlet}</span>
+                <span class="text-xs text-text-muted">{feature.date}</span>
+              </div>
+              <p class="text-sm text-text-secondary">{feature.title}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Boilerplate -->
+      <Card colSpan={2} class="min-h-[200px]" stagger={7}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-copper/20 to-transparent border border-copper/30 flex items-center justify-center">
+            <Quote class="w-5 h-5 text-copper" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">About TerraChain</h3>
+            <p class="text-xs text-text-muted">Boilerplate for press use</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          TerraChain is a blockchain-based land title registry securing property rights for over 1 billion people worldwide who lack formal documentation. Founded in 2022, the platform combines Blockchain technology with geospatial systems to create immutable, tamper-proof land records accessible from any mobile device. TerraChain has registered 50,000+ parcels across five countries and partners with governments and NGOs to bring transparent land administration to underserved communities.
+        </p>
+
+        <button class="text-xs text-accent hover:underline inline-flex items-center gap-1" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">
+          Copy to clipboard
+        </button>
+      </Card>
+
+      <!-- Contact CTA -->
+      <Card colSpan={1} class="min-h-[200px] flex flex-col justify-center items-center text-center group" stagger={8} glow accent>
+        <Mail class="w-10 h-10 text-accent mb-4" />
+        <h3 class="text-lg text-text-primary mb-2">Media Contact</h3>
+        <p class="text-xs text-text-secondary mb-4">
+          For press inquiries, interviews, or additional information
+        </p>
+        <a href="mailto:press@terrachain.xyz" class="btn btn-primary inline-flex items-center gap-2 no-underline text-sm">
+          <span>press@terrachain.xyz</span>
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .bg-copper {
+    background-color: var(--color-copper);
+  }
+
+  .press-item {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .media-item {
+    animation: slideInLeft 0.3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .press-item,
+    .media-item {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

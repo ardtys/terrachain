@@ -325,32 +325,399 @@ import { FileText, Download, BookOpen, Layers, Shield, Globe, Cpu, Users, Trendi
         </div>
       </Card>
 
-      <!-- Additional Sections Preview -->
-      <Card colSpan={2} class="min-h-[200px]" stagger={10}>
-        <h3 class="heading-mono text-sm text-text-primary mb-4">Additional Sections</h3>
+      <!-- Consensus Mechanism -->
+      <Card colSpan={2} class="min-h-[300px]" stagger={10} id="consensus">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-copper/20 to-transparent border border-copper/30 flex items-center justify-center">
+            <Cpu class="w-5 h-5 text-copper" />
+          </div>
+          <div>
+            <span class="text-xs text-copper font-mono">04</span>
+            <h2 class="text-xl text-text-primary">Consensus Mechanism</h2>
+          </div>
+        </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          {[
-            { num: '04', title: 'Consensus Mechanism', desc: 'Proof of Location validation' },
-            { num: '05', title: 'Smart Contracts', desc: 'Anchor program specifications' },
-            { num: '06', title: 'Data Model', desc: 'Parcel, owner, and transfer schemas' },
-            { num: '07', title: 'Geospatial Engine', desc: 'PostGIS integration details' },
-            { num: '08', title: 'Security Model', desc: 'Threat analysis & mitigations' },
-            { num: '09', title: 'Governance', desc: 'Multi-sig & DAO structure' },
-          ].map((section, i) => (
-            <a href={`#${section.title.toLowerCase().replace(' ', '-')}`} class="section-preview flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style={`--delay: ${i * 0.05}s`}>
-              <span class="text-xs font-mono text-accent/50 group-hover:text-accent transition-colors">{section.num}</span>
-              <div>
-                <p class="text-sm text-text-primary">{section.title}</p>
-                <p class="text-xs text-text-muted">{section.desc}</p>
+        <div class="prose prose-invert max-w-none">
+          <p class="text-text-secondary leading-relaxed mb-4">
+            TerraChain introduces a novel <span class="text-text-primary font-mono">Proof of Location (PoL)</span> consensus mechanism specifically designed for geospatial land claims. Unlike traditional proof systems, PoL validates the physical existence and boundaries of land parcels through a decentralized network of validators.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <div class="p-4 bg-surface-hover rounded-lg border border-border">
+              <h4 class="text-sm text-accent font-mono mb-2">Spatial Validators</h4>
+              <p class="text-xs text-text-muted">Government-licensed surveyors and certified community validators verify physical boundaries using GPS-enabled devices with cryptographic attestation.</p>
+            </div>
+            <div class="p-4 bg-surface-hover rounded-lg border border-border">
+              <h4 class="text-sm text-gold font-mono mb-2">Satellite Verification</h4>
+              <p class="text-xs text-text-muted">Integration with satellite imagery providers for independent boundary verification, reducing reliance on ground-based validators alone.</p>
+            </div>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed">
+            The consensus requires a minimum of 3 independent validators to confirm a parcel registration, with at least one being a government-authorized surveyor. Disputed claims trigger an escalation to the governance council for resolution.
+          </p>
+        </div>
+      </Card>
+
+      <!-- Smart Contracts -->
+      <Card colSpan={1} class="min-h-[300px]" stagger={11} id="contracts">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <FileText class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <span class="text-xs text-accent font-mono">05</span>
+            <h2 class="text-xl text-text-primary">Smart Contracts</h2>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <code class="text-xs text-accent">LandRegistry.sol</code>
+            <p class="text-xs text-text-muted mt-1">Core registry for parcel creation, transfer, and ownership verification</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <code class="text-xs text-gold">TitleEscrow.sol</code>
+            <p class="text-xs text-text-muted mt-1">Atomic swap contract for secure title transfers with built-in dispute period</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <code class="text-xs text-green">GovernanceMultiSig.sol</code>
+            <p class="text-xs text-text-muted mt-1">Multi-signature contract for administrative actions and dispute resolution</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <code class="text-xs text-copper">CollateralManager.sol</code>
+            <p class="text-xs text-text-muted mt-1">Enables land-backed loans with automated lien recording</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Data Model -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={12} id="data-model">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Layers class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <span class="text-xs text-gold font-mono">06</span>
+            <h2 class="text-xl text-text-primary">Data Model</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-3">Parcel Schema</h4>
+            <pre class="text-xs text-text-muted font-mono overflow-x-auto"><code>{`{
+  parcel_id: bytes32
+  boundaries: GeoJSON
+  area_sqm: uint256
+  land_use: enum
+  merkle_root: bytes32
+  created_at: uint256
+}`}</code></pre>
+          </div>
+
+          <div class="p-4 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-3">Owner Schema</h4>
+            <pre class="text-xs text-text-muted font-mono overflow-x-auto"><code>{`{
+  owner_id: address
+  kyc_hash: bytes32
+  ownership_type: enum
+  share_percent: uint8
+  acquired_date: uint256
+  verified: bool
+}`}</code></pre>
+          </div>
+
+          <div class="p-4 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-3">Transfer Schema</h4>
+            <pre class="text-xs text-text-muted font-mono overflow-x-auto"><code>{`{
+  transfer_id: bytes32
+  from: address
+  to: address
+  parcel_id: bytes32
+  price: uint256
+  status: enum
+}`}</code></pre>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Geospatial Engine -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={13} id="geospatial">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Globe class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <span class="text-xs text-green font-mono">07</span>
+            <h2 class="text-xl text-text-primary">Geospatial Engine</h2>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-text-secondary text-sm">
+          <p>Built on PostGIS with custom extensions for:</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+              <span>Sub-meter boundary precision</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+              <span>Overlap detection in O(log n)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+              <span>3D terrain modeling</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+              <span>Satellite imagery integration</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Check class="w-4 h-4 text-green mt-0.5 flex-shrink-0" />
+              <span>GeoJSON/KML import/export</span>
+            </li>
+          </ul>
+        </div>
+      </Card>
+
+      <!-- Security Model -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={14} id="security">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Shield class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <span class="text-xs text-accent font-mono">08</span>
+            <h2 class="text-xl text-text-primary">Security Model</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="text-sm text-text-primary font-mono mb-3">Threat Vectors</h4>
+            <div class="space-y-2">
+              {[
+                { threat: 'Fraudulent Claims', mitigation: 'Multi-validator consensus + KYC' },
+                { threat: 'Boundary Manipulation', mitigation: 'Merkle proof verification' },
+                { threat: 'Key Compromise', mitigation: 'Multi-sig + time-locked recovery' },
+                { threat: 'Sybil Attacks', mitigation: 'Staked validator requirements' },
+              ].map((item) => (
+                <div class="p-2 bg-surface-hover rounded text-xs">
+                  <span class="text-text-primary">{item.threat}</span>
+                  <span class="text-text-muted"> → {item.mitigation}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm text-text-primary font-mono mb-3">Audit Status</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between p-2 bg-surface-hover rounded">
+                <span class="text-xs text-text-secondary">Trail of Bits</span>
+                <span class="text-xs text-green">Completed</span>
               </div>
-            </a>
-          ))}
+              <div class="flex items-center justify-between p-2 bg-surface-hover rounded">
+                <span class="text-xs text-text-secondary">OpenZeppelin</span>
+                <span class="text-xs text-green">Completed</span>
+              </div>
+              <div class="flex items-center justify-between p-2 bg-surface-hover rounded">
+                <span class="text-xs text-text-secondary">Formal Verification</span>
+                <span class="text-xs text-gold">In Progress</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Governance -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={15} id="governance">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Users class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <span class="text-xs text-gold font-mono">09</span>
+            <h2 class="text-xl text-text-primary">Governance</h2>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-text-secondary text-sm">Three-tier governance structure:</p>
+
+          <div class="space-y-2">
+            <div class="p-3 bg-surface-hover rounded-lg border-l-2 border-accent">
+              <div class="text-sm text-text-primary font-mono">Protocol Council</div>
+              <div class="text-xs text-text-muted">Core protocol upgrades and emergency actions</div>
+            </div>
+            <div class="p-3 bg-surface-hover rounded-lg border-l-2 border-gold">
+              <div class="text-sm text-text-primary font-mono">Regional DAOs</div>
+              <div class="text-xs text-text-muted">Local validator selection and dispute resolution</div>
+            </div>
+            <div class="p-3 bg-surface-hover rounded-lg border-l-2 border-green">
+              <div class="text-sm text-text-primary font-mono">Community Validators</div>
+              <div class="text-xs text-text-muted">Ground-level verification and attestation</div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Tokenomics -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={16} id="tokenomics">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-copper/20 to-transparent border border-copper/30 flex items-center justify-center">
+            <TrendingUp class="w-5 h-5 text-copper" />
+          </div>
+          <div>
+            <span class="text-xs text-copper font-mono">10</span>
+            <h2 class="text-xl text-text-primary">Tokenomics</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-sm text-text-primary font-mono mb-3">TERRA Token Utility</h4>
+            <ul class="space-y-2 text-xs text-text-secondary">
+              <li class="flex items-start gap-2">
+                <Check class="w-3 h-3 text-green mt-0.5 flex-shrink-0" />
+                <span>Registration fee payment (discounted vs. fiat)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <Check class="w-3 h-3 text-green mt-0.5 flex-shrink-0" />
+                <span>Validator staking requirements</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <Check class="w-3 h-3 text-green mt-0.5 flex-shrink-0" />
+                <span>Governance voting weight</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <Check class="w-3 h-3 text-green mt-0.5 flex-shrink-0" />
+                <span>Dispute resolution bond</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm text-text-primary font-mono mb-3">Distribution</h4>
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs">
+                <span class="text-text-secondary">Community & Grants</span>
+                <span class="text-accent font-mono">40%</span>
+              </div>
+              <div class="h-1.5 bg-surface rounded-full overflow-hidden">
+                <div class="h-full bg-accent rounded-full w-[40%]"></div>
+              </div>
+
+              <div class="flex justify-between text-xs">
+                <span class="text-text-secondary">Protocol Development</span>
+                <span class="text-gold font-mono">25%</span>
+              </div>
+              <div class="h-1.5 bg-surface rounded-full overflow-hidden">
+                <div class="h-full bg-gold rounded-full w-[25%]"></div>
+              </div>
+
+              <div class="flex justify-between text-xs">
+                <span class="text-text-secondary">Team & Advisors</span>
+                <span class="text-green font-mono">20%</span>
+              </div>
+              <div class="h-1.5 bg-surface rounded-full overflow-hidden">
+                <div class="h-full bg-green rounded-full w-[20%]"></div>
+              </div>
+
+              <div class="flex justify-between text-xs">
+                <span class="text-text-secondary">Strategic Reserve</span>
+                <span class="text-copper font-mono">15%</span>
+              </div>
+              <div class="h-1.5 bg-surface rounded-full overflow-hidden">
+                <div class="h-full bg-copper rounded-full w-[15%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Roadmap -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={17} id="roadmap">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <TrendingUp class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <span class="text-xs text-green font-mono">11</span>
+            <h2 class="text-xl text-text-primary">Roadmap</h2>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-green"></div>
+            <div>
+              <div class="text-sm text-text-primary">Q1 2024 - Launch</div>
+              <div class="text-xs text-text-muted">Rwanda & Philippines pilots</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-green"></div>
+            <div>
+              <div class="text-sm text-text-primary">Q2 2024 - Scale</div>
+              <div class="text-xs text-text-muted">Kenya, Indonesia, Ghana</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-gold"></div>
+            <div>
+              <div class="text-sm text-text-primary">Q4 2024 - Expansion</div>
+              <div class="text-xs text-text-muted">Colombia, India pilots</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-accent/50"></div>
+            <div>
+              <div class="text-sm text-text-primary">2025 - Growth</div>
+              <div class="text-xs text-text-muted">10 countries, 1M parcels</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-accent/30"></div>
+            <div>
+              <div class="text-sm text-text-primary">2026 - Maturity</div>
+              <div class="text-xs text-text-muted">Full decentralization</div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- References -->
+      <Card colSpan={2} class="min-h-[200px]" stagger={18} id="references">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <BookOpen class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <span class="text-xs text-accent font-mono">12</span>
+            <h2 class="text-xl text-text-primary">References</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 text-xs text-text-secondary">
+          <div class="space-y-2">
+            <p>[1] De Soto, H. (2000). The Mystery of Capital</p>
+            <p>[2] World Bank (2023). Land Governance Assessment Framework</p>
+            <p>[3] Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System</p>
+            <p>[4] Buterin, V. (2014). Ethereum: A Next-Generation Smart Contract Platform</p>
+          </div>
+          <div class="space-y-2">
+            <p>[5] FAO (2022). Voluntary Guidelines on the Governance of Tenure</p>
+            <p>[6] Lemieux, V. (2017). Blockchain and Distributed Ledgers in Archives</p>
+            <p>[7] Graglia, J.M. & Mellon, C. (2018). Blockchain and Property in 2018</p>
+            <p>[8] Benbunan-Fich, R. (2020). The Rise of Blockchain Land Registries</p>
+          </div>
         </div>
       </Card>
 
       <!-- Download CTA -->
-      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={11} glow accent>
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={19} glow accent>
         <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <div class="relative z-10 flex items-center justify-between">
@@ -382,7 +749,7 @@ import { FileText, Download, BookOpen, Layers, Shield, Globe, Cpu, Users, Trendi
       </Card>
 
       <!-- Translations -->
-      <Card colSpan={1} class="min-h-[180px]" stagger={12}>
+      <Card colSpan={1} class="min-h-[180px]" stagger={20}>
         <h3 class="heading-mono text-sm text-text-primary mb-4">Translations</h3>
 
         <div class="space-y-2">

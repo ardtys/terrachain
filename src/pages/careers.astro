@@ -1,0 +1,335 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Briefcase, MapPin, Clock, Users, Heart, Zap, Globe, Coffee, Laptop, TreePine, ArrowRight, Check, Building, Rocket } from 'lucide-astro';
+
+const openPositions = [
+  {
+    title: 'Senior Rust Engineer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Build and maintain our Anchor smart contracts on Blockchain.',
+    color: 'accent'
+  },
+  {
+    title: 'Full Stack Developer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Work on our React Native mobile app and SvelteKit web portal.',
+    color: 'gold'
+  },
+  {
+    title: 'DevOps Engineer',
+    department: 'Infrastructure',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Manage our cloud infrastructure, CI/CD pipelines, and monitoring.',
+    color: 'green'
+  },
+  {
+    title: 'Product Designer',
+    department: 'Design',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Design intuitive interfaces for users in emerging markets.',
+    color: 'copper'
+  },
+  {
+    title: 'GIS Specialist',
+    department: 'Data',
+    location: 'Remote / Nairobi',
+    type: 'Full-time',
+    description: 'Work with PostGIS and geospatial data for land parcel validation.',
+    color: 'accent'
+  },
+  {
+    title: 'Country Manager - Philippines',
+    department: 'Operations',
+    location: 'Manila',
+    type: 'Full-time',
+    description: 'Lead our expansion and government partnerships in the Philippines.',
+    color: 'gold'
+  }
+];
+
+const benefits = [
+  { icon: Globe, title: 'Remote First', desc: 'Work from anywhere in the world' },
+  { icon: Laptop, title: 'Equipment Budget', desc: '$3,000 for your home office setup' },
+  { icon: TreePine, title: 'Unlimited PTO', desc: 'Take the time you need to recharge' },
+  { icon: Heart, title: 'Health Insurance', desc: 'Comprehensive coverage for you & family' },
+  { icon: Zap, title: 'Token Allocation', desc: 'Equity in our future token launch' },
+  { icon: Coffee, title: 'Learning Budget', desc: '$1,500/year for courses & conferences' },
+];
+---
+
+<BaseLayout
+  title="Careers — TerraChain"
+  description="Join TerraChain and help secure land rights for 1 billion people. View open positions in engineering, design, and operations."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[300px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Briefcase class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Careers</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Build Technology<br/>
+            That <span class="text-gradient-accent">Matters</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Join a team of passionate engineers, designers, and operators working to secure land rights for over 1 billion people worldwide.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-accent">25+</span>
+              <span class="text-xs text-text-muted block">Team Members</span>
+            </div>
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-gold">12</span>
+              <span class="text-xs text-text-muted block">Countries</span>
+            </div>
+            <div class="stat-pill px-4 py-2 bg-surface-hover border border-border rounded-lg">
+              <span class="text-2xl font-mono text-green">6</span>
+              <span class="text-xs text-text-muted block">Open Roles</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="JOIN US" stagger={2} />
+
+      <!-- Why Join Us -->
+      <Card colSpan={3} class="min-h-[220px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Rocket class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Why Join TerraChain?</h2>
+            <p class="text-xs text-text-muted">More than just a job</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="why-card">
+            <h3 class="text-sm text-text-primary font-mono mb-2">Meaningful Impact</h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Your code directly helps families secure their homes and land. Every feature you build has real-world impact on millions of lives.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3 class="text-sm text-text-primary font-mono mb-2">Cutting-Edge Tech</h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Work with Blockchain, Rust, PostGIS, and distributed systems. Push the boundaries of what's possible with blockchain technology.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3 class="text-sm text-text-primary font-mono mb-2">Global Team</h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Collaborate with talented people across 12 countries. We embrace async communication and respect work-life balance.
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Benefits -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={4}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Heart class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Benefits & Perks</h3>
+            <p class="text-xs text-text-muted">We take care of our team</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {benefits.map((benefit, i) => (
+            <div class="benefit-card flex items-start gap-3 p-3 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all" style={`--delay: ${i * 0.1}s`}>
+              <benefit.icon class="w-5 h-5 text-text-muted flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm text-text-primary font-mono">{benefit.title}</p>
+                <p class="text-xs text-text-muted">{benefit.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Culture -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Users class="w-5 h-5 text-green" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Our Culture</h3>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            'Transparency by default',
+            'Ship fast, learn faster',
+            'Impact over optics',
+            'Async-first communication',
+            'Continuous learning',
+            'Celebrate small wins',
+          ].map((value, i) => (
+            <div class="flex items-center gap-2 text-sm text-text-secondary" style={`--delay: ${i * 0.05}s`}>
+              <Check class="w-4 h-4 text-green flex-shrink-0" />
+              <span>{value}</span>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Open Positions -->
+      <Card colSpan={3} class="min-h-[400px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Briefcase class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Open Positions</h2>
+            <p class="text-xs text-text-muted">{openPositions.length} roles available</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {openPositions.map((job, i) => (
+            <a href={`mailto:careers@terrachain.xyz?subject=Application: ${job.title}`} class="job-card p-4 bg-surface-hover rounded-lg border border-border hover:border-border-hover transition-all no-underline group" style={`--delay: ${i * 0.1}s`}>
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h3 class="text-base text-text-primary font-mono group-hover:text-accent transition-colors">{job.title}</h3>
+                  <p class="text-xs text-text-muted">{job.department}</p>
+                </div>
+                <ArrowRight class="w-4 h-4 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
+              </div>
+              <p class="text-sm text-text-secondary mb-3">{job.description}</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 text-xs font-mono bg-surface rounded text-text-muted flex items-center gap-1">
+                  <MapPin class="w-3 h-3" />
+                  {job.location}
+                </span>
+                <span class="px-2 py-1 text-xs font-mono bg-surface rounded text-text-muted flex items-center gap-1">
+                  <Clock class="w-3 h-3" />
+                  {job.type}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Application Process -->
+      <Card colSpan={2} class="min-h-[250px]" stagger={7}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-copper/20 to-transparent border border-copper/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-copper" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Application Process</h3>
+            <p class="text-xs text-text-muted">What to expect</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          {[
+            { step: '01', title: 'Apply', desc: 'Send your resume and a brief intro' },
+            { step: '02', title: 'Screen', desc: '30-min call with our team' },
+            { step: '03', title: 'Technical', desc: 'Role-specific assessment' },
+            { step: '04', title: 'Final', desc: 'Meet the team & culture fit' },
+          ].map((item, i) => (
+            <div class="process-step text-center" style={`--delay: ${i * 0.15}s`}>
+              <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center mx-auto mb-3">
+                <span class="text-sm font-mono text-accent">{item.step}</span>
+              </div>
+              <h4 class="text-sm text-text-primary font-mono mb-1">{item.title}</h4>
+              <p class="text-xs text-text-muted">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- CTA -->
+      <Card colSpan={1} class="min-h-[250px] flex flex-col justify-center items-center text-center group" stagger={8} glow accent>
+        <Mascot size="md" pose="waving" />
+        <h3 class="text-lg text-text-primary mt-4 mb-2">Don't See Your Role?</h3>
+        <p class="text-xs text-text-secondary mb-4 max-w-[200px]">
+          We're always looking for talented people. Send us your resume!
+        </p>
+        <a href="mailto:careers@terrachain.xyz" class="btn btn-primary inline-flex items-center gap-2 no-underline text-sm">
+          <span>Get in Touch</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .benefit-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .job-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .process-step {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .benefit-card,
+    .job-card,
+    .process-step {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

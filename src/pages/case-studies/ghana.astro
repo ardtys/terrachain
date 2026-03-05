@@ -1,0 +1,326 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Smartphone, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, Home, Landmark, BarChart3 } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Ghana Case Study — TerraChain"
+  description="Formalizing property rights in Accra's rapidly growing urban areas through blockchain-based land titling."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
+        </a>
+      </Card>
+
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-gold/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Landmark class="w-5 h-5 text-gold" />
+            <span class="text-xs text-gold font-mono uppercase tracking-wider">Ghana • Greater Accra</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Urban Titling:<br/>
+            <span class="text-gradient-gold">Formalizing Rapid Growth</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Partnering with Ghana's Lands Commission, TerraChain is bringing formal property rights to Accra's peri-urban areas where rapid expansion has outpaced traditional land administration systems.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-green/10 border border-green/30 rounded-full text-green flex items-center gap-2">
+              <Check class="w-3 h-3" /> Active
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> 2024 - Present
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Current Progress</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">5,247</span>
+            </div>
+            <p class="text-xs text-text-muted">Properties titled</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[70%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">3</span>
+            </div>
+            <p class="text-xs text-text-muted">Districts covered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-[50%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">78%</span>
+            </div>
+            <p class="text-xs text-text-muted">Cost reduction</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[78%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">$22M</span>
+            </div>
+            <p class="text-xs text-text-muted">Property value formalized</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-gold to-accent rounded w-[85%]"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Challenge -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Challenge</h2>
+            <p class="text-xs text-text-muted">Traditional systems overwhelmed</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Greater Accra's population has tripled in 30 years, with informal settlements expanding faster than government systems can process. The dual system of customary and statutory land rights creates unique challenges:
+        </p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Dual Legal System</h4>
+            <p class="text-xs text-text-muted">Customary (stool/family) lands and statutory (government) titles often conflict over the same plots.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Multiple Sales</h4>
+            <p class="text-xs text-text-muted">Same land sold to multiple buyers by different family members claiming authority.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Registration Backlog</h4>
+            <p class="text-xs text-text-muted">Lands Commission backlog of 100,000+ applications, some pending for over a decade.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Guard System</h4>
+            <p class="text-xs text-text-muted">"Land guards" (armed enforcers) used to claim disputed properties through intimidation.</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="ACCRA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Approach</h2>
+            <p class="text-xs text-text-muted">Unifying land rights</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <Users class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Family Mapping</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Comprehensive family tree documentation with consensus-based authority identification.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Elder verification</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Multi-party signatures</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Dispute prevention</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <Shield class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Encumbrance Check</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Real-time verification of existing claims, mortgages, and legal disputes before any sale.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Court records integration</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Bank lien verification</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Historical claim search</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <Smartphone class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">USSD Access</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Simple USSD codes for verification on any mobile phone—no smartphone required.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Dial *123# to verify</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Twi language support</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Free verification</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Impact Story -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Home class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Ending Land Guard Culture</h2>
+            <p class="text-xs text-text-muted">A safer approach to property</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Before TerraChain, buyers in peri-urban Accra faced a grim choice: pay for armed guards to "protect" their purchase, or risk losing everything to competing claims. The blockchain-based system has transformed this dynamic:
+        </p>
+
+        <div class="grid grid-cols-3 gap-4">
+          <div class="p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-green">Zero</span>
+            <p class="text-xs text-text-muted mt-2">Land guard incidents</p>
+            <p class="text-xs text-text-secondary">in TerraChain-registered areas</p>
+          </div>
+          <div class="p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-gold">85%</span>
+            <p class="text-xs text-text-muted mt-2">Reduction in disputes</p>
+            <p class="text-xs text-text-secondary">pre-sale verification works</p>
+          </div>
+          <div class="p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-accent">3 days</span>
+            <p class="text-xs text-text-muted mt-2">Average registration time</p>
+            <p class="text-xs text-text-secondary">down from 12+ months</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Testimonial -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={7}>
+        <Quote class="w-8 h-8 text-gold mb-4" />
+        <p class="text-text-secondary italic leading-relaxed mb-6">
+          "I saved for 15 years to buy land. With TerraChain verification, I knew within minutes that the seller had true authority and there were no other claims. For the first time, I slept peacefully the night after buying land."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold font-mono">
+            KA
+          </div>
+          <div>
+            <p class="text-sm text-text-primary font-mono">Kwame Asante</p>
+            <p class="text-xs text-text-muted">Homeowner, Tema New Town</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Download & Next -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={8} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <FileText class="w-5 h-5 text-gold" />
+              <span class="text-xs text-gold font-mono uppercase tracking-wider">Full Report</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Download the Complete Case Study</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Includes customary-statutory integration model, USSD implementation, and dispute reduction data.
+            </p>
+            <a href="/reports/ghana-case-study.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <Download class="w-4 h-4" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="md" pose="waving" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={1} class="min-h-[180px] flex flex-col justify-center" stagger={9}>
+        <p class="text-xs text-text-muted font-mono mb-2">NEXT CASE STUDY</p>
+        <a href="/case-studies/colombia" class="group no-underline">
+          <h3 class="text-lg text-text-primary group-hover:text-accent transition-colors mb-2">Colombia: Post-Conflict</h3>
+          <p class="text-sm text-text-secondary mb-3">Rebuilding land rights in zones affected by decades of conflict.</p>
+          <span class="inline-flex items-center gap-2 text-accent text-sm">
+            Read Case Study
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item, .solution-card { animation: none; opacity: 1; transform: none; }
+  }
+</style>

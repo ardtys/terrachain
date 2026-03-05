@@ -1,0 +1,211 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Card from '@components/shared/Card.astro';
+import { Shield, Calendar, Mail } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Privacy Policy — TerraChain"
+  description="TerraChain's privacy policy. Learn how we collect, use, and protect your personal information."
+>
+  <div class="pt-24 pb-16 max-w-4xl mx-auto px-4">
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="flex items-center gap-2 mb-4">
+        <Shield class="w-5 h-5 text-accent" />
+        <span class="text-xs text-accent font-mono uppercase tracking-wider">Legal</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl text-text-primary mb-4">Privacy Policy</h1>
+      <div class="flex items-center gap-4 text-sm text-text-muted">
+        <span class="flex items-center gap-2">
+          <Calendar class="w-4 h-4" />
+          Last updated: January 15, 2025
+        </span>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="prose prose-invert max-w-none">
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">1. Introduction</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          TerraChain ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our land registry platform, website, and related services (collectively, the "Services").
+        </p>
+        <p class="text-text-secondary leading-relaxed">
+          By using our Services, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our Services.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">2. Information We Collect</h2>
+
+        <h3 class="text-lg text-text-primary font-mono mb-3">2.1 Personal Information</h3>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          We may collect personal information that you voluntarily provide when using our Services, including:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2 mb-6">
+          <li>Name and contact information (email address, phone number)</li>
+          <li>Government-issued identification documents for KYC/AML compliance</li>
+          <li>Wallet addresses and blockchain transaction data</li>
+          <li>Geolocation data for land parcel registration</li>
+          <li>Photographs and documents related to land ownership</li>
+          <li>Biometric data (with explicit consent) for identity verification</li>
+        </ul>
+
+        <h3 class="text-lg text-text-primary font-mono mb-3">2.2 Automatically Collected Information</h3>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          When you access our Services, we automatically collect certain information, including:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li>Device information (type, operating system, unique identifiers)</li>
+          <li>IP address and general location data</li>
+          <li>Browser type and version</li>
+          <li>Usage data and interaction patterns</li>
+          <li>Cookies and similar tracking technologies</li>
+        </ul>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">3. How We Use Your Information</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          We use the collected information for the following purposes:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li>To provide and maintain our land registry Services</li>
+          <li>To verify your identity and prevent fraud</li>
+          <li>To process land registrations and ownership transfers</li>
+          <li>To comply with legal and regulatory requirements</li>
+          <li>To communicate with you about your account and transactions</li>
+          <li>To improve and optimize our Services</li>
+          <li>To send administrative and promotional communications (with consent)</li>
+          <li>To detect, prevent, and address technical issues and security threats</li>
+        </ul>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">4. Data Sharing and Disclosure</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          We may share your information in the following circumstances:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2 mb-4">
+          <li><strong class="text-text-primary">Government Authorities:</strong> Land registration data is shared with relevant land authorities as required by law</li>
+          <li><strong class="text-text-primary">Service Providers:</strong> Third-party vendors who assist in operating our Services</li>
+          <li><strong class="text-text-primary">Blockchain Networks:</strong> Transaction data is recorded on public blockchain networks</li>
+          <li><strong class="text-text-primary">Legal Requirements:</strong> When required by law, court order, or governmental authority</li>
+          <li><strong class="text-text-primary">Business Transfers:</strong> In connection with mergers, acquisitions, or asset sales</li>
+        </ul>
+        <p class="text-text-secondary leading-relaxed">
+          We do not sell your personal information to third parties for marketing purposes.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">5. Blockchain Data and Public Records</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Please be aware that certain information recorded on blockchain networks is inherently public and immutable:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li>Land parcel registration hashes are publicly viewable on the blockchain</li>
+          <li>Ownership transfer records are permanent and cannot be deleted</li>
+          <li>Wallet addresses associated with transactions are publicly visible</li>
+        </ul>
+        <p class="text-text-secondary leading-relaxed mt-4">
+          We minimize on-chain data by storing sensitive personal information off-chain with only cryptographic hashes recorded on the blockchain.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">6. Data Security</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          We implement robust security measures to protect your information:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li>AES-256 encryption for data at rest</li>
+          <li>TLS 1.3 encryption for data in transit</li>
+          <li>Multi-factor authentication for account access</li>
+          <li>Regular security audits and penetration testing</li>
+          <li>SOC 2 Type II compliance</li>
+          <li>Access controls and employee training</li>
+        </ul>
+        <p class="text-text-secondary leading-relaxed mt-4">
+          While we strive to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">7. Data Retention</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          We retain your personal information for as long as necessary to:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li>Provide our Services and maintain land records</li>
+          <li>Comply with legal and regulatory requirements</li>
+          <li>Resolve disputes and enforce agreements</li>
+        </ul>
+        <p class="text-text-secondary leading-relaxed mt-4">
+          Land registration records are maintained permanently as required by law and the immutable nature of blockchain technology. Other personal data may be deleted upon request, subject to legal retention requirements.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">8. Your Rights</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Depending on your jurisdiction, you may have the following rights:
+        </p>
+        <ul class="list-disc list-inside text-text-secondary space-y-2">
+          <li><strong class="text-text-primary">Access:</strong> Request a copy of your personal data</li>
+          <li><strong class="text-text-primary">Correction:</strong> Request correction of inaccurate data</li>
+          <li><strong class="text-text-primary">Deletion:</strong> Request deletion of your data (subject to legal limitations)</li>
+          <li><strong class="text-text-primary">Portability:</strong> Request transfer of your data to another service</li>
+          <li><strong class="text-text-primary">Objection:</strong> Object to certain processing activities</li>
+          <li><strong class="text-text-primary">Withdraw Consent:</strong> Withdraw previously given consent</li>
+        </ul>
+        <p class="text-text-secondary leading-relaxed mt-4">
+          To exercise these rights, please contact us at <a href="mailto:privacy@terrachain.xyz" class="text-accent hover:underline">privacy@terrachain.xyz</a>.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">9. International Data Transfers</h2>
+        <p class="text-text-secondary leading-relaxed">
+          Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place for international transfers, including Standard Contractual Clauses approved by relevant authorities. By using our Services, you consent to such transfers.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">10. Children's Privacy</h2>
+        <p class="text-text-secondary leading-relaxed">
+          Our Services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
+        </p>
+      </Card>
+
+      <Card class="p-8 mb-6">
+        <h2 class="text-xl text-text-primary font-mono mb-4">11. Changes to This Policy</h2>
+        <p class="text-text-secondary leading-relaxed">
+          We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date. We encourage you to review this policy periodically.
+        </p>
+      </Card>
+
+      <Card class="p-8">
+        <h2 class="text-xl text-text-primary font-mono mb-4">12. Contact Us</h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          If you have questions or concerns about this Privacy Policy or our data practices, please contact us:
+        </p>
+        <div class="bg-surface-hover p-4 rounded-lg">
+          <p class="text-text-primary font-mono mb-2">TerraChain Privacy Team</p>
+          <a href="mailto:privacy@terrachain.xyz" class="text-accent hover:underline flex items-center gap-2">
+            <Mail class="w-4 h-4" />
+            privacy@terrachain.xyz
+          </a>
+        </div>
+      </Card>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose h2 {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+  }
+</style>

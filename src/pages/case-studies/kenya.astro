@@ -1,0 +1,339 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Smartphone, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, Anchor, Fish, Palmtree, BarChart3 } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Kenya Case Study — TerraChain"
+  description="Protecting ancestral lands for coastal communities in Kenya's Mombasa region through blockchain-based land registration."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
+        </a>
+      </Card>
+
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-green/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Anchor class="w-5 h-5 text-green" />
+            <span class="text-xs text-green font-mono uppercase tracking-wider">Kenya • Coastal Region</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Coastal Communities:<br/>
+            <span class="text-gradient-green">Protecting Ancestral Lands</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            In partnership with the Kenya National Land Commission, TerraChain is securing ancestral land rights for fishing communities along the Mombasa coast, protecting generations of heritage from commercial encroachment.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-green/10 border border-green/30 rounded-full text-green flex items-center gap-2">
+              <Check class="w-3 h-3" /> Active
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> 2024 - Present
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Current Progress</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">8,547</span>
+            </div>
+            <p class="text-xs text-text-muted">Parcels registered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[85%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">12</span>
+            </div>
+            <p class="text-xs text-text-muted">Villages covered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-[60%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">23</span>
+            </div>
+            <p class="text-xs text-text-muted">Encroachments blocked</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[95%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">$18M</span>
+            </div>
+            <p class="text-xs text-text-muted">Land value protected</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-green to-accent rounded w-full"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Challenge -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Challenge</h2>
+            <p class="text-xs text-text-muted">Protecting coastal heritage</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Kenya's coastal communities have occupied their lands for centuries, but most lack formal documentation. Rapid tourism development and commercial interests have led to displacement and land grabbing:
+        </p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Historical Displacement</h4>
+            <p class="text-xs text-text-muted">Colonial-era land laws never recognized customary ownership, leaving communities legally vulnerable.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Tourism Pressure</h4>
+            <p class="text-xs text-text-muted">Beachfront land values have skyrocketed, attracting developers who exploit documentation gaps.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Oral Traditions</h4>
+            <p class="text-xs text-text-muted">Land boundaries passed down through oral tradition don't hold up in formal legal disputes.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Corrupt Officials</h4>
+            <p class="text-xs text-text-muted">Documented cases of officials issuing fraudulent titles to developers over occupied land.</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="MOMBASA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Approach</h2>
+            <p class="text-xs text-text-muted">Documenting ancestral claims</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <Users class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Elder Testimony</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Video-recorded oral histories from village elders, timestamped on blockchain as legal evidence.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Swahili transcription</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> GPS-tagged recordings</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Arweave permanent storage</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <MapPin class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Boundary Walks</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Traditional boundary markers mapped with GPS, creating immutable geographic records.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Historical landmark capture</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Multi-witness validation</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Satellite verification</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <Shield class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Alert System</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Real-time monitoring for any title changes or claims affecting registered community lands.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> SMS instant alerts</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Legal aid network</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> NGO partnership</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Success Story -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Award class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Landmark Victory</h2>
+            <p class="text-xs text-text-muted">Shela Village Case</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-surface-hover rounded-lg border border-border mb-4">
+          <p class="text-text-secondary leading-relaxed mb-4">
+            In March 2024, the Shela fishing community used TerraChain records to successfully challenge a hotel developer's claim to their ancestral beach. The blockchain evidence—including elder testimonies and GPS-mapped boundaries—proved continuous occupation since 1923.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            The Environment and Land Court ruled in favor of the community, setting a precedent for blockchain evidence in Kenyan land disputes. The 47-hectare beachfront, valued at $8.2 million, remains protected for future generations.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex-1 p-3 bg-green/10 rounded-lg border border-green/30 text-center">
+            <span class="text-xl font-mono text-green">47ha</span>
+            <p class="text-xs text-text-muted">Protected</p>
+          </div>
+          <div class="flex-1 p-3 bg-accent/10 rounded-lg border border-accent/30 text-center">
+            <span class="text-xl font-mono text-accent">$8.2M</span>
+            <p class="text-xs text-text-muted">Value Secured</p>
+          </div>
+          <div class="flex-1 p-3 bg-gold/10 rounded-lg border border-gold/30 text-center">
+            <span class="text-xl font-mono text-gold">1,200</span>
+            <p class="text-xs text-text-muted">Families Protected</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Community Quote -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={7}>
+        <Quote class="w-8 h-8 text-green mb-4" />
+        <p class="text-text-secondary italic leading-relaxed mb-6">
+          "Our grandfathers fished these waters. Their fathers fished here before them. Now we have proof that cannot be burned, lost, or bribed away. The blockchain remembers what corrupt officials try to forget."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-green/10 border border-green/30 flex items-center justify-center text-green font-mono">
+            OK
+          </div>
+          <div>
+            <p class="text-sm text-text-primary font-mono">Omar Khamis</p>
+            <p class="text-xs text-text-muted">Elder, Shela Village</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Download & Next -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={8} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-green/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <FileText class="w-5 h-5 text-green" />
+              <span class="text-xs text-green font-mono uppercase tracking-wider">Full Report</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Download the Complete Case Study</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Includes legal precedent analysis, community mapping methodology, and policy recommendations.
+            </p>
+            <a href="/reports/kenya-case-study.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <Download class="w-4 h-4" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="md" pose="pointing" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={1} class="min-h-[180px] flex flex-col justify-center" stagger={9}>
+        <p class="text-xs text-text-muted font-mono mb-2">NEXT CASE STUDY</p>
+        <a href="/case-studies/indonesia" class="group no-underline">
+          <h3 class="text-lg text-text-primary group-hover:text-accent transition-colors mb-2">Indonesia: Java Agricultural</h3>
+          <p class="text-sm text-text-secondary mb-3">Modernizing land records for 12,000 farming families in Central Java.</p>
+          <span class="inline-flex items-center gap-2 text-accent text-sm">
+            Read Case Study
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-green {
+    background: linear-gradient(135deg, var(--color-green), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item,
+    .solution-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

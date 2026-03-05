@@ -1,0 +1,447 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { Mail, MessageSquare, MapPin, Clock, Send, Building, Briefcase, Newspaper, Shield, HelpCircle, Twitter } from 'lucide-astro';
+
+const contactOptions = [
+  {
+    icon: HelpCircle,
+    title: 'General Inquiries',
+    email: 'hello@terrachain.xyz',
+    description: 'Questions about TerraChain and our services',
+    color: 'accent'
+  },
+  {
+    icon: Building,
+    title: 'Partnerships',
+    email: 'partnerships@terrachain.xyz',
+    description: 'Government and enterprise partnerships',
+    color: 'gold'
+  },
+  {
+    icon: Briefcase,
+    title: 'Careers',
+    email: 'careers@terrachain.xyz',
+    description: 'Join our team and make an impact',
+    color: 'green'
+  },
+  {
+    icon: Newspaper,
+    title: 'Press & Media',
+    email: 'press@terrachain.xyz',
+    description: 'Media inquiries and interview requests',
+    color: 'copper'
+  },
+  {
+    icon: Shield,
+    title: 'Security',
+    email: 'security@terrachain.xyz',
+    description: 'Report vulnerabilities responsibly',
+    color: 'accent'
+  },
+  {
+    icon: MessageSquare,
+    title: 'Support',
+    email: 'support@terrachain.xyz',
+    description: 'Technical support and assistance',
+    color: 'gold'
+  },
+];
+
+const offices = [
+  {
+    city: 'Singapore',
+    type: 'Headquarters',
+    address: '1 Raffles Place, Tower 2, #20-01',
+    timezone: 'GMT+8'
+  },
+  {
+    city: 'Nairobi',
+    type: 'Africa Office',
+    address: 'Westlands Business Park, 4th Floor',
+    timezone: 'GMT+3'
+  },
+  {
+    city: 'Manila',
+    type: 'Southeast Asia',
+    address: 'BGC, One Bonifacio High Street',
+    timezone: 'GMT+8'
+  },
+];
+---
+
+<BaseLayout
+  title="Contact — TerraChain"
+  description="Get in touch with TerraChain. Contact us for partnerships, support, careers, or general inquiries."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[280px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Mail class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Contact Us</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Let's Start a<br/>
+            <span class="text-gradient-accent">Conversation</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Whether you're a government looking to modernize land administration, an organization seeking partnership, or just curious about TerraChain — we'd love to hear from you.
+          </p>
+
+          <div class="flex items-center gap-4 text-sm text-text-muted">
+            <span class="flex items-center gap-2">
+              <Clock class="w-4 h-4" />
+              Typical response: 24-48 hours
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="CONTACT" stagger={2} />
+
+      <!-- Contact Form -->
+      <Card colSpan={2} class="min-h-[450px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Send class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Send Us a Message</h2>
+            <p class="text-xs text-text-muted">We'll get back to you soon</p>
+          </div>
+        </div>
+
+        <form class="space-y-4" id="contact-form">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm text-text-secondary mb-2">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="input w-full"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm text-text-secondary mb-2">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="input w-full"
+                placeholder="john@example.com"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="organization" class="block text-sm text-text-secondary mb-2">Organization (Optional)</label>
+              <input
+                type="text"
+                id="organization"
+                name="organization"
+                class="input w-full"
+                placeholder="Your company or organization"
+              />
+            </div>
+            <div>
+              <label for="subject" class="block text-sm text-text-secondary mb-2">Subject</label>
+              <select id="subject" name="subject" required class="input w-full">
+                <option value="">Select a topic</option>
+                <option value="general">General Inquiry</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="demo">Request a Demo</option>
+                <option value="support">Technical Support</option>
+                <option value="press">Press & Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm text-text-secondary mb-2">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="input w-full resize-none"
+              placeholder="Tell us how we can help..."
+            ></textarea>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <p class="text-xs text-text-muted">
+              By submitting, you agree to our <a href="/privacy" class="text-accent hover:underline">Privacy Policy</a>
+            </p>
+            <button type="submit" class="btn btn-primary inline-flex items-center gap-2">
+              <Send class="w-4 h-4" />
+              <span>Send Message</span>
+            </button>
+          </div>
+        </form>
+
+        <div id="form-success" class="hidden mt-4 p-4 rounded-lg bg-green/10 border border-green/30">
+          <p class="text-green text-sm font-mono">Message sent successfully! We'll be in touch soon.</p>
+        </div>
+      </Card>
+
+      <!-- Contact Options -->
+      <Card colSpan={1} class="min-h-[450px]" stagger={4}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Direct Contacts</h3>
+
+        <div class="space-y-3">
+          {contactOptions.map((option, i) => (
+            <a href={`mailto:${option.email}`} class="contact-option flex items-start gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline group" style={`--delay: ${i * 0.1}s`}>
+              <div class={`w-8 h-8 rounded-lg bg-${option.color}/10 border border-${option.color}/30 flex items-center justify-center flex-shrink-0`}>
+                <option.icon class={`w-4 h-4 text-${option.color}`} />
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm text-text-primary group-hover:text-accent transition-colors">{option.title}</p>
+                <p class="text-xs text-accent font-mono truncate">{option.email}</p>
+                <p class="text-xs text-text-muted mt-1">{option.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Office Locations -->
+      <Card colSpan={2} class="min-h-[250px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <MapPin class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h3 class="heading-mono text-lg text-text-primary">Our Offices</h3>
+            <p class="text-xs text-text-muted">Global presence, local impact</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          {offices.map((office, i) => (
+            <div class="office-card p-4 bg-surface-hover rounded-lg border border-border" style={`--delay: ${i * 0.1}s`}>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-base text-text-primary font-mono">{office.city}</h4>
+                <span class="text-xs text-text-muted">{office.timezone}</span>
+              </div>
+              <p class="text-xs text-accent mb-2">{office.type}</p>
+              <p class="text-xs text-text-muted leading-relaxed">{office.address}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Social & Community -->
+      <Card colSpan={1} class="min-h-[250px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <MessageSquare class="w-5 h-5 text-green" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Community</h3>
+        </div>
+
+        <p class="text-sm text-text-secondary mb-4">
+          Join our community to connect with other developers, get support, and stay updated.
+        </p>
+
+        <div class="space-y-3">
+          <a href="https://discord.gg/terrachain" target="_blank" rel="noopener" class="social-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-[#5865F2]/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#5865F2]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">Discord</p>
+              <p class="text-xs text-text-muted">1.2k members</p>
+            </div>
+          </a>
+
+          <a href="https://x.com/Terra_Chain" target="_blank" rel="noopener" class="social-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-text-primary/10 flex items-center justify-center">
+              <Twitter class="w-5 h-5 text-text-primary" />
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">X (Twitter)</p>
+              <p class="text-xs text-text-muted">@Terra_Chain</p>
+            </div>
+          </a>
+
+          <a href="https://forum.terrachain.xyz" target="_blank" rel="noopener" class="social-link flex items-center gap-3 p-3 bg-surface-hover rounded-lg hover:bg-surface border border-transparent hover:border-border transition-all no-underline">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+              <MessageSquare class="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <p class="text-sm text-text-primary">Forum</p>
+              <p class="text-xs text-text-muted">Discussion & support</p>
+            </div>
+          </a>
+        </div>
+      </Card>
+
+      <!-- FAQ CTA -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={7} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <HelpCircle class="w-5 h-5 text-accent" />
+              <span class="text-xs text-accent font-mono uppercase tracking-wider">Need Answers?</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Check Our Documentation</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Find detailed guides, API references, and answers to common questions in our comprehensive documentation.
+            </p>
+            <a href="/docs" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <span>View Documentation</span>
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="lg" pose="pointing" speechBubble="I can help!" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Mascot -->
+      <Card colSpan={1} class="min-h-[180px] flex items-center justify-center" stagger={8}>
+        <div class="text-center">
+          <Mascot size="md" pose="waving" />
+          <p class="mt-4 text-xs text-text-muted font-mono">We're here to help!</p>
+        </div>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const button = form.querySelector('button[type="submit"]');
+    if (button) {
+      button.textContent = 'Sending...';
+      button.disabled = true;
+    }
+
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // Show success message
+    if (success) {
+      success.classList.remove('hidden');
+    }
+
+    // Reset form
+    form.reset();
+
+    if (button) {
+      button.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Sent!</span>';
+
+      setTimeout(() => {
+        button.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg><span>Send Message</span>';
+        button.disabled = false;
+      }, 3000);
+    }
+
+    // Hide success after 5 seconds
+    setTimeout(() => {
+      if (success) {
+        success.classList.add('hidden');
+      }
+    }, 5000);
+  });
+</script>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-copper {
+    color: var(--color-copper);
+  }
+
+  .contact-option {
+    animation: slideInLeft 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .office-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+  }
+
+  .social-link {
+    animation: fadeIn 0.3s ease-out forwards;
+    opacity: 0;
+  }
+
+  .social-link:nth-child(1) { animation-delay: 0.1s; }
+  .social-link:nth-child(2) { animation-delay: 0.2s; }
+  .social-link:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-option,
+    .office-card,
+    .social-link {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

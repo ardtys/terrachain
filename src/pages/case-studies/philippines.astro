@@ -1,0 +1,454 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Smartphone, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, Home, Scale, MessageSquare, BarChart3 } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Philippines Case Study — TerraChain"
+  description="How TerraChain secured land tenure for 3,200 families in Metro Manila's informal settlements through community-led titling."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
+        </a>
+      </Card>
+
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-gold/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Building class="w-5 h-5 text-gold" />
+            <span class="text-xs text-gold font-mono uppercase tracking-wider">Philippines • Metro Manila</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Urban Informal Settlements:<br/>
+            <span class="text-gradient-gold">Community-Led Titling</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            In collaboration with the Department of Human Settlements and Urban Development (DHSUD), TerraChain piloted a revolutionary community-led titling program in Quezon City's informal settlements.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-green/10 border border-green/30 rounded-full text-green flex items-center gap-2">
+              <Check class="w-3 h-3" /> Completed
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> 2023 - 2024
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Key Results</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">3,247</span>
+            </div>
+            <p class="text-xs text-text-muted">Families secured</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-full"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">47</span>
+            </div>
+            <p class="text-xs text-text-muted">Disputes resolved</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-[90%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">$12M</span>
+            </div>
+            <p class="text-xs text-text-muted">Equity unlocked</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[95%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">6 mo</span>
+            </div>
+            <p class="text-xs text-text-muted">Pilot duration</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-gold to-accent rounded w-full"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Challenge -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Challenge</h2>
+            <p class="text-xs text-text-muted">Urban informality at scale</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Metro Manila's informal settlements house over 3 million people—families who have lived in these communities for generations but lack formal documentation. The challenges were unique to urban environments:
+        </p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Dense Boundaries</h4>
+            <p class="text-xs text-text-muted">Homes built inches apart with no clear demarcation, making traditional surveying impossible.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Overlapping Claims</h4>
+            <p class="text-xs text-text-muted">Multiple families claiming same plots due to informal sales, inheritance, and rental arrangements.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Political Complexity</h4>
+            <p class="text-xs text-text-muted">Barangay politics and local power structures complicated official recognition processes.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Eviction Threats</h4>
+            <p class="text-xs text-text-muted">Ongoing development pressure and lack of documentation left residents vulnerable to displacement.</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="MANILA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Solution</h2>
+            <p class="text-xs text-text-muted">Community-validated ownership</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <Users class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Community Mapping</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Residents themselves mapped boundaries through consensus, with neighbors validating each claim.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Participatory mapping</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Neighbor signatures</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Community validation events</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <Scale class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Smart Contract Disputes</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              On-chain dispute resolution with automated evidence timestamping and transparent arbitration.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> 72-hour resolution SLA</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Immutable evidence chain</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Barangay integration</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <MessageSquare class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">WhatsApp Integration</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Bot-based status updates and verification queries through the platform most residents already use.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Real-time notifications</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Document submission</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Tagalog support</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Community Stories -->
+      <Card colSpan={2} class="min-h-[300px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Home class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Community Stories</h2>
+            <p class="text-xs text-text-muted">Real families, real impact</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="story-card p-4 bg-surface-hover rounded-lg border border-border">
+            <Quote class="w-5 h-5 text-gold mb-2" />
+            <p class="text-sm text-text-secondary italic mb-3">
+              "We finally have something to pass on to our children. Our home is truly ours now. After 30 years of uncertainty, I can sleep peacefully knowing no one can take this from my family."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold font-mono text-sm">MS</div>
+              <div>
+                <p class="text-sm text-text-primary font-mono">Maria Santos</p>
+                <p class="text-xs text-text-muted">Community Leader, Barangay Payatas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-card p-4 bg-surface-hover rounded-lg border border-border">
+            <Quote class="w-5 h-5 text-accent mb-2" />
+            <p class="text-sm text-text-secondary italic mb-3">
+              "The dispute with my neighbor had gone on for years. Through TerraChain, we sat down, the evidence was clear on the blockchain, and we resolved it in two days. Now we're friends again."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-mono text-sm">RC</div>
+              <div>
+                <p class="text-sm text-text-primary font-mono">Roberto Cruz</p>
+                <p class="text-xs text-text-muted">Resident, Barangay Commonwealth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Partner Quote -->
+      <Card colSpan={1} class="min-h-[300px]" stagger={7}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Award class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Government Perspective</h3>
+        </div>
+
+        <Quote class="w-6 h-6 text-gold mb-3" />
+        <p class="text-sm text-text-secondary italic leading-relaxed mb-4">
+          "This pilot has shown us a new paradigm for urban land administration. The community-led approach combined with blockchain transparency addresses challenges we've struggled with for decades."
+        </p>
+        <div>
+          <p class="text-sm text-text-primary font-mono">Secretary Eduardo del Rosario</p>
+          <p class="text-xs text-text-muted">Department of Human Settlements and Urban Development</p>
+        </div>
+      </Card>
+
+      <!-- Impact Metrics -->
+      <Card colSpan={3} class="min-h-[280px]" stagger={8}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <BarChart3 class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Measurable Impact</h2>
+            <p class="text-xs text-text-muted">Quantified outcomes after 6 months</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-gold">100%</span>
+            <p class="text-xs text-text-muted mt-2">Dispute resolution rate</p>
+            <p class="text-xs text-text-secondary mt-1">All 47 disputes resolved</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-accent">72 hrs</span>
+            <p class="text-xs text-text-muted mt-2">Average resolution time</p>
+            <p class="text-xs text-text-secondary mt-1">Down from 6+ months</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-green">156</span>
+            <p class="text-xs text-text-muted mt-2">Bank loans issued</p>
+            <p class="text-xs text-text-secondary mt-1">Using titles as collateral</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-gold">0</span>
+            <p class="text-xs text-text-muted mt-2">Evictions</p>
+            <p class="text-xs text-text-secondary mt-1">Legal protection in effect</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Lessons Learned -->
+      <Card colSpan={2} class="min-h-[250px]" stagger={9}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Key Insights</h2>
+            <p class="text-xs text-text-muted">Learnings for urban deployments</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            { title: 'Community leaders are essential', desc: 'Barangay captains and respected elders provided crucial legitimacy and conflict mediation.' },
+            { title: 'Dispute resolution drives adoption', desc: 'Word spread quickly after the first successful dispute resolution, accelerating enrollment.' },
+            { title: 'WhatsApp beats custom apps', desc: '85% preferred WhatsApp bot over dedicated app due to familiarity and trust.' },
+            { title: 'Women are primary beneficiaries', desc: '67% of registered titles went to women, who traditionally lacked documentation.' },
+          ].map((lesson, i) => (
+            <div class="lesson-item flex items-start gap-3 p-3 bg-surface-hover rounded-lg">
+              <div class="w-6 h-6 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-xs font-mono text-gold">{i + 1}</span>
+              </div>
+              <div>
+                <h4 class="text-sm text-text-primary font-mono mb-1">{lesson.title}</h4>
+                <p class="text-xs text-text-muted">{lesson.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Next Steps -->
+      <Card colSpan={1} class="min-h-[250px]" stagger={10}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <TrendingUp class="w-5 h-5 text-green" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Next Steps</h3>
+        </div>
+
+        <div class="space-y-3">
+          {[
+            'Scale to 5 additional barangays',
+            'Integration with Social Housing Finance',
+            'Launch mobile app in Tagalog',
+            'Train 50 community paralegals',
+            'Expand to Cebu and Davao',
+          ].map((step, i) => (
+            <div class="flex items-center gap-2 text-sm text-text-secondary">
+              <div class="w-5 h-5 rounded-full bg-surface-hover border border-border flex items-center justify-center text-xs font-mono text-text-muted">{i + 1}</div>
+              <span>{step}</span>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <!-- Download Report CTA -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={11} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <FileText class="w-5 h-5 text-gold" />
+              <span class="text-xs text-gold font-mono uppercase tracking-wider">Full Report</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Download the Complete Case Study</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Includes community mapping methodology, dispute resolution protocols, and replication guide.
+            </p>
+            <a href="/reports/philippines-case-study.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <Download class="w-4 h-4" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="md" pose="waving" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={1} class="min-h-[180px] flex flex-col justify-center" stagger={12}>
+        <p class="text-xs text-text-muted font-mono mb-2">NEXT CASE STUDY</p>
+        <a href="/case-studies/kenya" class="group no-underline">
+          <h3 class="text-lg text-text-primary group-hover:text-accent transition-colors mb-2">Kenya: Coastal Region</h3>
+          <p class="text-sm text-text-secondary mb-3">Protecting ancestral lands for coastal communities in Mombasa.</p>
+          <span class="inline-flex items-center gap-2 text-accent text-sm">
+            Read Case Study
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card,
+  .impact-card,
+  .lesson-item,
+  .story-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  .impact-card:nth-child(1) { animation-delay: 0.1s; }
+  .impact-card:nth-child(2) { animation-delay: 0.2s; }
+  .impact-card:nth-child(3) { animation-delay: 0.3s; }
+  .impact-card:nth-child(4) { animation-delay: 0.4s; }
+
+  .story-card:nth-child(1) { animation-delay: 0.1s; }
+  .story-card:nth-child(2) { animation-delay: 0.2s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item,
+    .solution-card,
+    .impact-card,
+    .lesson-item,
+    .story-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

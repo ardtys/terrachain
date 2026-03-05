@@ -1,0 +1,354 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Smartphone, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, Wheat, Sprout, BarChart3 } from 'lucide-astro';
+---
+
+<BaseLayout
+  title="Indonesia Case Study — TerraChain"
+  description="Modernizing agricultural land records for 12,000 farming families across Central Java through blockchain technology."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
+        </a>
+      </Card>
+
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <Wheat class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">Indonesia • Central Java</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Agricultural Lands:<br/>
+            <span class="text-gradient-accent">Modernizing Rural Records</span>
+          </h1>
+
+          <p class="text-text-secondary max-w-lg mb-6">
+            Working with Indonesia's National Land Agency (BPN), TerraChain is digitizing and securing agricultural land records across Central Java's rice-producing regions, enabling farmers to access formal credit markets.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-green/10 border border-green/30 rounded-full text-green flex items-center gap-2">
+              <Check class="w-3 h-3" /> Active
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> 2024 - Present
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Current Progress</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">12,340</span>
+            </div>
+            <p class="text-xs text-text-muted">Parcels registered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-[82%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">8</span>
+            </div>
+            <p class="text-xs text-text-muted">Kabupaten (districts)</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[67%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">4,200</span>
+            </div>
+            <p class="text-xs text-text-muted">Bank loans enabled</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[75%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">$32M</span>
+            </div>
+            <p class="text-xs text-text-muted">Credit accessed</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-accent to-green rounded w-[90%]"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Challenge -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Challenge</h2>
+            <p class="text-xs text-text-muted">Legacy systems and fragmented records</p>
+          </div>
+        </div>
+
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Indonesia's land administration system dates back to Dutch colonial times and has accumulated over a century of inconsistencies. Central Java's farming communities face particular challenges:
+        </p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Fragmented Records</h4>
+            <p class="text-xs text-text-muted">Land records split between village, district, and provincial offices with no central database.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Generational Divisions</h4>
+            <p class="text-xs text-text-muted">Inheritance customs created tiny plot fragments that are economically unviable but culturally significant.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Informal Transactions</h4>
+            <p class="text-xs text-text-muted">Decades of handshake deals and informal sales created ownership chains impossible to verify.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Credit Exclusion</h4>
+            <p class="text-xs text-text-muted">Banks require formal certificates (SHM), leaving 70% of farmers unable to access agricultural loans.</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Topography -->
+      <TopographyCard label="JAVA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Approach</h2>
+            <p class="text-xs text-text-muted">Bridging traditional and digital</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <FileText class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Record Digitization</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Scanning and indexing historical documents from village archives, creating searchable digital records.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> OCR for handwritten records</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Bahasa Indonesia interface</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Chain of ownership tracking</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <MapPin class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Drone Mapping</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              High-resolution aerial surveys for accurate boundary mapping of rice paddies and agricultural plots.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> 2cm accuracy</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Seasonal monitoring</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Crop verification</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <Building class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Bank Integration</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              API integration with BRI and regional banks for instant land verification and loan processing.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Real-time verification</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> KUR loan eligibility</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Insurance linkage</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Impact Story -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Sprout class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Farmer Impact</h2>
+            <p class="text-xs text-text-muted">From subsistence to prosperity</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div class="p-4 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Before TerraChain</h4>
+            <ul class="space-y-2 text-xs text-text-muted">
+              <li>• Average farm income: $1,200/year</li>
+              <li>• Credit access: Informal lenders at 24% interest</li>
+              <li>• Land disputes: 2-3 years to resolve</li>
+              <li>• Inheritance conflicts in 40% of families</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-green/5 rounded-lg border border-green/30">
+            <h4 class="text-sm text-green font-mono mb-2">After TerraChain</h4>
+            <ul class="space-y-2 text-xs text-text-secondary">
+              <li>• Average farm income: $2,800/year (+133%)</li>
+              <li>• Credit access: Bank loans at 6% interest</li>
+              <li>• Land disputes: 2-3 weeks to resolve</li>
+              <li>• Clear succession plans for 95% of families</li>
+            </ul>
+          </div>
+        </div>
+
+        <Quote class="w-5 h-5 text-accent mb-2" />
+        <p class="text-sm text-text-secondary italic">
+          "With the bank loan, I bought a small tractor. Now I can farm three times the land and hire workers from the village. My children can go to university."
+        </p>
+        <p class="text-xs text-text-muted mt-2">— Pak Sutrisno, Rice Farmer, Klaten District</p>
+      </Card>
+
+      <!-- Partner Info -->
+      <Card colSpan={1} class="min-h-[280px]" stagger={7}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Award class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-sm text-text-primary">Partners</h3>
+        </div>
+
+        <div class="space-y-3">
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <p class="text-sm text-text-primary font-mono">BPN Indonesia</p>
+            <p class="text-xs text-text-muted">National Land Agency - Technical Partner</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <p class="text-sm text-text-primary font-mono">Bank Rakyat Indonesia</p>
+            <p class="text-xs text-text-muted">Microfinance Integration</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <p class="text-sm text-text-primary font-mono">IPB University</p>
+            <p class="text-xs text-text-muted">Agricultural Research Partner</p>
+          </div>
+          <div class="p-3 bg-surface-hover rounded-lg border border-border">
+            <p class="text-sm text-text-primary font-mono">World Bank</p>
+            <p class="text-xs text-text-muted">Funding & Monitoring</p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Download & Next -->
+      <Card colSpan={2} class="min-h-[180px] relative overflow-hidden group" stagger={8} glow accent>
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <FileText class="w-5 h-5 text-accent" />
+              <span class="text-xs text-accent font-mono uppercase tracking-wider">Full Report</span>
+            </div>
+            <h3 class="text-xl text-text-primary mb-2">Download the Complete Case Study</h3>
+            <p class="text-sm text-text-secondary max-w-md mb-4">
+              Includes digitization methodology, bank integration specs, and agricultural impact metrics.
+            </p>
+            <a href="/reports/indonesia-case-study.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline">
+              <Download class="w-4 h-4" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <div class="hidden md:block">
+            <Mascot size="md" pose="pointing" />
+          </div>
+        </div>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={1} class="min-h-[180px] flex flex-col justify-center" stagger={9}>
+        <p class="text-xs text-text-muted font-mono mb-2">NEXT CASE STUDY</p>
+        <a href="/case-studies/ghana" class="group no-underline">
+          <h3 class="text-lg text-text-primary group-hover:text-accent transition-colors mb-2">Ghana: Urban Titling</h3>
+          <p class="text-sm text-text-secondary mb-3">Formalizing property rights in Accra's rapidly growing urban areas.</p>
+          <span class="inline-flex items-center gap-2 text-accent text-sm">
+            Read Case Study
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item,
+    .solution-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
