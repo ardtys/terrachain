@@ -1,441 +1,422 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Card from '@components/ui/Card.astro';
-import { ArrowLeft, ArrowRight, MapPin, Users, FileCheck, Clock, Calendar, CheckCircle, Quote, Download, Target, Shield, Handshake, Scale, Heart, Building } from 'lucide-astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, ChevronRight, BarChart3, Handshake, Heart, Scale } from 'lucide-astro';
 ---
 
-<Layout title="Colombia Case Study - TerraChain">
-  <main class="min-h-screen bg-background">
-    <!-- Back Navigation -->
-    <section class="pt-24 pb-8">
-      <div class="max-w-6xl mx-auto px-6">
-        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors group">
-          <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Case Studies</span>
+<BaseLayout
+  title="Colombia Case Study — TerraChain"
+  description="Supporting Colombia's peace process by securing land rights for displaced families and former conflict zones."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
         </a>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Hero Section -->
-    <section class="pb-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="animate-fadeInUp">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-sm font-medium mb-6">
-              <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
-              Launching 2024
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6">
-              Colombia: <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-green-400">Peace Through Land Rights</span>
-            </h1>
-            <p class="text-xl text-text-secondary leading-relaxed mb-8">
-              Supporting Colombia's peace process by securing land rights for displaced families and former conflict zones, turning contested territories into documented, legally protected properties.
-            </p>
-            <div class="flex items-center gap-4 text-text-secondary">
-              <MapPin class="w-5 h-5 text-accent" />
-              <span>Meta, Caquetá, and Putumayo Departments</span>
-            </div>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-green/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <MapPin class="w-5 h-5 text-gold" />
+            <span class="text-xs text-gold font-mono uppercase tracking-wider">Colombia • Post-Conflict Zones</span>
           </div>
 
-          <div class="animate-fadeInUp" style="animation-delay: 0.2s;">
-            <Card variant="glass" class="p-8">
-              <div class="grid grid-cols-2 gap-6">
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-3xl font-bold text-accent mb-1">3,147</div>
-                  <div class="text-sm text-text-secondary">Parcels Mapped</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-3xl font-bold text-green-400 mb-1">1,284</div>
-                  <div class="text-sm text-text-secondary">Families Returned</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-3xl font-bold text-blue-400 mb-1">89%</div>
-                  <div class="text-sm text-text-secondary">Dispute Resolution</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-3xl font-bold text-purple-400 mb-1">12</div>
-                  <div class="text-sm text-text-secondary">Municipalities</div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Peace Through<br/>
+            <span class="text-gradient-accent">Land Rights</span>
+          </h1>
 
-    <!-- The Challenge -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12">
-          <div class="animate-slideInLeft">
-            <h2 class="text-3xl font-bold text-text-primary mb-6">The Challenge</h2>
-            <div class="space-y-4 text-text-secondary leading-relaxed">
-              <p>
-                Colombia's five-decade armed conflict displaced over 7 million people—more than any other country except Syria. As the 2016 peace agreement takes hold, millions of families are seeking to return to lands they fled, but face seemingly insurmountable obstacles.
-              </p>
-              <p>
-                Land records were destroyed, altered, or never existed. Overlapping claims from displaced families, current occupants, and agroindustrial interests create complex disputes. Traditional resolution through courts takes an average of 12 years—time that displaced families cannot afford.
-              </p>
-              <p>
-                The Comprehensive Rural Reform, a cornerstone of the peace agreement, depends on resolving these land issues. Without secure tenure, returnees cannot access credit, invest in their properties, or truly rebuild their lives. The peace process itself hangs in the balance.
-              </p>
-            </div>
-          </div>
-
-          <div class="animate-slideInLeft" style="animation-delay: 0.2s;">
-            <Card variant="elevated" class="p-6 h-full">
-              <h3 class="text-xl font-semibold text-text-primary mb-4">Key Obstacles</h3>
-              <div class="space-y-4">
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                    <FileCheck class="w-4 h-4 text-red-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Destroyed Documentation</div>
-                    <div class="text-sm text-text-secondary">60% of rural land records lost or damaged during conflict</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                    <Users class="w-4 h-4 text-orange-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Overlapping Claims</div>
-                    <div class="text-sm text-text-secondary">Average of 3.2 claimants per disputed parcel</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
-                    <Clock class="w-4 h-4 text-yellow-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Slow Resolution</div>
-                    <div class="text-sm text-text-secondary">12-year average for land restitution cases in courts</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                    <Shield class="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Security Concerns</div>
-                    <div class="text-sm text-text-secondary">Ongoing threats to land activists and returnees</div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Topography Decoration -->
-    <section class="py-8">
-      <div class="max-w-6xl mx-auto px-6">
-        <Card variant="glass" class="p-4 overflow-hidden">
-          <div class="flex items-center justify-between gap-4 opacity-30">
-            {[...Array(20)].map((_, i) => (
-              <div class="flex-1 h-24 rounded bg-gradient-to-t from-accent/20 to-transparent"
-                   style={`height: ${30 + Math.sin(i * 0.5) * 20 + Math.random() * 30}px`}></div>
-            ))}
-          </div>
-          <div class="text-center text-text-secondary text-sm mt-2">Andean Terrain Profile: Meta to Caquetá</div>
-        </Card>
-      </div>
-    </section>
-
-    <!-- Our Approach -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-12 animate-fadeInUp">
-          <h2 class="text-3xl font-bold text-text-primary mb-4">Our Peace-Building Approach</h2>
-          <p class="text-xl text-text-secondary max-w-3xl mx-auto">
-            Working with the Colombian Land Restitution Unit and international peacebuilding organizations to create a transparent, trusted system for resolving land claims.
+          <p class="text-text-secondary max-w-lg mb-6">
+            Supporting Colombia's peace process by securing land rights for displaced families in Meta, Caquetá, and Putumayo departments, turning contested territories into documented, legally protected properties.
           </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-gold/10 border border-gold/30 rounded-full text-gold flex items-center gap-2">
+              <Clock class="w-3 h-3" /> Launching 2024
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> Q1-Q4 2024
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Key Results</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">3,147</span>
+            </div>
+            <p class="text-xs text-text-muted">Parcels Mapped</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-full"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">1,284</span>
+            </div>
+            <p class="text-xs text-text-muted">Families Returned</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[85%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">89%</span>
+            </div>
+            <p class="text-xs text-text-muted">Dispute Resolution Rate</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[89%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">12</span>
+            </div>
+            <p class="text-xs text-text-muted">Municipalities Covered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-accent to-green rounded w-[60%]"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Challenge -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Challenge</h2>
+            <p class="text-xs text-text-muted">Understanding the context</p>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card variant="elevated" class="p-6 animate-fadeInUp">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-4">
-              <FileCheck class="w-6 h-6 text-accent" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Historical Evidence Digitization</h3>
-            <p class="text-text-secondary text-sm">
-              Scanning and blockchain-anchoring of surviving records, aerial photographs from different eras, and witness testimonies to reconstruct ownership histories.
-            </p>
-          </Card>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Colombia's five-decade armed conflict displaced over 7 million people—more than any other country except Syria. As the 2016 peace agreement takes hold, millions of families seek to return to lands they fled, facing complex obstacles.
+        </p>
 
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.1s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-4">
-              <Handshake class="w-6 h-6 text-green-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Community Mediation</h3>
-            <p class="text-text-secondary text-sm">
-              AI-assisted dispute identification combined with trained community mediators to resolve overlapping claims through consensus rather than adversarial proceedings.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.2s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-4">
-              <Scale class="w-6 h-6 text-blue-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Truth Commission Integration</h3>
-            <p class="text-text-secondary text-sm">
-              Linking land records with testimonies from the Truth Commission to create an immutable historical record that supports both restitution and reconciliation.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.3s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-4">
-              <Shield class="w-6 h-6 text-purple-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Protected Identity System</h3>
-            <p class="text-text-secondary text-sm">
-              Zero-knowledge proofs allow returnees to prove land claims without exposing identities to potential threats, protecting vulnerable families during the transition.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.4s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 flex items-center justify-center mb-4">
-              <Building class="w-6 h-6 text-yellow-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Peace Infrastructure</h3>
-            <p class="text-text-secondary text-sm">
-              Local offices in former conflict zones provide in-person support, combining digital verification with human guidance for families unfamiliar with technology.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.5s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-4">
-              <Heart class="w-6 h-6 text-red-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Victim-Centered Design</h3>
-            <p class="text-text-secondary text-sm">
-              Every process designed with trauma-informed principles, recognizing that land documentation is intertwined with painful histories and healing.
-            </p>
-          </Card>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Destroyed Records</h4>
+            <p class="text-xs text-text-muted">60% of rural land records were lost or damaged during the conflict.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Overlapping Claims</h4>
+            <p class="text-xs text-text-muted">Average of 3.2 claimants per disputed parcel from various stakeholders.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Slow Resolution</h4>
+            <p class="text-xs text-text-muted">Traditional court resolution takes an average of 12 years per case.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Security Concerns</h4>
+            <p class="text-xs text-text-muted">Ongoing threats to land activists and returning families.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Timeline -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-text-primary mb-12 text-center">Implementation Roadmap</h2>
+      <!-- Topography -->
+      <TopographyCard label="COLOMBIA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Our Peace-Building Approach</h2>
+            <p class="text-xs text-text-muted">Technology for reconciliation</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <FileText class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Evidence Digitization</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Scanning and blockchain-anchoring of surviving records, aerial photographs, and witness testimonies.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Historical record recovery</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Aerial photo analysis</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Testimony preservation</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <Handshake class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Community Mediation</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              AI-assisted dispute identification with trained community mediators for consensus-based resolution.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Trained local mediators</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> AI conflict detection</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Consensus protocols</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <Shield class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Protected Identity</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Zero-knowledge proofs allow returnees to prove claims without exposing identities to threats.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Zero-knowledge proofs</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Anonymous verification</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Threat protection</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Implementation Timeline -->
+      <Card colSpan={2} class="min-h-[300px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Calendar class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Implementation Roadmap</h2>
+            <p class="text-xs text-text-muted">Multi-phase deployment</p>
+          </div>
+        </div>
 
         <div class="relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-border"></div>
+          <div class="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-gold to-green"></div>
 
-          <div class="space-y-12">
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-accent font-medium mb-1">Q1 2024</div>
-                  <div class="font-semibold text-text-primary">Pilot Launch</div>
-                  <div class="text-sm text-text-secondary">Initial deployment in Meta department with 500 families from peace community</div>
-                </Card>
-              </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-background"></div>
-              <div class="w-5/12"></div>
-            </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12"></div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-green-400 border-4 border-background"></div>
-              <div class="w-5/12 pl-8 animate-slideInLeft" style="animation-delay: 0.1s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-green-400 font-medium mb-1">Q2 2024</div>
-                  <div class="font-semibold text-text-primary">Evidence Gathering</div>
-                  <div class="text-sm text-text-secondary">Digitization of historical records and community testimony collection</div>
-                </Card>
+          <div class="space-y-4">
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-accent border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-accent">Q1 2024</span>
+                  <span class="text-sm text-text-primary font-medium">Pilot Launch</span>
+                </div>
+                <p class="text-xs text-text-muted">Initial deployment in Meta department with 500 families from peace community.</p>
               </div>
             </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft" style="animation-delay: 0.2s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-blue-400 font-medium mb-1">Q3 2024</div>
-                  <div class="font-semibold text-text-primary">Mediation Phase</div>
-                  <div class="text-sm text-text-secondary">Community-based dispute resolution for overlapping claims</div>
-                </Card>
-              </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-400 border-4 border-background"></div>
-              <div class="w-5/12"></div>
-            </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12"></div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-purple-400 border-4 border-background"></div>
-              <div class="w-5/12 pl-8 animate-slideInLeft" style="animation-delay: 0.3s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-purple-400 font-medium mb-1">Q4 2024</div>
-                  <div class="font-semibold text-text-primary">Scale to Caquetá</div>
-                  <div class="text-sm text-text-secondary">Expansion to second department with lessons learned</div>
-                </Card>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-gold border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-gold">Q2 2024</span>
+                  <span class="text-sm text-text-primary font-medium">Evidence Gathering</span>
+                </div>
+                <p class="text-xs text-text-muted">Digitization of historical records and community testimony collection.</p>
               </div>
             </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft" style="animation-delay: 0.4s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-yellow-400 font-medium mb-1">2025</div>
-                  <div class="font-semibold text-text-primary">National Integration</div>
-                  <div class="text-sm text-text-secondary">Integration with national land restitution system</div>
-                </Card>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-green border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-green">Q3-Q4 2024</span>
+                  <span class="text-sm text-text-primary font-medium">Mediation & Expansion</span>
+                </div>
+                <p class="text-xs text-text-muted">Community-based dispute resolution and scale to Caquetá department.</p>
               </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-yellow-400 border-4 border-background"></div>
-              <div class="w-5/12"></div>
+            </div>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-accent border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-accent">2025</span>
+                  <span class="text-sm text-text-primary font-medium">National Integration</span>
+                </div>
+                <p class="text-xs text-text-muted">Integration with national land restitution system and full government partnership.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Partnership -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="animate-fadeInUp">
-            <h2 class="text-3xl font-bold text-text-primary mb-6">Peace Process Partnership</h2>
-            <p class="text-text-secondary leading-relaxed mb-6">
-              TerraChain Colombia operates under a historic partnership framework, bringing together entities that rarely collaborate toward a shared vision of sustainable peace through land security.
-            </p>
+      <!-- Testimonial -->
+      <Card colSpan={1} class="min-h-[300px]" stagger={7}>
+        <Quote class="w-8 h-8 text-gold mb-4" />
+        <p class="text-text-secondary italic leading-relaxed mb-6">
+          "After 30 years of displacement, I never thought I would see my family's land again. TerraChain found records that even the government said were lost forever. Now my children will inherit what my grandparents built."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold font-mono">
+            MC
+          </div>
+          <div>
+            <p class="text-sm text-text-primary font-mono">María Camila R.</p>
+            <p class="text-xs text-text-muted">Returnee, Meta Department</p>
+          </div>
+        </div>
+      </Card>
 
-            <div class="space-y-4">
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Building class="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">Unidad de Restitución de Tierras</div>
-                  <div class="text-sm text-text-secondary">Colombian Land Restitution Unit</div>
-                </div>
-              </div>
+      <!-- Impact Metrics -->
+      <Card colSpan={3} class="min-h-[280px]" stagger={8}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <BarChart3 class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Expected Impact</h2>
+            <p class="text-xs text-text-muted">Projected outcomes by 2026</p>
+          </div>
+        </div>
 
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
-                  <Target class="w-5 h-5 text-blue-400" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">USAID Colombia</div>
-                  <div class="text-sm text-text-secondary">Technical and financial support</div>
-                </div>
-              </div>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-accent">15K</span>
+            <p class="text-xs text-text-muted mt-2">Families Supported</p>
+            <p class="text-xs text-text-secondary mt-1">Target by 2026</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-gold">85%</span>
+            <p class="text-xs text-text-muted mt-2">Dispute Resolution</p>
+            <p class="text-xs text-text-secondary mt-1">Target success rate</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-green">90%</span>
+            <p class="text-xs text-text-muted mt-2">Time Reduction</p>
+            <p class="text-xs text-text-secondary mt-1">Vs. court process</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-accent">$45M</span>
+            <p class="text-xs text-text-muted mt-2">Economic Impact</p>
+            <p class="text-xs text-text-secondary mt-1">Projected value unlocked</p>
+          </div>
+        </div>
+      </Card>
 
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
-                  <Heart class="w-5 h-5 text-green-400" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">Comisión de la Verdad</div>
-                  <div class="text-sm text-text-secondary">Truth Commission historical records</div>
-                </div>
-              </div>
+      <!-- Partners -->
+      <Card colSpan={2} class="min-h-[200px]" stagger={9}>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Building class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-lg text-text-primary">Peace Process Partners</h3>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          {[
+            { name: 'Unidad de Restitución', role: 'Land Restitution Unit', color: 'accent' },
+            { name: 'USAID Colombia', role: 'Technical Support', color: 'gold' },
+            { name: 'Comisión de la Verdad', role: 'Historical Records', color: 'green' },
+          ].map((partner, i) => (
+            <div class="partner-item p-3 bg-surface-hover rounded-lg border border-border text-center" style={`--delay: ${i * 0.1}s`}>
+              <p class="text-sm text-text-primary mb-1">{partner.name}</p>
+              <p class="text-xs text-text-muted">{partner.role}</p>
             </div>
-          </div>
-
-          <div class="animate-fadeInUp" style="animation-delay: 0.2s;">
-            <Card variant="gradient" class="p-8">
-              <Quote class="w-10 h-10 text-accent/30 mb-4" />
-              <blockquote class="text-xl text-text-primary leading-relaxed mb-6">
-                "After 30 years of displacement, I never thought I would see my family's land again. TerraChain found records that even the government said were lost forever. Now my children will inherit what my grandparents built."
-              </blockquote>
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                  <span class="text-accent font-bold">MC</span>
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">María Camila R.</div>
-                  <div class="text-sm text-text-secondary">Returnee, Meta Department</div>
-                </div>
-              </div>
-            </Card>
-          </div>
+          ))}
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Expected Impact -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-text-primary mb-12 text-center">Expected Impact</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp">
-            <div class="text-4xl font-bold text-accent mb-2">15,000</div>
-            <div class="text-text-secondary">Families to be supported by 2026</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.1s;">
-            <div class="text-4xl font-bold text-green-400 mb-2">85%</div>
-            <div class="text-text-secondary">Target dispute resolution rate</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.2s;">
-            <div class="text-4xl font-bold text-blue-400 mb-2">90%</div>
-            <div class="text-text-secondary">Reduction in resolution time</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.3s;">
-            <div class="text-4xl font-bold text-purple-400 mb-2">$45M</div>
-            <div class="text-text-secondary">Projected economic impact</div>
-          </Card>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <Card variant="gradient" class="p-12 animate-fadeInUp">
-          <h2 class="text-3xl font-bold text-text-primary mb-4">Support Peace Through Land Rights</h2>
-          <p class="text-xl text-text-secondary mb-8">
-            Download our comprehensive report on how blockchain technology is supporting Colombia's peace process and sustainable development goals.
+      <!-- Download Report CTA -->
+      <Card colSpan={1} class="min-h-[200px] flex flex-col justify-center group" stagger={10} glow accent>
+        <div class="text-center">
+          <Mascot size="md" pose="pointing" />
+          <h3 class="text-lg text-text-primary mt-4 mb-2">Download Peace Report</h3>
+          <p class="text-xs text-text-secondary mb-4">
+            Full analysis of our peace-building approach
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/docs/colombia-peace-land-rights.pdf" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-background font-semibold hover:bg-accent/90 transition-all no-underline">
-              <Download class="w-5 h-5" />
-              Download Peace Report
-            </a>
-            <a href="/contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border text-text-primary font-semibold hover:bg-surface-hover transition-all no-underline">
-              Partner With Us
-              <ArrowRight class="w-5 h-5" />
-            </a>
-          </div>
-        </Card>
-      </div>
-    </section>
-
-    <!-- Next Case Study -->
-    <section class="py-16 border-t border-border">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-center justify-between">
-          <a href="/case-studies/ghana" class="group flex items-center gap-4 text-text-secondary hover:text-accent transition-colors">
-            <ArrowLeft class="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            <div>
-              <div class="text-sm">Previous Case Study</div>
-              <div class="font-semibold text-text-primary group-hover:text-accent transition-colors">Ghana Urban Titling</div>
-            </div>
-          </a>
-
-          <a href="/case-studies/india" class="group flex items-center gap-4 text-text-secondary hover:text-accent transition-colors text-right">
-            <div>
-              <div class="text-sm">Next Case Study</div>
-              <div class="font-semibold text-text-primary group-hover:text-accent transition-colors">India Pilot</div>
-            </div>
-            <ArrowRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <a href="/reports/colombia-peace-report.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline text-sm">
+            <Download class="w-4 h-4" />
+            <span>Download PDF</span>
           </a>
         </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={3} class="min-h-[120px] py-4" stagger={11}>
+        <div class="flex items-center justify-between">
+          <a href="/case-studies/ghana" class="group flex items-center gap-4 no-underline">
+            <ArrowLeft class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:-translate-x-1 transition-all" />
+            <div>
+              <p class="text-xs text-text-muted font-mono">PREVIOUS</p>
+              <p class="text-sm text-text-primary group-hover:text-accent transition-colors">Ghana Urban Titling</p>
+            </div>
+          </a>
+
+          <a href="/case-studies/india" class="group flex items-center gap-4 no-underline text-right">
+            <div>
+              <p class="text-xs text-text-muted font-mono">NEXT</p>
+              <p class="text-sm text-text-primary group-hover:text-accent transition-colors">India Rajasthan Pilot</p>
+            </div>
+            <ArrowRight class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
+          </a>
+        </div>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
 
 <style>
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card,
+  .impact-card,
+  .partner-item {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  .impact-card:nth-child(1) { animation-delay: 0.1s; }
+  .impact-card:nth-child(2) { animation-delay: 0.2s; }
+  .impact-card:nth-child(3) { animation-delay: 0.3s; }
+  .impact-card:nth-child(4) { animation-delay: 0.4s; }
+
+  .timeline-item {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -443,22 +424,15 @@ import { ArrowLeft, ArrowRight, MapPin, Users, FileCheck, Clock, Calendar, Check
     }
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item,
+    .solution-card,
+    .impact-card,
+    .partner-item,
+    .timeline-item {
+      animation: none;
       opacity: 1;
-      transform: translateX(0);
+      transform: none;
     }
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .animate-slideInLeft {
-    animation: slideInLeft 0.6s ease-out forwards;
   }
 </style>

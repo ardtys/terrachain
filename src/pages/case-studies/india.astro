@@ -1,456 +1,417 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Card from '@components/ui/Card.astro';
-import { ArrowLeft, ArrowRight, MapPin, Users, FileCheck, Clock, Calendar, CheckCircle, Quote, Download, Target, Shield, Building, Landmark, Wheat, Droplets, Sun, Compass } from 'lucide-astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BentoGrid from '@components/shared/BentoGrid.astro';
+import Card from '@components/shared/Card.astro';
+import TopographyCard from '@components/cards/TopographyCard.astro';
+import Mascot from '@components/decorative/Mascot.astro';
+import { MapPin, Users, Clock, TrendingUp, ArrowRight, ArrowLeft, Check, Globe, Building, Shield, FileText, Quote, Calendar, Target, Zap, Award, Download, ChevronRight, BarChart3, Landmark, Wheat, Sun, Compass } from 'lucide-astro';
 ---
 
-<Layout title="India Case Study - TerraChain">
-  <main class="min-h-screen bg-background">
-    <!-- Back Navigation -->
-    <section class="pt-24 pb-8">
-      <div class="max-w-6xl mx-auto px-6">
-        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors group">
-          <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Case Studies</span>
+<BaseLayout
+  title="India Case Study — TerraChain"
+  description="Partnering with Rajasthan's state government to modernize land records across India's largest state with blockchain technology."
+>
+  <div class="pt-24 pb-8">
+    <BentoGrid>
+      <!-- Back Navigation -->
+      <Card colSpan={3} class="min-h-[60px] py-3" stagger={0}>
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors no-underline">
+          <ArrowLeft class="w-4 h-4" />
+          <span class="text-sm">Back to Case Studies</span>
         </a>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Hero Section -->
-    <section class="pb-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="animate-fadeInUp">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-              <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-              Planning Phase
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6">
-              India: <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-400">Rajasthan Digital Land Initiative</span>
-            </h1>
-            <p class="text-xl text-text-secondary leading-relaxed mb-8">
-              Partnering with Rajasthan's state government to modernize land records across India's largest state, bringing blockchain-secured titles to millions of rural landowners in the Thar Desert region.
-            </p>
-            <div class="flex items-center gap-4 text-text-secondary">
-              <MapPin class="w-5 h-5 text-accent" />
-              <span>Rajasthan State, Western India</span>
-            </div>
+      <!-- Hero Section -->
+      <Card colSpan={2} class="min-h-[350px] relative overflow-hidden" stagger={1} glow>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-gold/10 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <MapPin class="w-5 h-5 text-accent" />
+            <span class="text-xs text-accent font-mono uppercase tracking-wider">India • Rajasthan State</span>
           </div>
 
-          <div class="animate-fadeInUp" style="animation-delay: 0.2s;">
-            <Card variant="glass" class="p-8">
-              <div class="text-center mb-6">
-                <div class="text-sm text-text-secondary mb-2">Projected Scale</div>
-                <div class="text-4xl font-bold text-accent">2.5M+</div>
-                <div class="text-text-secondary">Land Parcels</div>
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-2xl font-bold text-green-400 mb-1">33</div>
-                  <div class="text-sm text-text-secondary">Districts</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-2xl font-bold text-blue-400 mb-1">45K</div>
-                  <div class="text-sm text-text-secondary">Villages</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-2xl font-bold text-orange-400 mb-1">Q2</div>
-                  <div class="text-sm text-text-secondary">2025 Pilot</div>
-                </div>
-                <div class="text-center p-4 rounded-xl bg-surface-hover">
-                  <div class="text-2xl font-bold text-purple-400 mb-1">5</div>
-                  <div class="text-sm text-text-secondary">Pilot Districts</div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
+          <h1 class="text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
+            Rajasthan Digital<br/>
+            <span class="text-gradient-gold">Land Initiative</span>
+          </h1>
 
-    <!-- The Opportunity -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12">
-          <div class="animate-slideInLeft">
-            <h2 class="text-3xl font-bold text-text-primary mb-6">The Opportunity</h2>
-            <div class="space-y-4 text-text-secondary leading-relaxed">
-              <p>
-                Rajasthan, India's largest state by area, is home to over 80 million people and nearly 69 million hectares of land. Despite India's rapid digitization efforts, land records remain fragmented across colonial-era systems, state databases, and village-level paper records.
-              </p>
-              <p>
-                The state government's ambitious Digital Rajasthan initiative aims to create a unified, tamper-proof land registry that will transform how land is owned, transferred, and used as collateral. TerraChain has been selected as a technology partner for this groundbreaking project.
-              </p>
-              <p>
-                This pilot will be India's largest blockchain-based land registry implementation, potentially serving as a model for other states and eventually the entire nation's 140 million land parcels.
-              </p>
-            </div>
-          </div>
-
-          <div class="animate-slideInLeft" style="animation-delay: 0.2s;">
-            <Card variant="elevated" class="p-6 h-full">
-              <h3 class="text-xl font-semibold text-text-primary mb-4">Current Challenges</h3>
-              <div class="space-y-4">
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                    <FileCheck class="w-4 h-4 text-red-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Fragmented Records</div>
-                    <div class="text-sm text-text-secondary">Land data spread across 6 different legacy systems</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                    <Clock class="w-4 h-4 text-orange-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Long Processing Times</div>
-                    <div class="text-sm text-text-secondary">Average 47 days for property registration</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
-                    <Users class="w-4 h-4 text-yellow-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Inheritance Disputes</div>
-                    <div class="text-sm text-text-secondary">2.3 million pending land-related court cases</div>
-                  </div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                    <Landmark class="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-primary">Financial Exclusion</div>
-                    <div class="text-sm text-text-secondary">Only 28% of rural land usable as bank collateral</div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Desert Topography Decoration -->
-    <section class="py-8">
-      <div class="max-w-6xl mx-auto px-6">
-        <Card variant="glass" class="p-4 overflow-hidden">
-          <div class="flex items-end justify-between gap-2 opacity-30">
-            {[...Array(24)].map((_, i) => (
-              <div class="flex-1 rounded-t bg-gradient-to-t from-orange-500/30 to-yellow-500/10"
-                   style={`height: ${20 + Math.sin(i * 0.3) * 15 + Math.random() * 20}px`}></div>
-            ))}
-          </div>
-          <div class="text-center text-text-secondary text-sm mt-2">Thar Desert Dune Profile: Jaisalmer to Jodhpur</div>
-        </Card>
-      </div>
-    </section>
-
-    <!-- Proposed Solution -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-12 animate-fadeInUp">
-          <h2 class="text-3xl font-bold text-text-primary mb-4">Proposed Solution Architecture</h2>
-          <p class="text-xl text-text-secondary max-w-3xl mx-auto">
-            A comprehensive digital land ecosystem designed to integrate with India's existing digital infrastructure while providing unprecedented security and transparency.
+          <p class="text-text-secondary max-w-lg mb-6">
+            Partnering with Rajasthan's state government to modernize land records across India's largest state, bringing blockchain-secured titles to millions of rural landowners in the Thar Desert region.
           </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 text-xs font-mono bg-accent/10 border border-accent/30 rounded-full text-accent flex items-center gap-2">
+              <Clock class="w-3 h-3" /> Planning Phase
+            </span>
+            <span class="px-3 py-1.5 text-xs font-mono bg-surface-hover border border-border rounded-full text-text-secondary flex items-center gap-2">
+              <Calendar class="w-3 h-3" /> Pilot Q2 2025
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Key Metrics -->
+      <Card colSpan={1} class="min-h-[350px]" stagger={2}>
+        <h3 class="heading-mono text-sm text-text-primary mb-4">Projected Scale</h3>
+
+        <div class="space-y-4">
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">2.5M+</span>
+            </div>
+            <p class="text-xs text-text-muted">Land Parcels Target</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-accent rounded w-full"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-gold">33</span>
+            </div>
+            <p class="text-xs text-text-muted">Districts Covered</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gold rounded w-[100%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-green">45K</span>
+            </div>
+            <p class="text-xs text-text-muted">Villages Connected</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-green rounded w-[90%]"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-3xl font-mono text-accent">$2.1B</span>
+            </div>
+            <p class="text-xs text-text-muted">Credit to Unlock</p>
+            <div class="h-1 bg-surface-hover rounded mt-2">
+              <div class="h-full bg-gradient-to-r from-accent to-green rounded w-[75%]"></div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <!-- The Opportunity -->
+      <Card colSpan={2} class="min-h-[280px]" stagger={3}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Target class="w-5 h-5 text-gold" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">The Opportunity</h2>
+            <p class="text-xs text-text-muted">Understanding the scale</p>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card variant="elevated" class="p-6 animate-fadeInUp">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-4">
-              <Shield class="w-6 h-6 text-accent" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Aadhaar Integration</h3>
-            <p class="text-text-secondary text-sm">
-              Secure linking with India's national ID system for biometric verification, ensuring only legitimate owners can authorize transactions.
-            </p>
-          </Card>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Rajasthan, India's largest state by area, is home to over 80 million people and nearly 69 million hectares of land. Despite India's rapid digitization, land records remain fragmented across colonial-era systems and village-level paper records.
+        </p>
 
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.1s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-4">
-              <Landmark class="w-6 h-6 text-green-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">DigiLocker Compatibility</h3>
-            <p class="text-text-secondary text-sm">
-              Land records accessible through India's official digital document wallet, making titles available alongside other verified documents.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.2s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-4">
-              <Sun class="w-6 h-6 text-blue-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Solar-Powered Nodes</h3>
-            <p class="text-text-secondary text-sm">
-              Decentralized validation nodes at panchayat (village council) level, powered by solar energy for reliable operation in rural areas.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.3s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-4">
-              <Compass class="w-6 h-6 text-purple-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Satellite Boundary Mapping</h3>
-            <p class="text-text-secondary text-sm">
-              Partnership with ISRO (Indian Space Research Organisation) for high-resolution boundary mapping using indigenous satellites.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.4s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center mb-4">
-              <Wheat class="w-6 h-6 text-orange-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Agricultural Credit Link</h3>
-            <p class="text-text-secondary text-sm">
-              Direct integration with NABARD and regional rural banks to enable instant land-backed agricultural loans for farmers.
-            </p>
-          </Card>
-
-          <Card variant="elevated" class="p-6 animate-fadeInUp" style="animation-delay: 0.5s;">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-4">
-              <Droplets class="w-6 h-6 text-cyan-400" />
-            </div>
-            <h3 class="text-lg font-semibold text-text-primary mb-2">Water Rights Registry</h3>
-            <p class="text-text-secondary text-sm">
-              Integrated groundwater rights documentation—critical for the water-scarce Thar Desert region—linked to land ownership.
-            </p>
-          </Card>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Fragmented Records</h4>
+            <p class="text-xs text-text-muted">Land data spread across 6 different legacy systems.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Long Processing</h4>
+            <p class="text-xs text-text-muted">Average 47 days for property registration.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Court Backlogs</h4>
+            <p class="text-xs text-text-muted">2.3 million pending land-related court cases.</p>
+          </div>
+          <div class="challenge-item p-3 bg-surface-hover rounded-lg border border-border">
+            <h4 class="text-sm text-text-primary font-mono mb-2">Financial Exclusion</h4>
+            <p class="text-xs text-text-muted">Only 28% of rural land usable as bank collateral.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Implementation Timeline -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-text-primary mb-12 text-center">Implementation Roadmap</h2>
+      <!-- Topography -->
+      <TopographyCard label="INDIA" stagger={4} />
+
+      <!-- The Solution -->
+      <Card colSpan={3} class="min-h-[320px]" stagger={5}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <Zap class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Proposed Solution Architecture</h2>
+            <p class="text-xs text-text-muted">Integrating with India's digital infrastructure</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-3">
+              <Shield class="w-5 h-5 text-accent" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Aadhaar Integration</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Secure linking with India's national ID system for biometric verification of landowners.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Biometric verification</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> KYC compliance</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Fraud prevention</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center mb-3">
+              <Landmark class="w-5 h-5 text-gold" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">DigiLocker Compatible</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Land records accessible through India's official digital document wallet system.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Official integration</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Portable documents</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Verified access</li>
+            </ul>
+          </div>
+
+          <div class="solution-card p-4 bg-surface-hover rounded-lg border border-border">
+            <div class="w-10 h-10 rounded-lg bg-green/10 border border-green/30 flex items-center justify-center mb-3">
+              <Sun class="w-5 h-5 text-green" />
+            </div>
+            <h4 class="text-sm text-text-primary font-mono mb-2">Solar-Powered Nodes</h4>
+            <p class="text-xs text-text-muted leading-relaxed mb-3">
+              Decentralized validation nodes at panchayat level, powered by solar for rural reliability.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary">
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Off-grid operation</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Local validation</li>
+              <li class="flex items-center gap-2"><Check class="w-3 h-3 text-green" /> Sustainable power</li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Implementation Timeline -->
+      <Card colSpan={2} class="min-h-[300px]" stagger={6}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green/20 to-transparent border border-green/30 flex items-center justify-center">
+            <Calendar class="w-5 h-5 text-green" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Implementation Roadmap</h2>
+            <p class="text-xs text-text-muted">Phased statewide deployment</p>
+          </div>
+        </div>
 
         <div class="relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-border"></div>
+          <div class="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-gold to-green"></div>
 
-          <div class="space-y-12">
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-blue-400 font-medium mb-1">Current Phase</div>
-                  <div class="font-semibold text-text-primary">Planning & Design</div>
-                  <div class="text-sm text-text-secondary">System architecture, stakeholder alignment, and regulatory approval</div>
-                </Card>
-              </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-400 border-4 border-background animate-pulse"></div>
-              <div class="w-5/12"></div>
-            </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12"></div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-background"></div>
-              <div class="w-5/12 pl-8 animate-slideInLeft" style="animation-delay: 0.1s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-accent font-medium mb-1">Q2 2025</div>
-                  <div class="font-semibold text-text-primary">Pilot District Launch</div>
-                  <div class="text-sm text-text-secondary">Jodhpur district pilot with 50,000 parcels</div>
-                </Card>
+          <div class="space-y-4">
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-accent border-2 border-bg animate-pulse"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-accent">Current</span>
+                  <span class="text-sm text-text-primary font-medium">Planning & Design</span>
+                </div>
+                <p class="text-xs text-text-muted">System architecture, stakeholder alignment, and regulatory approval.</p>
               </div>
             </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft" style="animation-delay: 0.2s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-green-400 font-medium mb-1">Q4 2025</div>
-                  <div class="font-semibold text-text-primary">Five-District Expansion</div>
-                  <div class="text-sm text-text-secondary">Scale to Jaisalmer, Bikaner, Barmer, and Nagaur districts</div>
-                </Card>
-              </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-green-400 border-4 border-background"></div>
-              <div class="w-5/12"></div>
-            </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12"></div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-purple-400 border-4 border-background"></div>
-              <div class="w-5/12 pl-8 animate-slideInLeft" style="animation-delay: 0.3s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-purple-400 font-medium mb-1">2026</div>
-                  <div class="font-semibold text-text-primary">Bank Integration</div>
-                  <div class="text-sm text-text-secondary">Connect with NABARD and 12 regional rural banks</div>
-                </Card>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-gold border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-gold">Q2 2025</span>
+                  <span class="text-sm text-text-primary font-medium">Pilot District Launch</span>
+                </div>
+                <p class="text-xs text-text-muted">Jodhpur district pilot with 50,000 parcels.</p>
               </div>
             </div>
-
-            <div class="relative flex items-center justify-between">
-              <div class="w-5/12 text-right pr-8 animate-slideInLeft" style="animation-delay: 0.4s;">
-                <Card variant="glass" class="p-4 inline-block">
-                  <div class="text-sm text-orange-400 font-medium mb-1">2027</div>
-                  <div class="font-semibold text-text-primary">Statewide Rollout</div>
-                  <div class="text-sm text-text-secondary">Full deployment across all 33 districts of Rajasthan</div>
-                </Card>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-green border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-green">Q4 2025</span>
+                  <span class="text-sm text-text-primary font-medium">Five-District Expansion</span>
+                </div>
+                <p class="text-xs text-text-muted">Scale to Jaisalmer, Bikaner, Barmer, and Nagaur districts.</p>
               </div>
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-orange-400 border-4 border-background"></div>
-              <div class="w-5/12"></div>
+            </div>
+            <div class="timeline-item flex items-start gap-4 pl-8 relative">
+              <div class="absolute left-2 w-4 h-4 rounded-full bg-accent border-2 border-bg"></div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-mono text-accent">2027</span>
+                  <span class="text-sm text-text-primary font-medium">Statewide Rollout</span>
+                </div>
+                <p class="text-xs text-text-muted">Full deployment across all 33 districts of Rajasthan.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Government Partnership -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="animate-fadeInUp">
-            <h2 class="text-3xl font-bold text-text-primary mb-6">Government Partnership</h2>
-            <p class="text-text-secondary leading-relaxed mb-6">
-              The Rajasthan Digital Land Initiative is a flagship project under the state's comprehensive digital transformation agenda, with full support from the highest levels of government.
-            </p>
+      <!-- Testimonial -->
+      <Card colSpan={1} class="min-h-[300px]" stagger={7}>
+        <Quote class="w-8 h-8 text-accent mb-4" />
+        <p class="text-text-secondary italic leading-relaxed mb-6">
+          "TerraChain's technology represents the future of land administration. This partnership will not only secure property rights for millions of Rajasthanis but also unlock billions in economic value."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-mono">
+            RS
+          </div>
+          <div>
+            <p class="text-sm text-text-primary font-mono">Rajesh Sharma</p>
+            <p class="text-xs text-text-muted">Addl. Chief Secretary, Revenue</p>
+          </div>
+        </div>
+      </Card>
 
-            <div class="space-y-4">
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Building class="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">Department of Revenue</div>
-                  <div class="text-sm text-text-secondary">Primary implementing agency</div>
-                </div>
-              </div>
+      <!-- Partners -->
+      <Card colSpan={3} class="min-h-[200px]" stagger={8}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/20 to-transparent border border-gold/30 flex items-center justify-center">
+            <Building class="w-5 h-5 text-gold" />
+          </div>
+          <h3 class="heading-mono text-lg text-text-primary">Government Partners</h3>
+        </div>
 
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
-                  <Landmark class="w-5 h-5 text-orange-400" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">DoIT&C Rajasthan</div>
-                  <div class="text-sm text-text-secondary">Technology infrastructure partner</div>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
-                  <Wheat class="w-5 h-5 text-green-400" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">NABARD</div>
-                  <div class="text-sm text-text-secondary">Agricultural credit integration</div>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-hover">
-                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
-                  <Compass class="w-5 h-5 text-blue-400" />
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">Survey of India</div>
-                  <div class="text-sm text-text-secondary">Geospatial data and mapping</div>
-                </div>
-              </div>
+        <div class="grid grid-cols-4 gap-4">
+          {[
+            { name: 'Department of Revenue', role: 'Primary Agency', color: 'accent' },
+            { name: 'DoIT&C Rajasthan', role: 'Tech Infrastructure', color: 'gold' },
+            { name: 'NABARD', role: 'Agricultural Credit', color: 'green' },
+            { name: 'Survey of India', role: 'Geospatial Data', color: 'accent' },
+          ].map((partner, i) => (
+            <div class="partner-item p-3 bg-surface-hover rounded-lg border border-border text-center" style={`--delay: ${i * 0.1}s`}>
+              <p class="text-sm text-text-primary mb-1">{partner.name}</p>
+              <p class="text-xs text-text-muted">{partner.role}</p>
             </div>
-          </div>
+          ))}
+        </div>
+      </Card>
 
-          <div class="animate-fadeInUp" style="animation-delay: 0.2s;">
-            <Card variant="gradient" class="p-8">
-              <Quote class="w-10 h-10 text-accent/30 mb-4" />
-              <blockquote class="text-xl text-text-primary leading-relaxed mb-6">
-                "TerraChain's technology represents the future of land administration. This partnership will not only secure property rights for millions of Rajasthanis but also unlock billions in economic value currently trapped in unclear titles."
-              </blockquote>
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                  <span class="text-accent font-bold">RS</span>
-                </div>
-                <div>
-                  <div class="font-medium text-text-primary">Rajesh Sharma</div>
-                  <div class="text-sm text-text-secondary">Additional Chief Secretary, Revenue Department</div>
-                </div>
-              </div>
-            </Card>
+      <!-- Impact Metrics -->
+      <Card colSpan={2} class="min-h-[200px]" stagger={9}>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 flex items-center justify-center">
+            <BarChart3 class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-xl text-text-primary">Projected Impact</h2>
+            <p class="text-xs text-text-muted">Expected outcomes</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Projected Impact -->
-    <section class="py-16 bg-surface/30">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-text-primary mb-12 text-center">Projected Impact</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp">
-            <div class="text-4xl font-bold text-accent mb-2">2.5M</div>
-            <div class="text-text-secondary">Parcels to be secured</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.1s;">
-            <div class="text-4xl font-bold text-green-400 mb-2">72%</div>
-            <div class="text-text-secondary">Reduction in registration time</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.2s;">
-            <div class="text-4xl font-bold text-blue-400 mb-2">$2.1B</div>
-            <div class="text-text-secondary">Projected credit unlocked</div>
-          </Card>
-
-          <Card variant="glass" class="p-6 text-center animate-fadeInUp" style="animation-delay: 0.3s;">
-            <div class="text-4xl font-bold text-orange-400 mb-2">45K</div>
-            <div class="text-text-secondary">Villages connected</div>
-          </Card>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-accent">72%</span>
+            <p class="text-xs text-text-muted mt-2">Time Reduction</p>
+            <p class="text-xs text-text-secondary mt-1">In registration process</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-gold">$2.1B</span>
+            <p class="text-xs text-text-muted mt-2">Credit Unlocked</p>
+            <p class="text-xs text-text-secondary mt-1">Agricultural loans enabled</p>
+          </div>
+          <div class="impact-card p-4 bg-surface-hover rounded-lg border border-border text-center">
+            <span class="text-3xl font-mono text-green">80M</span>
+            <p class="text-xs text-text-muted mt-2">Citizens Served</p>
+            <p class="text-xs text-text-secondary mt-1">Statewide population</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </Card>
 
-    <!-- Get Involved Section -->
-    <section class="py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <Card variant="gradient" class="p-12 animate-fadeInUp">
-          <h2 class="text-3xl font-bold text-text-primary mb-4">Join the Initiative</h2>
-          <p class="text-xl text-text-secondary mb-8">
-            We're seeking partners across technology, finance, and development sectors to support India's largest blockchain land registry project. Download our partnership prospectus to learn more.
+      <!-- Download CTA -->
+      <Card colSpan={1} class="min-h-[200px] flex flex-col justify-center group" stagger={10} glow accent>
+        <div class="text-center">
+          <Mascot size="md" pose="pointing" />
+          <h3 class="text-lg text-text-primary mt-4 mb-2">Partnership Prospectus</h3>
+          <p class="text-xs text-text-secondary mb-4">
+            Join India's largest blockchain land registry
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/docs/india-rajasthan-prospectus.pdf" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-background font-semibold hover:bg-accent/90 transition-all no-underline">
-              <Download class="w-5 h-5" />
-              Download Prospectus
-            </a>
-            <a href="/contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border text-text-primary font-semibold hover:bg-surface-hover transition-all no-underline">
-              Become a Partner
-              <ArrowRight class="w-5 h-5" />
-            </a>
-          </div>
-        </Card>
-      </div>
-    </section>
-
-    <!-- Next Case Study -->
-    <section class="py-16 border-t border-border">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-center justify-between">
-          <a href="/case-studies/colombia" class="group flex items-center gap-4 text-text-secondary hover:text-accent transition-colors">
-            <ArrowLeft class="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            <div>
-              <div class="text-sm">Previous Case Study</div>
-              <div class="font-semibold text-text-primary group-hover:text-accent transition-colors">Colombia Peace Process</div>
-            </div>
-          </a>
-
-          <a href="/case-studies/rwanda" class="group flex items-center gap-4 text-text-secondary hover:text-accent transition-colors text-right">
-            <div>
-              <div class="text-sm">First Case Study</div>
-              <div class="font-semibold text-text-primary group-hover:text-accent transition-colors">Rwanda Rural Lands</div>
-            </div>
-            <ArrowRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <a href="/reports/india-prospectus.pdf" class="btn btn-primary inline-flex items-center gap-2 no-underline text-sm">
+            <Download class="w-4 h-4" />
+            <span>Download PDF</span>
           </a>
         </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+      </Card>
+
+      <!-- Next Case Study -->
+      <Card colSpan={3} class="min-h-[120px] py-4" stagger={11}>
+        <div class="flex items-center justify-between">
+          <a href="/case-studies/colombia" class="group flex items-center gap-4 no-underline">
+            <ArrowLeft class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:-translate-x-1 transition-all" />
+            <div>
+              <p class="text-xs text-text-muted font-mono">PREVIOUS</p>
+              <p class="text-sm text-text-primary group-hover:text-accent transition-colors">Colombia Peace Process</p>
+            </div>
+          </a>
+
+          <a href="/case-studies/rwanda" class="group flex items-center gap-4 no-underline text-right">
+            <div>
+              <p class="text-xs text-text-muted font-mono">FIRST CASE STUDY</p>
+              <p class="text-sm text-text-primary group-hover:text-accent transition-colors">Rwanda Rural Lands</p>
+            </div>
+            <ArrowRight class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
+          </a>
+        </div>
+      </Card>
+    </BentoGrid>
+  </div>
+</BaseLayout>
 
 <style>
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-item,
+  .solution-card,
+  .impact-card,
+  .partner-item {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .challenge-item:nth-child(1) { animation-delay: 0.1s; }
+  .challenge-item:nth-child(2) { animation-delay: 0.2s; }
+  .challenge-item:nth-child(3) { animation-delay: 0.3s; }
+  .challenge-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .solution-card:nth-child(1) { animation-delay: 0.1s; }
+  .solution-card:nth-child(2) { animation-delay: 0.2s; }
+  .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+  .impact-card:nth-child(1) { animation-delay: 0.1s; }
+  .impact-card:nth-child(2) { animation-delay: 0.2s; }
+  .impact-card:nth-child(3) { animation-delay: 0.3s; }
+
+  .timeline-item {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -458,22 +419,15 @@ import { ArrowLeft, ArrowRight, MapPin, Users, FileCheck, Clock, Calendar, Check
     }
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-item,
+    .solution-card,
+    .impact-card,
+    .partner-item,
+    .timeline-item {
+      animation: none;
       opacity: 1;
-      transform: translateX(0);
+      transform: none;
     }
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .animate-slideInLeft {
-    animation: slideInLeft 0.6s ease-out forwards;
   }
 </style>
